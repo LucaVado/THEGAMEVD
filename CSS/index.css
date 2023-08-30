@@ -8,6 +8,7 @@ body {
     background-size: cover;
     background-position: center;
     font-family: Arial, sans-serif;
+    overflow: hidden; /* Evitar el scroll de la página */
 }
 
 .tablero {
@@ -20,47 +21,42 @@ body {
 .fila {
     display: flex;
     gap: 5px;
-    margin-bottom: 10px;
-    align-items: center;
-    justify-content: space-between; /* Alineación entre GAME1 y GAME100 */
-    width: 100%; /* Ancho completo para distribuir las cartas */
+    align-items: center; /* Alinear al centro verticalmente */
+    justify-content: space-between;
+    width: 100%;
+    margin-bottom: 10px; /* Separación entre filas */
 }
 
-.fila-inferior {
-    display: flex;
-    gap: 5px;
-    align-items: center;
-    justify-content: center; /* Centrar las cartas de abajo */
-    width: 100%; /* Ancho completo para distribuir las cartas */
-    margin-top: 20px;
-}
-
-/* Estilo para las cartas */
-.carta {
-    width: 80px; /* Ajusta el tamaño según lo necesites */
-    height: auto; /* Esto mantendrá la proporción de la imagen */
-    border-radius: 5px;
-}
-
-.carta img {
-    width: 100%; /* Llenar el espacio de la carta con la imagen */
-    height: 100%;
-    border-radius: 5px;
-}
 .fila-center {
     display: flex;
     gap: 5px;
     align-items: center;
     justify-content: center;
     width: 100%;
-    margin-bottom: 10px;
+    margin-bottom: 10px; /* Separación entre filas */
 }
 
-.carta-center {
-    width: 80px; /* Ajusta el tamaño según lo necesites */
-    height: 150px;
+.fila-inferior {
+    display: flex;
+    gap: 5px;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    margin-top: 10px; /* Ajustar margen superior */
+    margin-bottom: 20px; /* Separación desde la parte inferior */
+}
+
+.carta {
+    width: 80px;
+    height: 130px;
     display: flex;
     justify-content: center;
     align-items: center;
     border-radius: 5px;
+    flex-shrink: 0; /* Evitar que las cartas se reduzcan al mínimo */
+}
+
+.carta img {
+    max-width: 100%; /* Imágenes serán responsivas */
+    max-height: 100%; /* Imágenes serán responsivas */
 }

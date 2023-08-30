@@ -1,0 +1,23 @@
+body {
+    overflow: hidden;
+    background: black;
+    margin: 0; /* Asegura que no haya márgenes externos que puedan causar un desplazamiento horizontal */
+    padding: 0; /* Asegura que no haya relleno que pueda causar un desplazamiento horizontal */
+}
+#divT{
+    color: white;
+}
+#canvasDiv {
+    width: 100%;
+    height: 100vh;
+}
+
+#canvas {
+    background-color: cadetblue;
+    background-position: center;
+    background-image: url("../IMG/MESA2.jpeg");
+    background-size: cover;
+    background-attachment: fixed;
+    width: 100%;
+    height: 100%;
+}

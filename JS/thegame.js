@@ -3,7 +3,7 @@
 // Espera a que se cargue el contenido de la página
 window.onload = function() {
     // Obtiene la referencia a la carta
-    var carta = document.getElementById("carta");
+    const carta = document.getElementById("carta");
 
     // Puedes ajustar la visibilidad de la carta al cargar la página
     // carta.style.display = "none"; // Oculta la carta al principio

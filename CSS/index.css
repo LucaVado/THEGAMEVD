@@ -47,8 +47,10 @@ body {
 }
 
 .carta {
-    width: 80px;
-    height: 130px;
+    idth: 10%; /* Utilizar porcentaje para permitir ajuste */
+    max-width: 80px; /* Establecer el máximo para prevenir excesiva expansión */
+    height: auto; /* Permitir altura automática proporcional */
+
     display: flex;
     justify-content: center;
     align-items: center;

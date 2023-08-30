@@ -1,37 +1,66 @@
 body {
-    overflow: hidden;
-    background: black;
-    margin: 0; /* Asegura que no haya márgenes externos que puedan causar un desplazamiento horizontal */
-    padding: 0; /* Asegura que no haya relleno que pueda causar un desplazamiento horizontal */
-}
-#divT{
-    color: white;
-}
-#canvasDiv {
-    width: 100%;
-    height: 100vh;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-image: url('../img/MESA2.jpeg');
+    background-size: cover;
+    background-position: center;
+    font-family: Arial, sans-serif;
 }
 
-#canvas {
-    background-color: cadetblue;
-    background-image: url("../IMG/MESA2.jpeg");
-    background-size: contain; /* Cambia "cover" por "contain" */
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    background-position: center; /* Ajusta la posición del fondo */
-    width: 100%;
+.tablero {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.fila {
+    display: flex;
+    gap: 5px;
+    margin-bottom: 10px;
+    align-items: center;
+    justify-content: space-between; /* Alineación entre GAME1 y GAME100 */
+    width: 100%; /* Ancho completo para distribuir las cartas */
+}
+
+.fila-inferior {
+    display: flex;
+    gap: 5px;
+    align-items: center;
+    justify-content: center; /* Centrar las cartas de abajo */
+    width: 100%; /* Ancho completo para distribuir las cartas */
+    margin-top: 20px;
+}
+
+/* Estilo para las cartas */
+.carta {
+    width: 80px; /* Ajusta el tamaño según lo necesites */
+    height: auto; /* Esto mantendrá la proporción de la imagen */
+    border-radius: 5px;
+}
+
+.carta img {
+    width: 100%; /* Llenar el espacio de la carta con la imagen */
     height: 100%;
+    border-radius: 5px;
+}
+.fila-center {
+    display: flex;
+    gap: 5px;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    margin-bottom: 10px;
 }
 
-#carta {
-    position: absolute;
-    top: 10%; /* Ajusta la posición vertical en porcentaje */
-    left: 10%; /* Ajusta la posición horizontal en porcentaje */
-    transform: translate(0, 0);
-    z-index: 2; /* Asegura que la carta esté por encima del tablero */
-
-    width: auto; /* Ajusta el ancho automáticamente */
-    height: auto; /* Ajusta el alto automáticamente */
-    max-width: 30%; /* Establece el ancho máximo en porcentaje */
-    max-height: 30%; /* Establece el alto máximo en porcentaje */
+.carta-center {
+    width: 80px; /* Ajusta el tamaño según lo necesites */
+    height: 150px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5px;
 }

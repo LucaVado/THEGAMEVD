@@ -49,7 +49,10 @@ body {
 .carta {
     idth: 10%; /* Utilizar porcentaje para permitir ajuste */
     max-width: 80px; /* Establecer el máximo para prevenir excesiva expansión */
-    height: auto; /* Permitir altura automática proporcional */
+
+    border: 3px solid black;
+    width: 98px;
+    height: 109px;
 
     display: flex;
     justify-content: center;

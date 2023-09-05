@@ -17,6 +17,33 @@ for (let i = 2; i <= 99; i++) {
     mazoCartas.push(`../IMG/GAME${i}.png`);
 }
 
+const manoCartas = [];
+
+function obtenerCartasAleatorias() {
+    while (manoCartas.length < 8 && mazoCartas.length > 0) {
+        const indiceAleatorio = Math.floor(Math.random() * mazoCartas.length);
+        const cartaAleatoria = mazoCartas.splice(indiceAleatorio, 1)[0];
+        manoCartas.push(cartaAleatoria);
+    }
+}
+
+// Llama a la función para obtener cartas aleatorias al cargar la página
+obtenerCartasAleatorias();
+
+function mostrarCartasEnMano() {
+    for (let i = 0; i < manoCartas.length; i++) {
+        const idCarta = `MANO${i + 1}`;
+        const imageDisplay = document.getElementById(idCarta);
+
+        if (imageDisplay) {
+            imageDisplay.src = manoCartas[i];
+        }
+    }
+}
+
+// Llama a la función para mostrar las cartas en la mano
+mostrarCartasEnMano();
+
 const currentSuperiorIzquierda = filaSuperiorIzquierda.length - 1; // El índice de la imagen actual, inicializado en la última imagen de la lista.
 const currentSuperiorDerecha = filaSuperiorDerecha.length - 1;
 const currentInferiorIzquierda = filaInferiorIzquierda.length - 1;

@@ -10,6 +10,13 @@ const filaInferiorIzquierda = [
 const filaInferiorDerecha = [
     "../IMG/GAME100.png"
 ];
+
+const mazoCartas = [];
+
+for (let i = 2; i <= 99; i++) {
+    mazoCartas.push(`../IMG/GAME${i}.png`);
+}
+
 const currentSuperiorIzquierda = filaSuperiorIzquierda.length - 1; // El índice de la imagen actual, inicializado en la última imagen de la lista.
 const currentSuperiorDerecha = filaSuperiorDerecha.length - 1;
 const currentInferiorIzquierda = filaInferiorIzquierda.length - 1;

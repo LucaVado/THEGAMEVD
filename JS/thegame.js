@@ -56,6 +56,15 @@ const imageDisplaySuperiorDerecha = document.getElementById("GAME1Derecha");
 const imageDisplayInferiorIzquierda = document.getElementById("GAME100Izquierda");
 const imageDisplayInferiorDerecha = document.getElementById("GAME100Derecha");
 
+const imageDisplayMano1 = document.getElementById("MANO1");
+const imageDisplayMano2 = document.getElementById("MANO2");
+const imageDisplayMano3 = document.getElementById("MANO3");
+const imageDisplayMano4 = document.getElementById("MANO4");
+const imageDisplayMano5 = document.getElementById("MANO5");
+const imageDisplayMano6 = document.getElementById("MANO6");
+const imageDisplayMano7 = document.getElementById("MANO7");
+const imageDisplayMano8 = document.getElementById("MANO8");
+
 // Función que muestra la imagen actual en el elemento de imagen.
 function displayCurrentImage() {
     //SuperiorIzquierda
@@ -137,6 +146,15 @@ function handleCardDrop(draggedCard, targetElement) {
         let miImagen2 = document.getElementById("GAME100Derecha");
         miImagen1.src = filaSuperiorDerecha[filaSuperiorDerecha.length - 1];
         miImagen2.src = filaInferiorDerecha[filaInferiorDerecha.length - 1];
+    } else if (draggedCard.id === "MANO8" && targetElement.id === "GAME1Derecha"){
+        const ultimoValor1 = manoCartas[manoCartas.length - 1];
+        filaSuperiorDerecha.push(ultimoValor1);
+        manoCartas.pop();
+        let miImagen11 = document.getElementById("GAME1Derecha");
+        let miImagen21 = document.getElementById("MANO8");
+        miImagen11.src = filaSuperiorDerecha[filaSuperiorDerecha.length - 1];
+        miImagen21.src = manoCartas[manoCartas.length - 1];
+
     }
 
 
@@ -150,24 +168,56 @@ imageDisplaySuperiorIzquierda.addEventListener("dragstart", dragStart);
 imageDisplaySuperiorDerecha.addEventListener("dragstart", dragStart);
 imageDisplayInferiorIzquierda.addEventListener("dragstart", dragStart);
 imageDisplayInferiorDerecha.addEventListener("dragstart", dragStart);
+imageDisplayMano1.addEventListener("dragstart", dragStart);
+imageDisplayMano2.addEventListener("dragstart", dragStart);
+imageDisplayMano3.addEventListener("dragstart", dragStart);
+imageDisplayMano4.addEventListener("dragstart", dragStart);
+imageDisplayMano5.addEventListener("dragstart", dragStart);
+imageDisplayMano6.addEventListener("dragstart", dragStart);
+imageDisplayMano7.addEventListener("dragstart", dragStart);
+imageDisplayMano8.addEventListener("dragstart", dragStart);
 
 // Agrega un manejador de eventos para la finalización del arrastre
 imageDisplaySuperiorIzquierda.addEventListener("dragend", dragEnd);
 imageDisplaySuperiorDerecha.addEventListener("dragend", dragEnd);
 imageDisplayInferiorIzquierda.addEventListener("dragend", dragEnd);
 imageDisplayInferiorDerecha.addEventListener("dragend", dragEnd);
+imageDisplayMano1.addEventListener("dragend", dragEnd);
+imageDisplayMano2.addEventListener("dragend", dragEnd);
+imageDisplayMano3.addEventListener("dragend", dragEnd);
+imageDisplayMano4.addEventListener("dragend", dragEnd);
+imageDisplayMano5.addEventListener("dragend", dragEnd);
+imageDisplayMano6.addEventListener("dragend", dragEnd);
+imageDisplayMano7.addEventListener("dragend", dragEnd);
+imageDisplayMano8.addEventListener("dragend", dragEnd);
 
 // Agrega un manejador de eventos para el objetivo de soltar
 imageDisplaySuperiorIzquierda.addEventListener("dragover", dragOver);
 imageDisplaySuperiorDerecha.addEventListener("dragover", dragOver);
 imageDisplayInferiorIzquierda.addEventListener("dragover", dragOver);
 imageDisplayInferiorDerecha.addEventListener("dragover", dragOver);
+imageDisplayMano1.addEventListener("dragover", dragOver);
+imageDisplayMano2.addEventListener("dragover", dragOver);
+imageDisplayMano3.addEventListener("dragover", dragOver);
+imageDisplayMano4.addEventListener("dragover", dragOver);
+imageDisplayMano5.addEventListener("dragover", dragOver);
+imageDisplayMano6.addEventListener("dragover", dragOver);
+imageDisplayMano7.addEventListener("dragover", dragOver);
+imageDisplayMano8.addEventListener("dragover", dragOver);
 
 // Agrega un manejador de eventos para el soltar
 imageDisplaySuperiorIzquierda.addEventListener("drop", drop);
 imageDisplaySuperiorDerecha.addEventListener("drop", drop);
 imageDisplayInferiorIzquierda.addEventListener("drop", drop);
 imageDisplayInferiorDerecha.addEventListener("drop", drop);
+imageDisplayMano1.addEventListener("drop", drop);
+imageDisplayMano2.addEventListener("drop", drop);
+imageDisplayMano3.addEventListener("drop", drop);
+imageDisplayMano4.addEventListener("drop", drop);
+imageDisplayMano5.addEventListener("drop", drop);
+imageDisplayMano6.addEventListener("drop", drop);
+imageDisplayMano7.addEventListener("drop", drop);
+imageDisplayMano8.addEventListener("drop", drop);
 
 
 

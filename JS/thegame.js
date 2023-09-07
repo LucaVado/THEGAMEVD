@@ -1,13 +1,15 @@
-const filaSuperiorIzquierda = [
+
+
+let filaSuperiorIzquierda = [
     "../IMG/GAME1.png"
 ]; // Una matriz que almacena las rutas de las imágenes en la carpeta "IMG".
-const filaSuperiorDerecha = [
+let filaSuperiorDerecha = [
     "../IMG/GAME1.png"
 ];
-const filaInferiorIzquierda = [
+let filaInferiorIzquierda = [
     "../IMG/GAME100.png"
 ];
-const filaInferiorDerecha = [
+let filaInferiorDerecha = [
     "../IMG/GAME100.png"
 ];
 
@@ -83,4 +85,91 @@ function displayCurrentImage() {
 }
 
 displayCurrentImage(); // Llama a la función para mostrar la imagen actual en la carga inicial.
+
+// Función para mostrar las matrices en la consola
+function mostrarMatricesEnConsola() {
+    console.log("filaSuperiorIzquierda:", filaSuperiorIzquierda);
+    console.log("filaSuperiorDerecha:", filaSuperiorDerecha);
+    console.log("filaInferiorIzquierda:", filaInferiorIzquierda);
+    console.log("filaInferiorDerecha:", filaInferiorDerecha);
+    console.log("mazoCartas:", mazoCartas);
+    console.log("manoCartas:", manoCartas);
+}
+
+// Agrega un controlador de eventos al botón "Ver Matriz de Cartas"
+const btnVerMatriz = document.getElementById("verMatriz");
+btnVerMatriz.addEventListener("click", mostrarMatricesEnConsola);
+
+
+let draggedElement = null;
+
+function dragStart(event) {
+    draggedElement = event.target;
+    // Establece el efecto de arrastre
+    event.dataTransfer.effectAllowed = "move";
+}
+
+function dragEnd() {
+    // Restablece el elemento arrastrado a nulo después de soltarlo
+    draggedElement = null;
+}
+
+function dragOver(event) {
+    // Previene el comportamiento predeterminado de arrastrar y soltar
+    event.preventDefault();
+}
+
+function drop(event) {
+    // Previene el comportamiento predeterminado de arrastrar y soltar
+    event.preventDefault();
+
+    // Llama a tu función personalizada para manejar el evento de soltar carta
+    handleCardDrop(draggedElement, event.target);
+}
+
+function handleCardDrop(draggedCard, targetElement) {
+
+    if (draggedCard.id === "GAME100Derecha" && targetElement.id === "GAME1Derecha"){
+        const ultimoValor = filaInferiorDerecha[filaInferiorDerecha.length - 1];
+        filaSuperiorDerecha.push(ultimoValor);
+        filaInferiorDerecha.pop();
+        let miImagen1 = document.getElementById("GAME1Derecha");
+        let miImagen2 = document.getElementById("GAME100Derecha");
+        miImagen1.src = filaSuperiorDerecha[filaSuperiorDerecha.length - 1];
+        miImagen2.src = filaInferiorDerecha[filaInferiorDerecha.length - 1];
+    }
+
+
+
+
+}
+
+
+// Agrega un manejador de eventos para el inicio de arrastre
+imageDisplaySuperiorIzquierda.addEventListener("dragstart", dragStart);
+imageDisplaySuperiorDerecha.addEventListener("dragstart", dragStart);
+imageDisplayInferiorIzquierda.addEventListener("dragstart", dragStart);
+imageDisplayInferiorDerecha.addEventListener("dragstart", dragStart);
+
+// Agrega un manejador de eventos para la finalización del arrastre
+imageDisplaySuperiorIzquierda.addEventListener("dragend", dragEnd);
+imageDisplaySuperiorDerecha.addEventListener("dragend", dragEnd);
+imageDisplayInferiorIzquierda.addEventListener("dragend", dragEnd);
+imageDisplayInferiorDerecha.addEventListener("dragend", dragEnd);
+
+// Agrega un manejador de eventos para el objetivo de soltar
+imageDisplaySuperiorIzquierda.addEventListener("dragover", dragOver);
+imageDisplaySuperiorDerecha.addEventListener("dragover", dragOver);
+imageDisplayInferiorIzquierda.addEventListener("dragover", dragOver);
+imageDisplayInferiorDerecha.addEventListener("dragover", dragOver);
+
+// Agrega un manejador de eventos para el soltar
+imageDisplaySuperiorIzquierda.addEventListener("drop", drop);
+imageDisplaySuperiorDerecha.addEventListener("drop", drop);
+imageDisplayInferiorIzquierda.addEventListener("drop", drop);
+imageDisplayInferiorDerecha.addEventListener("drop", drop);
+
+
+
+
 

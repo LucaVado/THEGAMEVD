@@ -138,6 +138,7 @@ function drop(event) {
 
 function handleCardDrop(draggedCard, targetElement) {
 
+    //TODAS LAS CARTAS PARA GAME1Derecha
     if (draggedCard.id === "GAME100Derecha" && targetElement.id === "GAME1Derecha"){
         const ultimoValor = filaInferiorDerecha[filaInferiorDerecha.length - 1];
         filaSuperiorDerecha.push(ultimoValor);
@@ -147,15 +148,29 @@ function handleCardDrop(draggedCard, targetElement) {
         miImagen1.src = filaSuperiorDerecha[filaSuperiorDerecha.length - 1];
         miImagen2.src = filaInferiorDerecha[filaInferiorDerecha.length - 1];
     } else if (draggedCard.id === "MANO8" && targetElement.id === "GAME1Derecha"){
-        const ultimoValor1 = manoCartas[manoCartas.length - 1];
-        filaSuperiorDerecha.push(ultimoValor1);
+        const valor8 = manoCartas[manoCartas.length - 1];
+        filaSuperiorDerecha.push(valor8);
         manoCartas.pop();
-        let miImagen11 = document.getElementById("GAME1Derecha");
-        let miImagen21 = document.getElementById("MANO8");
-        miImagen11.src = filaSuperiorDerecha[filaSuperiorDerecha.length - 1];
-        miImagen21.src = manoCartas[manoCartas.length - 1];
+        let miImagen1 = document.getElementById("GAME1Derecha");
+        let miImagen2 = document.getElementById("MANO8");
+        miImagen1.src = filaSuperiorDerecha[filaSuperiorDerecha.length - 1];
+        miImagen2.src = "../IMG/GAMEBACK.png";
+        manoCartas.push("../IMG/GAMEBACK.png");
+        mostrarCartasEnMano()
+    } else if (draggedCard.id === "MANO7" && targetElement.id === "GAME1Derecha") {
+        const valor7 = manoCartas[manoCartas.length - 2];
+        filaSuperiorDerecha.push(valor7);
+        var posicionAEliminar = manoCartas.length - 2;
+        manoCartas.splice(posicionAEliminar, 1);
+        let miImagen1 = document.getElementById("GAME1Derecha");
+
+        miImagen1.src = filaSuperiorDerecha[filaSuperiorDerecha.length - 1];
+        var indiceMano7 = manoCartas.length - 1;
+        manoCartas.splice(indiceMano7, 0,"../IMG/GAMEBACK.png");
+        mostrarCartasEnMano()
 
     }
+
 
 
 

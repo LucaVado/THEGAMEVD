@@ -198,55 +198,18 @@ function drop(event) {
     handleCardDrop(draggedElement, event.target);
 }
 
-function handleCardDrop(draggedCard, targetElement) {
+function moverCarta(draggedCard, targetElement){
 
-    //TODAS LAS CARTAS PARA GAME1Derecha
-    if (draggedCard.id === "GAME100Derecha" && targetElement.id === "GAME1Derecha"){
-        const ultimoValor = filaInferiorDerecha[filaInferiorDerecha.length - 1];
-        filaSuperiorDerecha.push(ultimoValor);
-        filaInferiorDerecha.pop();
-        let miImagen1 = document.getElementById("GAME1Derecha");
-        let miImagen2 = document.getElementById("GAME100Derecha");
-        miImagen1.src = filaSuperiorDerecha[filaSuperiorDerecha.length - 1];
-        miImagen2.src = filaInferiorDerecha[filaInferiorDerecha.length - 1];
-
-
-    } else if (draggedCard.id === "MANO8" && targetElement.id === "GAME1Derecha"){
-        const valor8 = manoCartas[manoCartas.length - 1];
-        filaSuperiorDerecha.push(valor8);
-        manoCartas.pop();
-        let miImagen1 = document.getElementById("GAME1Derecha");
-        let miImagen2 = document.getElementById("MANO8");
-        miImagen1.src = filaSuperiorDerecha[filaSuperiorDerecha.length - 1];
-        miImagen2.src = "../IMG/GAMEBACK.png";
-        manoCartas.push("../IMG/GAMEBACK.png");
-        mostrarCartasEnMano()
-    } else if (draggedCard.id === "MANO7" && targetElement.id === "GAME1Derecha") {
-        const valor7 = manoCartas[manoCartas.length - 2];
-        filaSuperiorDerecha.push(valor7);
-        var posicionAEliminar = manoCartas.length - 2;
-        manoCartas.splice(posicionAEliminar, 1);
-        let miImagen1 = document.getElementById("GAME1Derecha");
-
-        miImagen1.src = filaSuperiorDerecha[filaSuperiorDerecha.length - 1];
-        var indiceMano7 = manoCartas.length - 1;
-        manoCartas.splice(indiceMano7, 0,"../IMG/GAMEBACK.png");
-        mostrarCartasEnMano()
-
-    }
-
-
-
-
+    setImageCard(targetElement.id, draggedCard.id);
 
 }
-
 
 // Agrega un manejador de eventos para el inicio de arrastre
 imageDisplaySuperiorIzquierda.addEventListener("dragstart", dragStart);
 imageDisplaySuperiorDerecha.addEventListener("dragstart", dragStart);
 imageDisplayInferiorIzquierda.addEventListener("dragstart", dragStart);
 imageDisplayInferiorDerecha.addEventListener("dragstart", dragStart);
+
 imageDisplayMano1.addEventListener("dragstart", dragStart);
 imageDisplayMano2.addEventListener("dragstart", dragStart);
 imageDisplayMano3.addEventListener("dragstart", dragStart);
@@ -297,8 +260,5 @@ imageDisplayMano5.addEventListener("drop", drop);
 imageDisplayMano6.addEventListener("drop", drop);
 imageDisplayMano7.addEventListener("drop", drop);
 imageDisplayMano8.addEventListener("drop", drop);
-
-
-
 
 

@@ -195,7 +195,7 @@ function drop(event) {
     event.preventDefault();
 
     // Llama a tu función personalizada para manejar el evento de soltar carta
-    handleCardDrop(draggedElement, event.target);
+    moverCarta(draggedElement, event.target);
 }
 
 function moverCarta(draggedCard, targetElement){
@@ -260,5 +260,3 @@ imageDisplayMano5.addEventListener("drop", drop);
 imageDisplayMano6.addEventListener("drop", drop);
 imageDisplayMano7.addEventListener("drop", drop);
 imageDisplayMano8.addEventListener("drop", drop);
-
-

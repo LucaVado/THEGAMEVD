@@ -157,9 +157,27 @@ btnVerMatriz.addEventListener("click", mostrarMatricesEnConsola);
 let draggedElement = null;
 
 function dragStart(event) {
-    draggedElement = event.target;
-    // Establece el efecto de arrastre
-    event.dataTransfer.effectAllowed = "move";
+    const cartaArrastrada = event.target;
+    const cartaIndex = cartaArrastrada.id;
+    console.log("ID = ", cartaIndex);
+    console.log("CODIGO = ", cartaArrastrada);
+    console.log("VALOR EN ARRAY = ", manoCartas[cartaIndex]);
+
+    // Verifica si el valor correspondiente en el array manoCartas es igual a 0
+    // o si el ID es "GAME1Izquierda" y el valor en filaSuperiorIzquierda es 1
+    if (
+        manoCartas[cartaIndex] === 0 ||
+        (cartaArrastrada.id === "GAME1Izquierda" && filaSuperiorIzquierda[0] === 1) ||
+        (cartaArrastrada.id === "GAME1Derecha" && filaSuperiorDerecha[0] === 1) ||
+        (cartaArrastrada.id === "GAME100Izquierda" && filaInferiorIzquierda[0] === 100) ||
+        (cartaArrastrada.id === "GAME100Derecha" && filaInferiorDerecha[0] === 100)
+    ) {
+        event.preventDefault(); // Evita iniciar el arrastre si el valor es 0 o es "GAME1Izquierda" con valor 1.
+    } else {
+        draggedElement = cartaArrastrada;
+        // Establece el efecto de arrastre
+        event.dataTransfer.effectAllowed = "move";
+    }
 }
 
 function dragEnd() {

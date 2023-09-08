@@ -62,6 +62,13 @@ function setImageCard(valorX,valorAdd){
     }
 }
 
+function eliminarCartaMano(cartaMano){
+    console.log(cartaMano)
+    let nuevoValor = 0;
+    manoCartas[cartaMano] = nuevoValor;
+    console.log("El nuevo array es:", manoCartas);
+}
+
 const mazoCartas = [];
 
 for (let i = 2; i <= 99; i++) {

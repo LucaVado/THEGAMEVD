@@ -1,17 +1,25 @@
-
-
 let filaSuperiorIzquierda = [
-    "../IMG/GAME1.png"
-]; // Una matriz que almacena las rutas de las imágenes en la carpeta "IMG".
+    1
+]; // Una matriz que almacena valores para referenciar las imagenes
+
 let filaSuperiorDerecha = [
-    "../IMG/GAME1.png"
+    1
 ];
+
 let filaInferiorIzquierda = [
-    "../IMG/GAME100.png"
+    100
 ];
+
 let filaInferiorDerecha = [
-    "../IMG/GAME100.png"
+    100
 ];
+
+const fieldCard = {
+    UnoIzq : "GAME1Izquierda",
+    UnoDer : "GAME1Derecha",
+    CienIzq : "GAME100Izquierda",
+    CienDer : "GAME100Derecha"
+};
 
 const mazoCartas = [];
 
@@ -147,6 +155,8 @@ function handleCardDrop(draggedCard, targetElement) {
         let miImagen2 = document.getElementById("GAME100Derecha");
         miImagen1.src = filaSuperiorDerecha[filaSuperiorDerecha.length - 1];
         miImagen2.src = filaInferiorDerecha[filaInferiorDerecha.length - 1];
+
+
     } else if (draggedCard.id === "MANO8" && targetElement.id === "GAME1Derecha"){
         const valor8 = manoCartas[manoCartas.length - 1];
         filaSuperiorDerecha.push(valor8);

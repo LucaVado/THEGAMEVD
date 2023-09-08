@@ -72,7 +72,7 @@ function eliminarCartaMano(cartaMano){
 const mazoCartas = [];
 
 for (let i = 2; i <= 99; i++) {
-    mazoCartas.push(`../IMG/GAME${i}.png`);
+    mazoCartas.push(i);
 }
 
 const manoCartas = [];
@@ -89,12 +89,12 @@ function obtenerCartasAleatorias() {
 obtenerCartasAleatorias();
 
 function mostrarCartasEnMano() {
-    for (let i = 0; i < manoCartas.length; i++) {
-        const idCarta = `MANO${i + 1}`;
-        const imageDisplay = document.getElementById(idCarta);
+    for (let i = 0; i <= manoCartas.length; i++) {
 
+        const imageDisplay = document.getElementById(i);
         if (imageDisplay) {
-            imageDisplay.src = manoCartas[i];
+            imageDisplay.src = `../IMG/GAME${manoCartas[i]}.png`;
+
         }
     }
 }
@@ -102,51 +102,39 @@ function mostrarCartasEnMano() {
 // Llama a la función para mostrar las cartas en la mano
 mostrarCartasEnMano();
 
-const currentSuperiorIzquierda = filaSuperiorIzquierda.length - 1; // El índice de la imagen actual, inicializado en la última imagen de la lista.
-const currentSuperiorDerecha = filaSuperiorDerecha.length - 1;
-const currentInferiorIzquierda = filaInferiorIzquierda.length - 1;
-const currentInferiorDerecha = filaInferiorDerecha.length - 1;
-
 const imageDisplaySuperiorIzquierda = document.getElementById("GAME1Izquierda"); // Obtiene el elemento de imagen por su ID.
 const imageDisplaySuperiorDerecha = document.getElementById("GAME1Derecha");
 const imageDisplayInferiorIzquierda = document.getElementById("GAME100Izquierda");
 const imageDisplayInferiorDerecha = document.getElementById("GAME100Derecha");
 
-const imageDisplayMano1 = document.getElementById("MANO1");
-const imageDisplayMano2 = document.getElementById("MANO2");
-const imageDisplayMano3 = document.getElementById("MANO3");
-const imageDisplayMano4 = document.getElementById("MANO4");
-const imageDisplayMano5 = document.getElementById("MANO5");
-const imageDisplayMano6 = document.getElementById("MANO6");
-const imageDisplayMano7 = document.getElementById("MANO7");
-const imageDisplayMano8 = document.getElementById("MANO8");
+const imageDisplayMano1 = document.getElementById("0");
+const imageDisplayMano2 = document.getElementById("1");
+const imageDisplayMano3 = document.getElementById("2");
+const imageDisplayMano4 = document.getElementById("3");
+const imageDisplayMano5 = document.getElementById("4");
+const imageDisplayMano6 = document.getElementById("5");
+const imageDisplayMano7 = document.getElementById("6");
+const imageDisplayMano8 = document.getElementById("7");
 
 // Función que muestra la imagen actual en el elemento de imagen.
 function displayCurrentImage() {
+
     //SuperiorIzquierda
-    if (currentSuperiorIzquierda >= 0 && currentSuperiorIzquierda < filaSuperiorIzquierda.length) {
-        imageDisplaySuperiorIzquierda.src = filaSuperiorIzquierda[currentSuperiorIzquierda];
-    } else {
-        imageDisplaySuperiorIzquierda.src = ""; // Si currentIndex está fuera del rango, muestra una imagen vacía.
-    }
+    let miImagenL = document.getElementById("GAME1Izquierda");
+    miImagenL.src = "../IMG/GAME1.png";
+
     //SuperiorDerecha
-    if (currentSuperiorDerecha >= 0 && currentSuperiorDerecha < filaSuperiorDerecha.length) {
-        imageDisplaySuperiorDerecha.src = filaSuperiorDerecha[currentSuperiorDerecha];
-    } else {
-        imageDisplaySuperiorDerecha.src = ""; // Si currentIndex está fuera del rango, muestra una imagen vacía.
-    }
+    let miImagenL1 = document.getElementById("GAME1Derecha");
+    miImagenL1.src = "../IMG/GAME1.png";
+
     //InferiorIZquierda
-    if (currentInferiorIzquierda >= 0 && currentInferiorIzquierda < filaInferiorIzquierda.length) {
-        imageDisplayInferiorIzquierda.src = filaInferiorIzquierda[currentInferiorIzquierda];
-    } else {
-        imageDisplayInferiorIzquierda.src = ""; // Si currentIndex está fuera del rango, muestra una imagen vacía.
-    }
+    let miImagenL2 = document.getElementById("GAME100Izquierda");
+    miImagenL2.src = "../IMG/GAME100.png";
+
     //InferiorDerecha
-    if (currentInferiorDerecha >= 0 && currentInferiorDerecha < filaInferiorDerecha.length) {
-        imageDisplayInferiorDerecha.src = filaInferiorDerecha[currentInferiorDerecha];
-    } else {
-        imageDisplayInferiorDerecha.src = ""; // Si currentIndex está fuera del rango, muestra una imagen vacía.
-    }
+    let miImagenL3 = document.getElementById("GAME100Derecha");
+    miImagenL3.src = "../IMG/GAME100.png";
+
 }
 
 displayCurrentImage(); // Llama a la función para mostrar la imagen actual en la carga inicial.

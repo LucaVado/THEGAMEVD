@@ -21,6 +21,47 @@ const fieldCard = {
     CienDer : "GAME100Derecha"
 };
 
+function setImageCard(valorX,valorAdd){
+
+    let miImagenL = document.getElementById(valorX);
+    let vars = 0;
+    const temporal2 = manoCartas[parseInt(valorAdd)];
+
+    switch (valorX){
+
+        case fieldCard.UnoIzq:
+            filaSuperiorIzquierda.push(temporal2);
+            vars = filaSuperiorIzquierda.slice(-1)[0];
+            miImagenL.src = `../IMG/GAME${vars}.png`;
+            eliminarCartaMano(valorAdd);
+            mostrarCartasEnMano();
+            break;
+        case fieldCard.UnoDer:
+            filaSuperiorDerecha.push(temporal2);
+            vars = filaSuperiorDerecha.slice(-1)[0];
+            miImagenL.src = `../IMG/GAME${vars}.png`;
+            eliminarCartaMano(valorAdd);
+            mostrarCartasEnMano();
+            break;
+
+        case fieldCard.CienIzq:
+            filaInferiorIzquierda.push(temporal2);
+            vars = filaInferiorIzquierda.slice(-1)[0];
+            miImagenL.src = `../IMG/GAME${vars}.png`;
+            eliminarCartaMano(valorAdd);
+            mostrarCartasEnMano();
+            break;
+
+        case fieldCard.CienDer:
+            filaInferiorDerecha.push(temporal2);
+            vars = filaInferiorDerecha.slice(-1)[0];
+            miImagenL.src = `../IMG/GAME${vars}.png`;
+            eliminarCartaMano(valorAdd);
+            mostrarCartasEnMano();
+            break;
+    }
+}
+
 const mazoCartas = [];
 
 for (let i = 2; i <= 99; i++) {

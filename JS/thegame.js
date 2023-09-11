@@ -153,6 +153,19 @@ function mostrarMatricesEnConsola() {
 const btnVerMatriz = document.getElementById("verMatriz");
 btnVerMatriz.addEventListener("click", mostrarMatricesEnConsola);
 
+function pasarTurno(){
+
+    const zerosIndices = [];
+    for (let i = 0; i < manoCartas.length; i++) {
+        if (manoCartas[i] === 0) {
+            zerosIndices.push(i);
+        }
+    }
+    console.log(zerosIndices);
+
+}
+const btnPasarTurno = document.getElementById("btnTurno");
+btnPasarTurno.addEventListener("click", pasarTurno);
 
 let draggedElement = null;
 

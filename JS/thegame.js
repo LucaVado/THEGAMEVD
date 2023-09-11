@@ -168,6 +168,26 @@ function pasarTurno(){
 
     console.log(maxRandomCards);
 
+    if (maxRandomCards >= 2) {
+        // Generar cartas aleatorias del mazo
+        const randomCards = [];
+        for (let i = 0; i < maxRandomCards; i++) {
+            const randomIndex = Math.floor(Math.random() * mazoCartas.length);
+            randomCards.push(mazoCartas.splice(randomIndex, 1)[0]);
+        }
+
+        // Reemplazar los ceros en manoCartas con las cartas aleatorias
+        for (let i = 0; i < maxRandomCards; i++) {
+            const zeroIndex = zerosIndices[i];
+            manoCartas[zeroIndex] = randomCards[i];
+        }
+
+        // Actualizar las imágenes en la interfaz gráfica
+        mostrarCartasEnMano();
+    } else {
+        alert("Debes colocar 1 carta mas en el tablero");
+    }
+
 }
 const btnPasarTurno = document.getElementById("btnTurno");
 btnPasarTurno.addEventListener("click", pasarTurno);

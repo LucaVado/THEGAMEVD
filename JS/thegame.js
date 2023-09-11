@@ -163,6 +163,11 @@ function pasarTurno(){
     }
     console.log(zerosIndices);
 
+    // Calcular cuántas cartas aleatorias podemos obtener del mazo
+    const maxRandomCards = Math.min(zerosIndices.length, mazoCartas.length);
+
+    console.log(maxRandomCards);
+
 }
 const btnPasarTurno = document.getElementById("btnTurno");
 btnPasarTurno.addEventListener("click", pasarTurno);

@@ -237,10 +237,8 @@ function drop(event) {
 }
 
 function moverCarta(draggedCard, targetElement){
-
     const cartaMano = manoCartas[draggedCard.id];
     let arrayDestino;
-
     switch (targetElement.id) {
         case fieldCard.UnoIzq:
             arrayDestino = filaSuperiorIzquierda;
@@ -257,8 +255,22 @@ function moverCarta(draggedCard, targetElement){
         default:
             return; // Salir si el destino no es válido
     }
-
-
+// Verificar si la carta de la mano es menor o mayor que la última carta en el campo destino
+    if (
+        (targetElement.id === fieldCard.UnoIzq || targetElement.id === fieldCard.UnoDer) &&
+        cartaMano > arrayDestino[arrayDestino.length - 1]
+    ) {
+// Permitir el movimiento si es mayor (fila superior)
+        setImageCard(targetElement.id, draggedCard.id);
+        arrayDestino.push(cartaMano);
+    } else if (
+        (targetElement.id === fieldCard.CienIzq || targetElement.id === fieldCard.CienDer) &&
+        cartaMano < arrayDestino[arrayDestino.length - 1]
+    ) {
+// Permitir el movimiento si es menor (fila inferior)
+        setImageCard(targetElement.id, draggedCard.id);
+        arrayDestino.push(cartaMano);
+    }
 }
 
 // Agrega un manejador de eventos para el inicio de arrastre

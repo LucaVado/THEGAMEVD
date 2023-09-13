@@ -238,7 +238,26 @@ function drop(event) {
 
 function moverCarta(draggedCard, targetElement){
 
-    setImageCard(targetElement.id, draggedCard.id);
+    const cartaMano = manoCartas[draggedCard.id];
+    let arrayDestino;
+
+    switch (targetElement.id) {
+        case fieldCard.UnoIzq:
+            arrayDestino = filaSuperiorIzquierda;
+            break;
+        case fieldCard.UnoDer:
+            arrayDestino = filaSuperiorDerecha;
+            break;
+        case fieldCard.CienIzq:
+            arrayDestino = filaInferiorIzquierda;
+            break;
+        case fieldCard.CienDer:
+            arrayDestino = filaInferiorDerecha;
+            break;
+        default:
+            return; // Salir si el destino no es válido
+    }
+
 
 }
 

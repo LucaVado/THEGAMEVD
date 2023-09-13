@@ -270,7 +270,11 @@ function moverCarta(draggedCard, targetElement){
 // Permitir el movimiento si es menor (fila inferior)
         setImageCard(targetElement.id, draggedCard.id);
         arrayDestino.push(cartaMano);
+    } else {
+        // Paso 4: Mostrar un mensaje de error y no permitir el movimiento
+        alert("No puedes soltar una carta que no cumple con las reglas del campo destino.");
     }
+
 }
 
 // Agrega un manejador de eventos para el inicio de arrastre

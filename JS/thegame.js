@@ -255,27 +255,36 @@ function moverCarta(draggedCard, targetElement){
         default:
             return; // Salir si el destino no es válido
     }
-// Verificar si la carta de la mano es menor o mayor que la última carta en el campo destino
+
+    // Verificar si la carta de la mano es menor o mayor que la última carta en el campo destino
     if (
         (targetElement.id === fieldCard.UnoIzq || targetElement.id === fieldCard.UnoDer) &&
-        (cartaMano > arrayDestino[arrayDestino.length - 1] || cartaMano === arrayDestino[arrayDestino.length - 1] -10)
+        (cartaMano > arrayDestino[arrayDestino.length - 1] || cartaMano === arrayDestino[arrayDestino.length - 1] - 10)
     ) {
-// Permitir el movimiento si es mayor (fila superior)
+        // Permitir el movimiento si es mayor (fila superior)
         setImageCard(targetElement.id, draggedCard.id);
         arrayDestino.push(cartaMano);
     } else if (
         (targetElement.id === fieldCard.CienIzq || targetElement.id === fieldCard.CienDer) &&
-        (cartaMano < arrayDestino[arrayDestino.length - 1] || cartaMano === arrayDestino[arrayDestino.length - 1] +10)
+        (cartaMano < arrayDestino[arrayDestino.length - 1] || cartaMano === arrayDestino[arrayDestino.length - 1] + 10)
     ) {
-// Permitir el movimiento si es menor (fila inferior)
+        // Permitir el movimiento si es menor (fila inferior)
         setImageCard(targetElement.id, draggedCard.id);
         arrayDestino.push(cartaMano);
     } else {
-        // Paso 4: Mostrar un mensaje de error y no permitir el movimiento
+        // Mostrar un mensaje de error y no permitir el movimiento
         alert("No puedes soltar una carta que no cumple con las reglas del campo destino.");
+        return;
     }
 
+    // Verificar si todas las cartas en la mano son 0 y el mazo está vacío
+    const todasLasCartasSonCero = manoCartas.every(carta => carta === 0);
+    if (todasLasCartasSonCero && mazoCartas.length === 0) {
+        alert("¡Juego finalizado! ¡Has ganado!");
+    }
 }
+
+
 
 // Agrega un manejador de eventos para el inicio de arrastre
 imageDisplaySuperiorIzquierda.addEventListener("dragstart", dragStart);

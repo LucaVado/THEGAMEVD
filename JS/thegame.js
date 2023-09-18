@@ -71,7 +71,7 @@ function eliminarCartaMano(cartaMano){
 
 const mazoCartas = [];
 
-for (let i = 2; i <= 20; i++) {
+for (let i = 2; i <= 14; i++) {
     mazoCartas.push(i);
 }
 
@@ -153,42 +153,46 @@ function mostrarMatricesEnConsola() {
 const btnVerMatriz = document.getElementById("verMatriz");
 btnVerMatriz.addEventListener("click", mostrarMatricesEnConsola);
 
-function pasarTurno(){
+function pasarTurno() {
+    let cantidadDeCeros = 0;
 
-    const zerosIndices = [];
     for (let i = 0; i < manoCartas.length; i++) {
         if (manoCartas[i] === 0) {
-            zerosIndices.push(i);
+            cantidadDeCeros++;
         }
     }
-    console.log(zerosIndices);
+    const zerosIndices = manoCartas.reduce((indices, carta, index) => {
+        if (carta === 0) indices.push(index);
+        return indices;
+    }, []);
+    console.log(cantidadDeCeros)
 
-    // Calcular cuántas cartas aleatorias podemos obtener del mazo
-    const maxRandomCards = Math.min(zerosIndices.length, mazoCartas.length);
+    if (zerosIndices.length >= 2) {
+        const maxRandomCards = Math.min(zerosIndices.length, mazoCartas.length);
 
-    console.log(maxRandomCards);
+        if (maxRandomCards >= 2) {
+            const randomCards = Array.from({ length: maxRandomCards }, () => {
+                const randomIndex = Math.floor(Math.random() * mazoCartas.length);
+                return mazoCartas.splice(randomIndex, 1)[0];
+            });
 
-    if (maxRandomCards >= 2) {
-        // Generar cartas aleatorias del mazo
-        const randomCards = [];
-        for (let i = 0; i < maxRandomCards; i++) {
-            const randomIndex = Math.floor(Math.random() * mazoCartas.length);
-            randomCards.push(mazoCartas.splice(randomIndex, 1)[0]);
+            zerosIndices.slice(0, maxRandomCards).forEach((zeroIndex, i) => {
+                manoCartas[zeroIndex] = randomCards[i];
+            });
+
+            mostrarCartasEnMano();
+        } else {
+            alert("No tienes cartas en el mazo");
         }
-
-        // Reemplazar los ceros en manoCartas con las cartas aleatorias
-        for (let i = 0; i < maxRandomCards; i++) {
-            const zeroIndex = zerosIndices[i];
-            manoCartas[zeroIndex] = randomCards[i];
-        }
-
-        // Actualizar las imágenes en la interfaz gráfica
-        mostrarCartasEnMano();
-    } else {
-        alert("Debes colocar 1 carta mas en el tablero");
+    } else if(cantidadDeCeros === 0){
+        alert("Debes colocar 2 cartas mas");
+    }else{
+        alert("Debes colocar 1 cartas mas");
     }
+
     gameOverTurno();
 }
+
 const btnPasarTurno = document.getElementById("btnTurno");
 btnPasarTurno.addEventListener("click", pasarTurno);
 

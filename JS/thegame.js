@@ -237,7 +237,38 @@ function drop(event) {
 }
 
 function gameOverMovimiento() {
+    const ultimoValor100Derecha = filaInferiorDerecha[filaInferiorDerecha.length-1];
+    const ultimoValor100Izquierda = filaInferiorIzquierda[filaInferiorIzquierda.length-1];
+    let ultimoValor1Derecha = filaSuperiorDerecha[filaSuperiorDerecha.length-1];
+    const ultimoValor1Izquierda = filaSuperiorIzquierda[filaSuperiorIzquierda.length-1];
 
+    let cantidadDeCeros = 0;
+
+    for (let i = 0; i < manoCartas.length; i++) {
+        if (manoCartas[i] === 0) {
+            cantidadDeCeros++;
+        }
+    }
+    if (cantidadDeCeros === 0 || cantidadDeCeros === 1) {
+        const valoresFiltrados = manoCartas.filter((valor) => valor !== 0);
+
+// Verificar si todos los elementos filtrados son menores a filaSuperior
+// y mayores a filaInferior
+        const cumpleCondicion = valoresFiltrados.every((valor) => {
+            return valor < ultimoValor1Derecha && valor < ultimoValor1Izquierda && valor > ultimoValor100Izquierda && valor > ultimoValor100Derecha;
+        });
+
+        if (cumpleCondicion) {
+            // Entra en el if si todas las condiciones se cumplen
+            alert("PERDISTE")
+        } else {
+            console.log("No todas las condiciones se cumplen.");
+        }
+
+
+    } else {
+        console.log("La cantidad de ceros no es ni 0 ni 1.");
+    }
 }
 function gameOverTurno() {
     const ultimoValor100Derecha = filaInferiorDerecha[filaInferiorDerecha.length-1];

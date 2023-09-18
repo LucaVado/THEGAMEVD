@@ -155,17 +155,16 @@ btnVerMatriz.addEventListener("click", mostrarMatricesEnConsola);
 
 function pasarTurno() {
     let cantidadDeCeros = 0;
-
     for (let i = 0; i < manoCartas.length; i++) {
         if (manoCartas[i] === 0) {
             cantidadDeCeros++;
         }
     }
+
     const zerosIndices = manoCartas.reduce((indices, carta, index) => {
         if (carta === 0) indices.push(index);
         return indices;
     }, []);
-    console.log(cantidadDeCeros)
 
     if (zerosIndices.length >= 2) {
         const maxRandomCards = Math.min(zerosIndices.length, mazoCartas.length);
@@ -181,8 +180,16 @@ function pasarTurno() {
             });
 
             mostrarCartasEnMano();
+        } else if (maxRandomCards === 1) {
+            const randomIndex = Math.floor(Math.random() * mazoCartas.length);
+            const randomCard = mazoCartas.splice(randomIndex, 1)[0];
+
+            const zeroIndex = zerosIndices[0];
+            manoCartas[zeroIndex] = randomCard;
+
+            mostrarCartasEnMano();
         } else {
-            alert("No tienes cartas en el mazo");
+            alert("No quedan cartas en el mazo.");
         }
     } else if(cantidadDeCeros === 0){
         alert("Debes colocar 2 cartas mas");
@@ -192,6 +199,7 @@ function pasarTurno() {
 
     gameOverTurno();
 }
+
 
 const btnPasarTurno = document.getElementById("btnTurno");
 btnPasarTurno.addEventListener("click", pasarTurno);

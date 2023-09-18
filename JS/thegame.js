@@ -240,6 +240,25 @@ function gameOverMovimiento() {
 
 }
 function gameOverTurno() {
+    const ultimoValor100Derecha = filaInferiorDerecha[filaInferiorDerecha.length-1];
+    const ultimoValor100Izquierda = filaInferiorIzquierda[filaInferiorIzquierda.length-1];
+    const ultimoValor1Derecha = filaSuperiorDerecha[filaSuperiorDerecha.length-1];
+    const ultimoValor1Izquierda = filaSuperiorIzquierda[filaSuperiorIzquierda.length-1];
+
+    const valoresFiltrados = manoCartas.filter((valor) => valor !== 0);
+
+// Verificar si todos los elementos filtrados son menores a filaSuperior
+// y mayores a filaInferior
+    const cumpleCondicion = valoresFiltrados.every((valor) => {
+        return valor < ultimoValor1Derecha && valor < ultimoValor1Izquierda && valor > ultimoValor100Izquierda && valor > ultimoValor100Derecha;
+    });
+
+    if (cumpleCondicion) {
+        // Entra en el if si todas las condiciones se cumplen
+        alert("PERDISTE, Tu puntuacion negativa de cartas es :");
+    } else {
+        console.log("No todas las condiciones se cumplen.");
+    }
 
 }
 function moverCarta(draggedCard, targetElement){

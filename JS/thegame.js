@@ -71,7 +71,7 @@ function eliminarCartaMano(cartaMano){
 
 const mazoCartas = [];
 
-for (let i = 2; i <= 9; i++) {
+for (let i = 2; i <= 20; i++) {
     mazoCartas.push(i);
 }
 
@@ -249,7 +249,9 @@ function gameOverMovimiento() {
             cantidadDeCeros++;
         }
     }
-    if (cantidadDeCeros === 0 || cantidadDeCeros === 1) {
+    mazoCheck = mazoCartas.length;
+
+    if (cantidadDeCeros === 0 || cantidadDeCeros === 1 || mazoCheck === 0)  {
         const valoresFiltrados = manoCartas.filter((valor) => valor !== 0);
 
 // Verificar si todos los elementos filtrados son menores a filaSuperior

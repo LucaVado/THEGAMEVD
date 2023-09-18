@@ -71,7 +71,7 @@ function eliminarCartaMano(cartaMano){
 
 const mazoCartas = [];
 
-for (let i = 2; i <= 99; i++) {
+for (let i = 2; i <= 9; i++) {
     mazoCartas.push(i);
 }
 
@@ -187,7 +187,7 @@ function pasarTurno(){
     } else {
         alert("Debes colocar 1 carta mas en el tablero");
     }
-
+    gameOverTurno();
 }
 const btnPasarTurno = document.getElementById("btnTurno");
 btnPasarTurno.addEventListener("click", pasarTurno);
@@ -236,6 +236,12 @@ function drop(event) {
     moverCarta(draggedElement, event.target);
 }
 
+function gameOverMovimiento() {
+
+}
+function gameOverTurno() {
+
+}
 function moverCarta(draggedCard, targetElement){
     const cartaMano = manoCartas[draggedCard.id];
     let arrayDestino;
@@ -282,6 +288,7 @@ function moverCarta(draggedCard, targetElement){
     if (todasLasCartasSonCero && mazoCartas.length === 0) {
         alert("¡Juego finalizado! ¡Has ganado!");
     }
+    gameOverMovimiento();
 }
 
 

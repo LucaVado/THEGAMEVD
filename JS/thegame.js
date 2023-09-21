@@ -35,7 +35,7 @@ function setImageCard(valorX,valorAdd){
             vars = filaSuperiorIzquierda.slice(-1)[0];
             miImagenL.src = `../IMG/GAME${vars}.png`;
             eliminarCartaMano(valorAdd);
-            manoCartas.sort((a, b) => a - b);
+
             mostrarCartasEnMano();
             break;
         case fieldCard.UnoDer:
@@ -43,7 +43,7 @@ function setImageCard(valorX,valorAdd){
             vars = filaSuperiorDerecha.slice(-1)[0];
             miImagenL.src = `../IMG/GAME${vars}.png`;
             eliminarCartaMano(valorAdd);
-            manoCartas.sort((a, b) => a - b);
+
             mostrarCartasEnMano();
             break;
 
@@ -52,7 +52,7 @@ function setImageCard(valorX,valorAdd){
             vars = filaInferiorIzquierda.slice(-1)[0];
             miImagenL.src = `../IMG/GAME${vars}.png`;
             eliminarCartaMano(valorAdd);
-            manoCartas.sort((a, b) => a - b);
+
             mostrarCartasEnMano();
             break;
 
@@ -61,7 +61,7 @@ function setImageCard(valorX,valorAdd){
             vars = filaInferiorDerecha.slice(-1)[0];
             miImagenL.src = `../IMG/GAME${vars}.png`;
             eliminarCartaMano(valorAdd);
-            manoCartas.sort((a, b) => a - b);
+
             mostrarCartasEnMano();
             break;
     }
@@ -72,7 +72,6 @@ function eliminarCartaMano(cartaMano) {
     manoCartas[cartaMano] = nuevoValor;
 
     // Reordenar las cartas en la mano
-    manoCartas.sort((a, b) => a - b);
 
     // Llama a la función para mostrar las cartas en la mano
     mostrarCartasEnMano();
@@ -94,28 +93,52 @@ function obtenerCartasAleatorias() {
         manoCartas.push(cartaAleatoria);
     }
 
-    manoCartas.sort((a, b) => a - b);
+
 }
 
 // Llama a la función para obtener cartas aleatorias al cargar la página
 obtenerCartasAleatorias();
 
 function mostrarCartasEnMano() {
+    const cantidadDeCeros = manoCartas.filter(numero => numero === 0).length;
+
+    // Calcular cuántos ceros deben estar al principio y cuántos al final
+    const cerosAlPrincipio = Math.floor(cantidadDeCeros / 2);
+    const cerosAlFinal = cantidadDeCeros - cerosAlPrincipio;
+
+    // Filtrar los números no cero y ordenarlos de menor a mayor
+    const numerosNoCero = manoCartas.filter(numero => numero !== 0);
+    numerosNoCero.sort((a, b) => a - b);
+
+    // Actualizar el mismo array con ceros al principio y al final
+    manoCartas.length = 0; // Vaciar el array original
+    for (let i = 0; i < cerosAlPrincipio; i++) {
+        manoCartas.push(0);
+    }
+    manoCartas.push(...numerosNoCero);
+    for (let i = 0; i < cerosAlFinal; i++) {
+        manoCartas.push(0);
+    }
+
+    // Iterar sobre las cartas y mostrarlas o aplicar la clase 'hidden-card'
     for (let i = 0; i < manoCartas.length; i++) {
         const imageDisplay = document.getElementById(i);
         if (imageDisplay) {
             if (manoCartas[i] !== 0) {
                 imageDisplay.src = `../IMG/GAME${manoCartas[i]}.png`;
+                imageDisplay.classList.remove('hidden-card'); // Mostrar cartas no cero
             } else {
-                // Si el valor de la carta es 0, aplicamos la clase CSS para ocultarla visualmente
+                // Si el valor de la carta es 0, aplicar la clase CSS para ocultarla visualmente
                 imageDisplay.classList.add('hidden-card');
             }
         }
     }
 }
 
+
+
 // Llama a la función para mostrar las cartas en la mano
-manoCartas.sort((a, b) => a - b);
+
 mostrarCartasEnMano();
 
 const imageDisplaySuperiorIzquierda = document.getElementById("GAME1Izquierda"); // Obtiene el elemento de imagen por su ID.
@@ -152,7 +175,7 @@ function displayCurrentImage() {
     miImagenL3.src = "../IMG/GAME100.png";
 
 }
-manoCartas.sort((a, b) => a - b);
+
 displayCurrentImage(); // Llama a la función para mostrar la imagen actual en la carga inicial.
 
 // Función para mostrar las matrices en la consola
@@ -170,6 +193,7 @@ const btnVerMatriz = document.getElementById("verMatriz");
 btnVerMatriz.addEventListener("click", mostrarMatricesEnConsola);
 
 function pasarTurno() {
+
     let cantidadDeCeros = 0;
     for (let i = 0; i < manoCartas.length; i++) {
         if (manoCartas[i] === 0) {
@@ -194,7 +218,7 @@ function pasarTurno() {
             zerosIndices.slice(0, maxRandomCards).forEach((zeroIndex, i) => {
                 manoCartas[zeroIndex] = randomCards[i];
             });
-            manoCartas.sort((a, b) => a - b);
+
             mostrarCartasEnMano();
         } else if (maxRandomCards === 1) {
             const randomIndex = Math.floor(Math.random() * mazoCartas.length);
@@ -202,7 +226,7 @@ function pasarTurno() {
 
             const zeroIndex = zerosIndices[0];
             manoCartas[zeroIndex] = randomCard;
-            manoCartas.sort((a, b) => a - b);
+
             mostrarCartasEnMano();
         } else {
             alert("No quedan cartas en el mazo.");
@@ -214,7 +238,7 @@ function pasarTurno() {
     }
 
     gameOverTurno();
-    manoCartas.sort((a, b) => a - b);
+
 }
 
 
@@ -245,7 +269,7 @@ function dragStart(event) {
         // Establece el efecto de arrastre
         event.dataTransfer.effectAllowed = "move";
     }
-    manoCartas.sort((a, b) => a - b);
+
 }
 
 function dragEnd() {

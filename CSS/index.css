@@ -65,6 +65,11 @@ body {
     max-width: 100%; /* Imágenes serán responsivas */
     max-height: 100%; /* Imágenes serán responsivas */
 }
+
+.hidden-card {
+    display: none;
+}
+
 .btn{
     position: relative;
     padding: 20px 50px;

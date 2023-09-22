@@ -68,8 +68,8 @@ function setImageCard(valorX,valorAdd){
 }
 
 function eliminarCartaMano(cartaMano) {
-    const nuevoValor = 0;
-    manoCartas[cartaMano] = nuevoValor;
+
+    manoCartas[cartaMano] = 0;
 
     // Reordenar las cartas en la mano
 
@@ -80,7 +80,7 @@ function eliminarCartaMano(cartaMano) {
 
 const mazoCartas = [];
 
-for (let i = 2; i <= 14; i++) {
+for (let i = 2; i <= 99; i++) {
     mazoCartas.push(i);
 }
 
@@ -126,10 +126,12 @@ function mostrarCartasEnMano() {
         if (imageDisplay) {
             if (manoCartas[i] !== 0) {
                 imageDisplay.src = `../IMG/GAME${manoCartas[i]}.png`;
-                imageDisplay.classList.remove('hidden-card'); // Mostrar cartas no cero
+                imageDisplay.classList.remove('hidden-card');
+                imageDisplay.parentElement.classList.remove('zero'); // Mostrar cartas no cero
             } else {
                 // Si el valor de la carta es 0, aplicar la clase CSS para ocultarla visualmente
                 imageDisplay.classList.add('hidden-card');
+                imageDisplay.parentElement.classList.add('zero');
             }
         }
     }

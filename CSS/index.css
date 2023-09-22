@@ -42,23 +42,19 @@ body {
     align-items: center;
     justify-content: center;
     width: 100%;
-    margin-top: 10px; /* Ajustar margen superior */
-    margin-bottom: 20px; /* Separación desde la parte inferior */
+    margin-top: 10px;
+    margin-bottom: 20px;
 }
 
 .carta {
-    idth: 10%; /* Utilizar porcentaje para permitir ajuste */
-    max-width: 80px; /* Establecer el máximo para prevenir excesiva expansión */
-
-    border: 3px solid black;
-    width: 98px;
+    width: 80px; /* Ancho fijo para las cartas */
     height: 109px;
-
+    border: 3px solid black;
     display: flex;
     justify-content: center;
     align-items: center;
     border-radius: 5px;
-    flex-shrink: 0; /* Evitar que las cartas se reduzcan al mínimo */
+    flex-shrink: 0;
 }
 
 .carta img {
@@ -66,9 +62,10 @@ body {
     max-height: 100%; /* Imágenes serán responsivas */
 }
 
-.hidden-card {
+.carta.zero {
     display: none;
 }
+
 
 .btn{
     position: relative;

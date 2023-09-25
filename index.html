@@ -7,59 +7,72 @@
     <title>Juego de Cartas</title>
 </head>
 <body>
-<div class="tablero">
-    <button id="verMatriz">MIRAR MATRIZ</button>
-    <a href="#" class="btn btn-4" id="btnTurno">TURNO</a>
-    <div class="fila">
-        <div class="carta">
-            <img id="GAME1Izquierda" src="" alt="No image" draggable="true">
+<div class="container">
+    <div class="board">
+        <div class="divz c1">
+            <div class="card card-1L">
+                <img id="GAME1Izquierda" src="" alt="No image" draggable="true">
+            </div>
+            <div class="card card-1D">
+                <img id="GAME1Derecha" src="" alt="No image" draggable="true">
+            </div>
         </div>
-        <div class="carta">
-            <img id="GAME1Derecha" src="" alt="No image" draggable="true">
+        <div class="divz c2">
+            <div class="card card-back">
+                <img src="IMG/GAMEBACK.png" alt="GAMEBACK">
+            </div>
         </div>
-    </div>
-    <div class="fila-center">
-        <div class="carta">
-            <img src="IMG/GAMEBACK.png" alt="GAMEBACK">
+        <div class="divz c3">
+            <div class="card card-100L">
+                <img id="GAME100Izquierda" src="" alt="No image" draggable="true">
+            </div>
+            <div class="card card-100D">
+                <img id="GAME100Derecha" src="" alt="No image" draggable="true">
+            </div>
         </div>
-    </div>
-    <div class="fila">
-        <div class="carta">
-            <img id="GAME100Izquierda" src="" alt="No image" draggable="true">
-        </div>
-        <div class="carta">
-            <img id="GAME100Derecha" src="" alt="No image" draggable="true">
-        </div>
-    </div>
 
-    <div class="fila-inferior">
-        <div class="carta" >
+
+    </div>
+    <div class="item Hand">
+        <div class="card" >
             <img id="0" src="" alt="No image" draggable="true">
         </div>
-        <div class="carta" >
+        <div class="card" >
             <img id="1" src="" alt="No image" draggable="true">
         </div>
-        <div class="carta" >
+        <div class="card" >
             <img id="2" src="" alt="No image" draggable="true">
         </div>
-        <div class="carta" >
+        <div class="card" >
             <img id="3" src="" alt="No image" draggable="true">
         </div>
-        <div class="carta" >
+        <div class="card" >
             <img id="4" src="" alt="No image" draggable="true">
         </div>
-        <div class="carta" >
+        <div class="card" >
             <img id="5" src="" alt="No image" draggable="true">
         </div>
-        <div class="carta" >
+        <div class="card" >
             <img id="6" src="" alt="No image" draggable="true">
         </div>
-        <div class="carta" >
+        <div class="card" >
             <img id="7" src="" alt="No image" draggable="true">
         </div>
     </div>
-</div>
+    <div class="item lateralIzquierdo">LATERAL IZQUIERDO
 
+    </div>
+    <div class="item lateralDerecho">LATERAL DERECHO
+
+    </div>
+    <div class="item lateralIzquierdoDown">
+        <a href="#" class="btn btn-4" id="btnTurno">TURNO</a>
+        <a href="#" class="btn btn-4" id="verMatriz">VER MATRIZ</a>
+    </div>
+    <div class="item lateralDerechoDown">LATERAL DERECHO DOWN
+
+    </div>
+</div>
 <script src="JS/thegame.js"></script>
 </body>
 </html>

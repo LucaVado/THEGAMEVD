@@ -290,6 +290,7 @@ function drop(event) {
 
     // Llama a tu función personalizada para manejar el evento de soltar carta
     moverCarta(draggedElement, event.target);
+
 }
 
 function gameOverMovimiento() {

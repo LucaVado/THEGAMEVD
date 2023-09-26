@@ -1,3 +1,4 @@
+
 // CHECKPOINT
 let filaSuperiorIzquierda = [
     1
@@ -234,9 +235,39 @@ function pasarTurno() {
             alert("No quedan cartas en el mazo.");
         }
     } else if(cantidadDeCeros === 0){
-        alert("Debes colocar 2 cartas mas");
+        const Toast = Swal.mixin({
+            toast: true,
+            position: 'top-end',
+            showConfirmButton: false,
+            timer: 3000,
+            timerProgressBar: true,
+            didOpen: (toast) => {
+                toast.addEventListener('mouseenter', Swal.stopTimer)
+                toast.addEventListener('mouseleave', Swal.resumeTimer)
+            }
+        })
+
+        Toast.fire({
+            icon: 'warning',
+            title: 'Debes colocar 2 cartas'
+        })
     }else{
-        alert("Debes colocar 1 cartas mas");
+        const Toast = Swal.mixin({
+            toast: true,
+            position: 'top-end',
+            showConfirmButton: false,
+            timer: 3000,
+            timerProgressBar: true,
+            didOpen: (toast) => {
+                toast.addEventListener('mouseenter', Swal.stopTimer)
+                toast.addEventListener('mouseleave', Swal.resumeTimer)
+            }
+        })
+
+        Toast.fire({
+            icon: 'warning',
+            title: 'Debes colocar 1 carta mas'
+        })
     }
 
     gameOverTurno();

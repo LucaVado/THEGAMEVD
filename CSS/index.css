@@ -1,10 +1,6 @@
-body, html {
-    margin: 0;
-    padding: 0;
-    height: 100%;
-}
 
 .container {
+    border: 5px solid yellow;
     background: url("../IMG/mesaContainer.png");
     background-size: 100% 100%;
     position: absolute;
@@ -13,236 +9,95 @@ body, html {
     width: 100%;
     height: 100%;
     box-sizing: border-box;
-    /*border: 10px solid aqua;*/
+
     overflow: hidden;
     display: grid;
-    grid-template-columns: repeat(5,20%);
-    grid-template-rows: repeat(6,1fr);
-    grid-template-areas:
-    "n3 n1 n1 n1 n4"
-    "n3 n1 n1 n1 n4"
-    "n3 n1 n1 n1 n4"
-    "n3 n1 n1 n1 n4"
-    "n5 n2 n2 n2 n6"
-    "n5 n2 n2 n2 n6"
-;
-}
-
-.board{
-    background-image: url("../IMG/imageBoard.png");
-    background-size: 100% 100%;
-
-    /*border: 5px solid red;*/
-    grid-area: n1;
-    display: grid;
-    grid-template-columns: auto;
-    grid-template-rows: auto auto auto;
-
-}
-
-
-.lateralDerecho{
-    background-image: url("../IMG/imageBoard.png");
-    background-size: 100% 100%;
-    /*border: 5px solid black;*/
-    grid-area: n4;
+    grid-template-columns: 20% 60% 20%;
+    grid-template-rows: 75% 25%;
 }
 .lateralIzquierdo{
-    background-image: url("../IMG/imageBoard.png");
-    background-size: 100% 100%;
-    /*border: 5px solid seagreen;*/
-    grid-area: n3;
+    border: 5px solid blue;
+}
+.board{
+    border: 5px solid black;
+    display: grid;
+    grid-template-columns: 100%;
+    grid-template-rows: 33% 34% 33%;
+}
+.board .divz{
+    border: 5px solid black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+.board .divz .card{
+
+    height: 100%;
+    width: 50%;
+    border: 2px solid blue;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+}
+.board .divz .card img{
+    border: 5px solid white;
+    height: 100%;
+    max-width: 100%;
+    object-fit: contain;
+
+}
+.lateralDerecho{
+    border: 5px solid white;
 }
 .lateralIzquierdoDown{
-    background-image: url("../IMG/imageBoard.png");
-    background-size: 100% 100%;
-    /*border: 5px solid purple;*/
-    grid-area: n5;
+    border: 5px solid red;
     display: flex;
-    flex-wrap: wrap;
+    flex-direction: column;
+    justify-content: center; /* Centra verticalmente los elementos */
+    align-items: center;
+}
+.Hand{
+    border: 5px solid purple;
+    display: flex;
     justify-content: center;
     align-items: center;
 }
-.lateralDerechoDown{
-    background-image: url("../IMG/imageBoard.png");
-    background-size: 100% 100%;
-   /* border: 5px solid yellow;*/
-    grid-area: n6;
-}
-.divz {
-   /* border: 5px solid black;*/
-    display: flex;
-    justify-content: space-between;
-
-}
-
-.board .card {
+.Hand .card{
+    height: 100%;
+    width: 50%;
+    border: 2px solid blue;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
 }
-
-.board .card img {
-    max-width: 50%;
-    max-height: 100%;
-    object-fit: contain;
-}
-.c2{
-    justify-content: center;
-}
-.Hand {
-    background-image: url("../IMG/imageBoard.png");
-    background-size: 100% 100%;
-    /*border: 5px solid blue;*/
-    grid-area: n2;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: center;
-}
-
-.Hand .card {
-    width: 100px;
-    height: 150px;
-    margin: 5px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: relative;
-}
-
-.Hand .card img {
+.Hand .card img{
+    border: 5px solid white;
+    height: 100%;
     max-width: 100%;
-    max-height: 100%;
     object-fit: contain;
-
+}
+.lateralDerechoDown{
+    border: 5px solid green;
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Centra verticalmente los elementos */
+    align-items: center;
 }
 
-@media screen and (max-width: 1503px) {
 
-    .Hand .card:nth-child(8) {
-        left: 0;
-        top: -130px;
-    }
-
-}
-@media screen and (max-width: 1319px) {
-    .Hand .card:nth-child(7) {
-        left: 0;
-        top: -130px;
-    }
-
-}
-@media screen and (max-width: 1136px) {
-    .Hand .card:nth-child(6) {
-        left: 0;
-        top: -130px;
-    }
-
-}
-@media screen and (max-width: 953px) {
-    .Hand .card:nth-child(5) {
-        left: 0;
-        top: -130px;
-    }
-
-}
-@media screen and (max-width: 769px) {
-    .Hand .card:nth-child(4) {
-        left: 0;
-        top: -130px;
-    }
-    .Hand .card:nth-child(7) {
-        left: 0;
-        top: -260px;
-    }
-    .Hand .card:nth-child(8) {
-        left: 0;
-        top: -260px;
-    }
-
-}
-@media screen and (max-width: 586px) {
-    .Hand .card:nth-child(3) {
-        left: 0;
-        top: -130px;
-    }
-    .Hand .card:nth-child(5) {
-        left: 0;
-        top: -260px;
-    }
-    .Hand .card:nth-child(6) {
-        left: 0;
-        top: -260px;
-    }
-    .Hand .card:nth-child(7) {
-        left: 0;
-        top: -390px;
-    }
-    .Hand .card:nth-child(8) {
-        left: 0;
-        top: -390px;
-    }
-}
-@media screen and (max-width: 403px) {
-    .Hand .card:nth-child(2) {
-        left: 0;
-        top: -130px;
-        overflow: hidden;
-    }
-    .Hand .card:nth-child(3) {
-        left: 0;
-        top: -260px;
-        overflow: hidden;
-    }
-    .Hand .card:nth-child(4) {
-        left: 0;
-        top: -390px;
-        overflow: hidden;
-    }
-    .Hand .card:nth-child(5) {
-        left: 0;
-        top: -520px;
-        overflow: hidden;
-    }
-    .Hand .card:nth-child(6) {
-        left: 0;
-        top: -650px;
-        overflow: hidden;
-    }
-    .Hand .card:nth-child(7) {
-        left: 0;
-        top: -780px;
-        overflow: hidden;
-    }
-    .Hand .card:nth-child(8) {
-        left: 0;
-        top: -910px;
-        overflow: hidden;
-    }
-}
-
-/*@media screen and (max-width: 768px) {
-    .container {
-        grid-template-areas:
-        "n1 n1 n1 n1 n1"
-        "n1 n1 n1 n1 n1"
-        "n1 n1 n1 n1 n1"
-        "n2 n2 n2 n2 n2"
-        "n2 n2 n2 n2 n2"
-        "n5 n5 n5 n6 n6";
-
-    }
-
-}*/
 
 .btn{
+    display: inline-block;
     position: relative;
-    padding: 20px 30px;
+    padding: 10px 20px;
     text-decoration: none;
     color: #fff;
     z-index: 2;
+    text-align: center;
 }
 
 
@@ -258,6 +113,7 @@ body, html {
     border-radius: 5px;
     z-index: -1;
     transition: all 0.4s ease;
+
 }
 
 .btn-4:hover::after{

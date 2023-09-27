@@ -25,7 +25,7 @@
     grid-template-rows: 33% 34% 33%;
 }
 .board .divz{
-    border: 5px solid black;
+
     display: flex;
     justify-content: center;
     align-items: center;
@@ -35,7 +35,7 @@
 
     height: 100%;
     width: 50%;
-    border: 2px solid blue;
+
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -43,10 +43,11 @@
 
 }
 .board .divz .card img{
-    border: 5px solid white;
+
     height: 100%;
     max-width: 100%;
     object-fit: contain;
+    filter: drop-shadow(30px 20px 10px black);
 
 }
 .lateralDerecho{

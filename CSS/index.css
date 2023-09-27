@@ -1,6 +1,6 @@
 
 .container {
-    border: 5px solid yellow;
+
     background: url("../IMG/mesaContainer.png");
     background-size: 100% 100%;
     position: absolute;
@@ -16,26 +16,21 @@
     grid-template-rows: 75% 25%;
 }
 .lateralIzquierdo{
-    border: 5px solid blue;
+
 }
 .board{
-    border: 5px solid black;
     display: grid;
     grid-template-columns: 100%;
     grid-template-rows: 33% 34% 33%;
 }
 .board .divz{
-
     display: flex;
     justify-content: center;
     align-items: center;
-
 }
 .board .divz .card{
-
     height: 100%;
     width: 50%;
-
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -48,20 +43,40 @@
     max-width: 100%;
     object-fit: contain;
     filter: drop-shadow(30px 20px 10px black);
-
+}
+.board .c3 .card-100L{
+    flex-direction: row;
+}
+.board .c3 .card-100D{
+    flex-direction: row;
+}
+.board .c1 .card-1D{
+    flex-direction: row;
+}
+.board .c1 .card-1L{
+    flex-direction: row;
+}
+#flecha100I{
+    width: 50px;
+}
+#flecha100D{
+    width: 50px;
+}
+#flecha1I{
+    width: 50px;
+}
+#flecha1D{
+    width: 50px;
 }
 .lateralDerecho{
-    border: 5px solid white;
 }
 .lateralIzquierdoDown{
-    border: 5px solid red;
     display: flex;
     flex-direction: column;
     justify-content: center; /* Centra verticalmente los elementos */
     align-items: center;
 }
 .Hand{
-    border: 5px solid purple;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -69,28 +84,23 @@
 .Hand .card{
     height: 100%;
     width: 50%;
-    border: 2px solid blue;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
 }
 .Hand .card img{
-    border: 5px solid white;
     height: 100%;
     max-width: 100%;
     object-fit: contain;
 }
 .lateralDerechoDown{
-    border: 5px solid green;
+
     display: flex;
     flex-direction: column;
     justify-content: center; /* Centra verticalmente los elementos */
     align-items: center;
 }
-
-
-
 .btn{
     display: inline-block;
     position: relative;
@@ -100,8 +110,6 @@
     z-index: 2;
     text-align: center;
 }
-
-
 .btn-4::after{
     content: "";
     position: absolute;
@@ -114,14 +122,12 @@
     border-radius: 5px;
     z-index: -1;
     transition: all 0.4s ease;
-
 }
 
 .btn-4:hover::after{
     background-position: 100%;
     filter: blur(15px);
 }
-
 .btn-4::before{
     content: "";
     position: absolute;
@@ -134,13 +140,9 @@
     border-radius: 5px;
     z-index: -1;
 }
-
 .btn-4:hover::before{
     background-position: 100%;
-
 }
-
-
 .Hand .card:hover img {
     border: 5px solid transparent;
     animation: borderAnimation 2s linear infinite;

@@ -81,7 +81,7 @@ function eliminarCartaMano(cartaMano) {
 
 const mazoCartas = [];
 
-for (let i = 2; i <= 99; i++) {
+for (let i = 2; i <= 9; i++) {
     mazoCartas.push(i);
 }
 
@@ -232,7 +232,22 @@ function pasarTurno() {
 
             mostrarCartasEnMano();
         } else {
-            alert("No quedan cartas en el mazo.");
+            const Toast = Swal.mixin({
+                toast: true,
+                position: 'top-end',
+                showConfirmButton: false,
+                timer: 3000,
+                timerProgressBar: true,
+                didOpen: (toast) => {
+                    toast.addEventListener('mouseenter', Swal.stopTimer)
+                    toast.addEventListener('mouseleave', Swal.resumeTimer)
+                }
+            })
+
+            Toast.fire({
+                icon: 'error',
+                title: 'No tienes mas cartas en el mazo!'
+            })
         }
     } else if(cantidadDeCeros === 0){
         const Toast = Swal.mixin({
@@ -350,7 +365,39 @@ function gameOverMovimiento() {
 
         if (cumpleCondicion) {
             // Entra en el if si todas las condiciones se cumplen
-            alert("PERDISTE")
+            Swal.fire({
+                title: 'Perdiste! no puedes colocar mas cartas',
+                showDenyButton: true,
+                showCancelButton: true,
+                cancelButtonText: 'Ver tablero',
+                confirmButtonText: 'Guardar partida',
+                denyButtonText: `No guardar`,
+
+
+
+            }).then((result) => {
+                /* Read more about isConfirmed, isDenied below */
+                if (result.isConfirmed) {
+                    Swal.fire({
+                        title: 'Escribe tu nombre:',
+                        input: 'text',
+
+
+                        showCancelButton: true,
+                        inputValidator: (value) => {
+                            if (!value) {
+                                return 'You need to write something!'
+                            }
+                        }
+                    })
+
+                    if (ipAddress) {
+                        Swal.fire(`Your IP address is ${ipAddress}`)
+                    }
+                } else if (result.isDenied) {
+                    Swal.fire('Cambios no guardados!', '', 'error')
+                }
+            })
         } else {
             console.log("No todas las condiciones se cumplen.");
         }
@@ -376,7 +423,25 @@ function gameOverTurno() {
 
     if (cumpleCondicion) {
         // Entra en el if si todas las condiciones se cumplen
-        alert("PERDISTE, Tu puntuacion negativa de cartas es :");
+        Swal.fire({
+            title: 'Perdiste! no puedes colocar mas cartas',
+            showDenyButton: true,
+            showCancelButton: true,
+
+            cancelButtonText: 'Ver tablero',
+            confirmButtonText: 'Guardar partida',
+            denyButtonText: `No guardar`,
+
+
+
+        }).then((result) => {
+            /* Read more about isConfirmed, isDenied below */
+            if (result.isConfirmed) {
+                Swal.fire('Puntuaje guardado', '', 'success')
+            } else if (result.isDenied) {
+                Swal.fire('Cambios no guardados!', '', 'error')
+            }
+        })
     } else {
         console.log("No todas las condiciones se cumplen.");
     }
@@ -419,20 +484,35 @@ function moverCarta(draggedCard, targetElement){
         arrayDestino.push(cartaMano);
     } else {
         // Mostrar un mensaje de error y no permitir el movimiento
-        alert("No puedes soltar una carta que no cumple con las reglas del campo destino.");
+        Swal.fire({
+            position: 'top-end',
+            icon: 'error',
+            title: 'No puedes colocar la carta en ese lugar',
+            showConfirmButton: false,
+            timer: 1500
+        })
         return;
     }
 
     // Verificar si todas las cartas en la mano son 0 y el mazo está vacío
     const todasLasCartasSonCero = manoCartas.every(carta => carta === 0);
     if (todasLasCartasSonCero && mazoCartas.length === 0) {
-        alert("¡Juego finalizado! ¡Has ganado!");
+        Swal.fire({
+            title: 'Custom width, padding, color, background.',
+            width: 600,
+            padding: '3em',
+            color: '#716add',
+            background: '#fff url(../IMG/backgroundIMG.GIF)',
+            backdrop: `
+    rgba(0,0,123,0.4)
+    url("../IMG/victoryIMG.GIF")
+    left top
+    no-repeat
+  `
+        })
     }
     gameOverMovimiento();
-
 }
-
-
 
 // Agrega un manejador de eventos para el inicio de arrastre
 imageDisplaySuperiorIzquierda.addEventListener("dragstart", dragStart);

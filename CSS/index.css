@@ -202,3 +202,36 @@
 .card.zero{
     display: none;
 }
+@media only screen and (max-width: 600px) {
+#flecha100D, #flecha1D{
+    display: none;
+}
+    .board .c1{
+        display: grid;
+        grid-template-columns: 50% 50%;
+        grid-template-rows: 100%;
+        margin-left: 40px;
+        width: 100%;
+
+    }
+    .board .c2 img{
+        width: 50%;
+
+
+    }
+    .board .c3{
+        display: grid;
+        grid-template-columns: 50% 50%;
+        grid-template-rows: 100%;
+        margin-left: 40px;
+        width: 100%;
+
+    }
+    .Hand .card img{
+        width: 60%;
+    }
+
+
+
+
+}

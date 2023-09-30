@@ -141,10 +141,10 @@ function mostrarCartasEnMano() {
 
 mostrarCartasEnMano();
 
-const imageDisplaySuperiorIzquierda = document.getElementById("GAME1Izquierda"); // Obtiene el elemento de imagen por su ID.
-const imageDisplaySuperiorDerecha = document.getElementById("GAME1Derecha");
-const imageDisplayInferiorIzquierda = document.getElementById("GAME100Izquierda");
-const imageDisplayInferiorDerecha = document.getElementById("GAME100Derecha");
+const imageDisplaySuperiorIzquierda = document.getElementById("GAME100Izquierda"); // Obtiene el elemento de imagen por su ID.
+const imageDisplaySuperiorDerecha = document.getElementById("GAME100Derecha");
+const imageDisplayInferiorIzquierda = document.getElementById("GAME1Izquierda");
+const imageDisplayInferiorDerecha = document.getElementById("GAME1Derecha");
 
 const imageDisplayMano1 = document.getElementById("0");
 const imageDisplayMano2 = document.getElementById("1");
@@ -588,16 +588,26 @@ function cancelarTurno(){
 
     if (arrayTemporal.length > 0) {
         const maxRandomCardz = Math.min(zerosIndicez.length, arrayTemporal.length);
-        console.log("ENTRE PERONOHACE NADA");
-
 
 
             zerosIndicez.slice(0, maxRandomCardz).forEach((zeroIndex, i) => {
                 manoCartas[zeroIndex] = arrayTemporal[i];
             });
+        filaSuperiorDerecha = eliminarNumerosDuplicados(filaSuperiorDerecha, arrayTemporal);
+        filaSuperiorIzquierda = eliminarNumerosDuplicados(filaSuperiorIzquierda, arrayTemporal);
+        filaInferiorDerecha = eliminarNumerosDuplicados(filaInferiorDerecha, arrayTemporal);
+        filaInferiorIzquierda = eliminarNumerosDuplicados(filaInferiorIzquierda, arrayTemporal);
+        mostrarCartasEnMano();
+        arrayTemporal = [];
+        const ultimoValor100Derecha = filaInferiorDerecha[filaInferiorDerecha.length-1];
+        const ultimoValor100Izquierda = filaInferiorIzquierda[filaInferiorIzquierda.length-1];
+        const ultimoValor1Derecha = filaSuperiorDerecha[filaSuperiorDerecha.length-1];
+        const ultimoValor1Izquierda = filaSuperiorIzquierda[filaSuperiorIzquierda.length-1];
 
-            mostrarCartasEnMano();
-            arrayTemporal = [];
+        imageDisplaySuperiorDerecha.src = `../IMG/GAME${ultimoValor100Derecha}.png`;
+        imageDisplaySuperiorIzquierda.src = `../IMG/GAME${ultimoValor100Izquierda}.png`;
+        imageDisplayInferiorDerecha.src = `../IMG/GAME${ultimoValor1Derecha}.png`;
+        imageDisplayInferiorIzquierda.src = `../IMG/GAME${ultimoValor1Izquierda}.png`;
 
 
     }else{
@@ -619,5 +629,9 @@ function cancelarTurno(){
         })
     }
 
+
+}
+function eliminarNumerosDuplicados(array, numerosAEliminar) {
+    return array.filter(num => !numerosAEliminar.includes(num));
 
 }

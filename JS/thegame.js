@@ -342,7 +342,7 @@ function drop(event) {
 function gameOverMovimiento() {
     const ultimoValor100Derecha = filaInferiorDerecha[filaInferiorDerecha.length-1];
     const ultimoValor100Izquierda = filaInferiorIzquierda[filaInferiorIzquierda.length-1];
-    let ultimoValor1Derecha = filaSuperiorDerecha[filaSuperiorDerecha.length-1];
+    const ultimoValor1Derecha = filaSuperiorDerecha[filaSuperiorDerecha.length-1];
     const ultimoValor1Izquierda = filaSuperiorIzquierda[filaSuperiorIzquierda.length-1];
 
     let cantidadDeCeros = 0;
@@ -354,6 +354,7 @@ function gameOverMovimiento() {
     }
     mazoCheck = mazoCartas.length;
 
+
     if (cantidadDeCeros === 0 || cantidadDeCeros === 1 || mazoCheck === 0)  {
         const valoresFiltrados = manoCartas.filter((valor) => valor !== 0);
 
@@ -362,11 +363,11 @@ function gameOverMovimiento() {
         const cumpleCondicion = valoresFiltrados.every((valor) => {
             return valor < ultimoValor1Derecha && valor < ultimoValor1Izquierda && valor > ultimoValor100Izquierda && valor > ultimoValor100Derecha;
         });
-
-        if (cumpleCondicion) {
+        let todasLasCartasSonCero = manoCartas.every(carta => carta === 0);
+        if (cumpleCondicion && !(todasLasCartasSonCero && mazoCartas.length === 0)) {
             // Entra en el if si todas las condiciones se cumplen
             Swal.fire({
-                title: 'Perdiste! no puedes colocar mas cartas',
+                title: 'Perdiste! no puedes colocar mas cartaszz',
                 showDenyButton: true,
                 showCancelButton: true,
                 cancelButtonText: 'Ver tablero',
@@ -398,13 +399,9 @@ function gameOverMovimiento() {
                     Swal.fire('Cambios no guardados!', '', 'error')
                 }
             })
-        } else {
-            console.log("No todas las condiciones se cumplen.");
         }
 
 
-    } else {
-        console.log("La cantidad de ceros no es ni 0 ni 1.");
     }
 }
 function gameOverTurno() {
@@ -495,7 +492,7 @@ function moverCarta(draggedCard, targetElement){
     }
 
     // Verificar si todas las cartas en la mano son 0 y el mazo está vacío
-    const todasLasCartasSonCero = manoCartas.every(carta => carta === 0);
+    let todasLasCartasSonCero = manoCartas.every(carta => carta === 0);
     if (todasLasCartasSonCero && mazoCartas.length === 0) {
         Swal.fire({
             title: 'Custom width, padding, color, background.',

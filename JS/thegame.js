@@ -15,6 +15,7 @@ let filaInferiorIzquierda = [
 let filaInferiorDerecha = [
     100
 ];
+let arrayTemporal =[];
 
 const fieldCard = {
     UnoIzq : "GAME1Izquierda",
@@ -36,7 +37,7 @@ function setImageCard(valorX,valorAdd){
             vars = filaSuperiorIzquierda.slice(-1)[0];
             miImagenL.src = `../IMG/GAME${vars}.png`;
             eliminarCartaMano(valorAdd);
-
+            arrayTemporal.push(temporal2);
             mostrarCartasEnMano();
             break;
         case fieldCard.UnoDer:
@@ -44,7 +45,7 @@ function setImageCard(valorX,valorAdd){
             vars = filaSuperiorDerecha.slice(-1)[0];
             miImagenL.src = `../IMG/GAME${vars}.png`;
             eliminarCartaMano(valorAdd);
-
+            arrayTemporal.push(temporal2);
             mostrarCartasEnMano();
             break;
 
@@ -53,7 +54,7 @@ function setImageCard(valorX,valorAdd){
             vars = filaInferiorIzquierda.slice(-1)[0];
             miImagenL.src = `../IMG/GAME${vars}.png`;
             eliminarCartaMano(valorAdd);
-
+            arrayTemporal.push(temporal2);
             mostrarCartasEnMano();
             break;
 
@@ -62,26 +63,22 @@ function setImageCard(valorX,valorAdd){
             vars = filaInferiorDerecha.slice(-1)[0];
             miImagenL.src = `../IMG/GAME${vars}.png`;
             eliminarCartaMano(valorAdd);
-
+            arrayTemporal.push(temporal2);
             mostrarCartasEnMano();
             break;
+
     }
 }
 
 function eliminarCartaMano(cartaMano) {
-
     manoCartas[cartaMano] = 0;
-
-    // Reordenar las cartas en la mano
-
-    // Llama a la función para mostrar las cartas en la mano
     mostrarCartasEnMano();
 }
 
 
 const mazoCartas = [];
 
-for (let i = 2; i <= 9; i++) {
+for (let i = 2; i <= 99; i++) {
     mazoCartas.push(i);
 }
 
@@ -189,6 +186,7 @@ function mostrarMatricesEnConsola() {
     console.log("filaInferiorDerecha:", filaInferiorDerecha);
     console.log("mazoCartas:", mazoCartas);
     console.log("manoCartas:", manoCartas);
+    console.log("ARRAY TEMPORTAL", arrayTemporal);
 }
 
 // Agrega un controlador de eventos al botón "Ver Matriz de Cartas"
@@ -212,16 +210,18 @@ function pasarTurno() {
     if (zerosIndices.length >= 2) {
         const maxRandomCards = Math.min(zerosIndices.length, mazoCartas.length);
 
+
         if (maxRandomCards >= 2) {
             const randomCards = Array.from({ length: maxRandomCards }, () => {
                 const randomIndex = Math.floor(Math.random() * mazoCartas.length);
                 return mazoCartas.splice(randomIndex, 1)[0];
             });
+            console.log("que es :" + randomCards);
 
             zerosIndices.slice(0, maxRandomCards).forEach((zeroIndex, i) => {
                 manoCartas[zeroIndex] = randomCards[i];
             });
-
+            arrayTemporal = [];
             mostrarCartasEnMano();
         } else if (maxRandomCards === 1) {
             const randomIndex = Math.floor(Math.random() * mazoCartas.length);
@@ -229,7 +229,7 @@ function pasarTurno() {
 
             const zeroIndex = zerosIndices[0];
             manoCartas[zeroIndex] = randomCard;
-
+            arrayTemporal = [];
             mostrarCartasEnMano();
         } else {
             const Toast = Swal.mixin({
@@ -472,6 +472,7 @@ function moverCarta(draggedCard, targetElement){
         // Permitir el movimiento si es mayor (fila superior)
         setImageCard(targetElement.id, draggedCard.id);
         arrayDestino.push(cartaMano);
+
     } else if (
         (targetElement.id === fieldCard.CienIzq || targetElement.id === fieldCard.CienDer) &&
         (cartaMano < arrayDestino[arrayDestino.length - 1] || cartaMano === arrayDestino[arrayDestino.length - 1] + 10)
@@ -509,6 +510,8 @@ function moverCarta(draggedCard, targetElement){
         })
     }
     gameOverMovimiento();
+
+
 }
 
 // Agrega un manejador de eventos para el inicio de arrastre
@@ -567,3 +570,54 @@ imageDisplayMano5.addEventListener("drop", drop);
 imageDisplayMano6.addEventListener("drop", drop);
 imageDisplayMano7.addEventListener("drop", drop);
 imageDisplayMano8.addEventListener("drop", drop);
+
+const btnCancelarTurno = document.getElementById("btnCancelar");
+btnCancelarTurno.addEventListener("click", cancelarTurno);
+function cancelarTurno(){
+    let cantidadDeCeroz = 0;
+    for (let i = 0; i < manoCartas.length; i++) {
+        if (manoCartas[i] === 0) {
+            cantidadDeCeroz++;
+        }
+    } //contador de ceros
+
+    const zerosIndicez = manoCartas.reduce((indices, carta, index) => {
+        if (carta === 0) indices.push(index);
+        return indices;
+    }, []);
+
+    if (arrayTemporal.length > 0) {
+        const maxRandomCardz = Math.min(zerosIndicez.length, arrayTemporal.length);
+        console.log("ENTRE PERONOHACE NADA");
+
+
+
+            zerosIndicez.slice(0, maxRandomCardz).forEach((zeroIndex, i) => {
+                manoCartas[zeroIndex] = arrayTemporal[i];
+            });
+
+            mostrarCartasEnMano();
+            arrayTemporal = [];
+
+
+    }else{
+        const Toast = Swal.mixin({
+            toast: true,
+            position: 'top-end',
+            showConfirmButton: false,
+            timer: 3000,
+            timerProgressBar: true,
+            didOpen: (toast) => {
+                toast.addEventListener('mouseenter', Swal.stopTimer)
+                toast.addEventListener('mouseleave', Swal.resumeTimer)
+            }
+        })
+
+        Toast.fire({
+            icon: 'error',
+            title: 'Aun no colocas cartas'
+        })
+    }
+
+
+}

@@ -4,78 +4,93 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="CSS/index.css">
-    <title>Juego de Cartas</title>
-
-
+    <link rel="shortcut icon" href="IMG/favicon.png">
+    <title>THE GAME RAINBOW</title>
 </head>
 <body>
 <div class="container">
-    <div class="item lateralIzquierdo">LATERAL IZQUIERDO
+    <div class="item lateralIzquierdo">
 
     </div>
     <div class="board">
-        <div class="divz c1">
-            <div class="card card-1L">
+        <div class="card card-1L">
+            <div class="flecha">
                 <img id="flecha1I" src="IMG/flechaIndicador1100.png" alt="indicador">
-                <img id="GAME1Izquierda" src="" alt="No image" draggable="true">
             </div>
-            <div class="card card-1D">
+            <div class="card wflecha">
+                <img id="GAME1Izquierda" src="IMG/GAMEBACK.png" alt="No image" draggable="true">
+            </div>
+        </div>
+        <div class="card card-1D">
+            <div class="flecha">
                 <img id="flecha1D" src="IMG/flechaIndicador1100.png" alt="indicador">
-                <img id="GAME1Derecha" src="" alt="No image" draggable="true">
+            </div>
+            <div class="card wflecha">
+                <img id="GAME1Derecha" src="IMG/GAMEBACK.png" alt="No image" draggable="true">
             </div>
         </div>
-        <div class="divz c2">
-            <div class="card card-back">
-                <img src="IMG/GAMEBACK.png" alt="GAMEBACK">
-            </div>
+
+        <div class="card card-back">
+            <img src="IMG/GAMEBACK.png" alt="GAMEBACK">
         </div>
-        <div class="divz c3">
-            <div class="card card-100L">
+        <div class="card card-100L">
+            <div class="flecha">
                 <img id="flecha100I" src="IMG/flechaIndicador1001.png" alt="indicador">
-                <img id="GAME100Izquierda" src="" alt="No image" draggable="true">
             </div>
-            <div class="card card-100D">
-                <img id="flecha100D" src="IMG/flechaIndicador1001.png" alt="indicador">
-                <img id="GAME100Derecha" src="" alt="No image" draggable="true">
+            <div class="card wflecha">
+                <img id="GAME100Izquierda" src="IMG/GAMEBACK.png" alt="No image" draggable="true">
             </div>
         </div>
-
-
+        <div class="card card-100D">
+            <div class="flecha">
+                <img id="flecha100D" src="IMG/flechaIndicador1001.png" alt="indicador">
+            </div>
+            <div class="card wflecha">
+                <img id="GAME100Derecha" src="IMG/GAMEBACK.png" alt="No image" draggable="true">
+            </div>
+        </div>
     </div>
-    <div class="item lateralDerecho">LATERAL DERECHO
+    <div class="item lateralDerecho">
     </div>
     <div class="item lateralIzquierdoDown">
         <a href="#" class="btn btn-4" id="btnTurno">TURNO</a>
-        <a href="#" class="btn btn-4" id="verMatriz">VER MATRIZ</a>
     </div>
     <div class="item Hand">
         <div class="card" >
-            <img id="0" src="" alt="No image" draggable="true">
+            <img id="0" src="IMG/GAMEBACK.png" alt="No image" draggable="true">
         </div>
         <div class="card" >
-            <img id="1" src="" alt="No image" draggable="true">
+            <img id="1" src="IMG/GAMEBACK.png" alt="No image" draggable="true">
         </div>
         <div class="card" >
-            <img id="2" src="" alt="No image" draggable="true">
+            <img id="2" src="IMG/GAMEBACK.png" alt="No image" draggable="true">
         </div>
         <div class="card" >
-            <img id="3" src="" alt="No image" draggable="true">
+            <img id="3" src="IMG/GAMEBACK.png" alt="No image" draggable="true">
         </div>
         <div class="card" >
-            <img id="4" src="" alt="No image" draggable="true">
+            <img id="4" src="IMG/GAMEBACK.png" alt="No image" draggable="true">
         </div>
         <div class="card" >
-            <img id="5" src="" alt="No image" draggable="true">
+            <img id="5" src="IMG/GAMEBACK.png" alt="No image" draggable="true">
         </div>
         <div class="card" >
-            <img id="6" src="" alt="No image" draggable="true">
+            <img id="6" src="IMG/GAMEBACK.png" alt="No image" draggable="true">
         </div>
         <div class="card" >
-            <img id="7" src="" alt="No image" draggable="true">
+            <img id="7" src="IMG/GAMEBACK.png" alt="No image" draggable="true">
         </div>
     </div>
     <div class="item lateralDerechoDown">
-        <a href="#" class="btn btn-4" id="btnCancelar">CANCELAR TURNO</a>
+        <div class="btnD1">
+            <button class="button-64" role="button"><span class="text">Button 64</span></button>
+        </div>
+        <div class="btnD2">
+            <a href="#" class="btn btn-4" id="verMatriz">VER MATRIZ</a>
+        </div>
+        <div class="btnD3">
+            <a href="#" class="btn btn-4" id="btnCancelar">CANCELAR TURNO</a>
+        </div>
     </div>
 </div>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>

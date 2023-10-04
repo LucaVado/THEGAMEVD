@@ -292,6 +292,9 @@ function pasarTurno() {
 
 const btnPasarTurno = document.getElementById("btnTurno");
 btnPasarTurno.addEventListener("click", pasarTurno);
+const btnPasarTurnoIMG = document.getElementById("btnTurnoIMG");
+btnPasarTurnoIMG.addEventListener("click", pasarTurno);
+const button = document.querySelector('.button');
 
 let draggedElement = null;
 
@@ -510,7 +513,7 @@ function moverCarta(draggedCard, targetElement){
         })
     }
     gameOverMovimiento();
-
+    btnAnimation();
 
 }
 
@@ -634,4 +637,15 @@ function cancelarTurno(){
 function eliminarNumerosDuplicados(array, numerosAEliminar) {
     return array.filter(num => !numerosAEliminar.includes(num));
 
+}
+function btnAnimation() {
+    let cantidadDeCerosz = 0;
+    for (let i = 0; i < manoCartas.length; i++) {
+        if (manoCartas[i] === 0) {
+            cantidadDeCerosz++;
+        }
+    }
+    if (cantidadDeCerosz >= 2) {
+        button.classList.add('ring-animation');
+    }
 }

@@ -187,12 +187,40 @@ body{
     align-items: center;
     justify-items: center;
 
+
 }
 
 .container .board .card-back img {
     max-height: 100%;
     max-width: 35%;
-
+    box-shadow: 4px 4px 0 0 black,
+    8px 8px 0 0 black,
+    12px 12px 0 0 black,
+    16px 16px 0 0 black,
+    20px 20px 0 0 black,
+    24px 24px 10px 0 black;
+}
+.container .board .shadow1 img {
+    box-shadow: 4px 4px 0 0 black,
+    8px 8px 0 0 black,
+    12px 12px 0 0 black,
+    16px 16px 0 0 black,
+    20px 20px 10px 0 black;
+}
+.container .board .shadow2 img {
+    box-shadow: 4px 4px 0 0 black,
+    8px 8px 0 0 black,
+    12px 12px 0 0 black,
+    16px 16px 10px 0 black;
+}
+.container .board .shadow3 img {
+    box-shadow: 4px 4px 0 0 black,
+    8px 8px 0 0 black,
+    12px 12px 10px 0 black;
+}
+.container .board .shadow4 img {
+    box-shadow: 4px 4px 0 0 black,
+    8px 8px 5px 0 black;
 }
 
 

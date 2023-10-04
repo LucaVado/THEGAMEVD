@@ -286,6 +286,7 @@ function pasarTurno() {
     }
 
     gameOverTurno();
+    btnAnimation();
 
 }
 
@@ -403,8 +404,6 @@ function gameOverMovimiento() {
                 }
             })
         }
-
-
     }
 }
 function gameOverTurno() {
@@ -631,21 +630,76 @@ function cancelarTurno(){
             title: 'Aun no colocas cartas'
         })
     }
-
-
+    btnAnimation();
 }
 function eliminarNumerosDuplicados(array, numerosAEliminar) {
     return array.filter(num => !numerosAEliminar.includes(num));
 
 }
 function btnAnimation() {
+
     let cantidadDeCerosz = 0;
     for (let i = 0; i < manoCartas.length; i++) {
         if (manoCartas[i] === 0) {
             cantidadDeCerosz++;
         }
     }
-    if (cantidadDeCerosz >= 2) {
-        button.classList.add('ring-animation');
+    const button = document.querySelector('.button');
+    const buttonBack = document.querySelector('.IMGBACK');
+
+    const regex = /^ring-animation\d+$/;
+    const regexBack = /^REDBACK\d+$/;
+
+
+    const classes = button.classList;
+    const classesbACK = buttonBack.classList;
+
+
+    for (const className of classes) {
+        if (regex.test(className)) {
+            button.classList.remove(className);
+        }
+    }
+    for (const className of classesbACK) {
+        if (regexBack.test(className)) {
+            buttonBack.classList.remove(className);
+        }
+    }
+
+
+    switch (cantidadDeCerosz) {
+        case 2:
+            button.classList.add('ring-animation2');
+            buttonBack.classList.add('REDBACK2');
+            break;
+        case 3:
+            button.classList.add('ring-animation3');
+            buttonBack.classList.add('REDBACK3');
+            break;
+        case 4:
+            button.classList.add('ring-animation4');
+            buttonBack.classList.add('REDBACK4');
+            break;
+        case 5:
+            button.classList.add('ring-animation5');
+            buttonBack.classList.add('REDBACK5');
+            break;
+        case 6:
+            button.classList.add('ring-animation6');
+            buttonBack.classList.add('REDBACK6');
+            break;
+        case 7:
+            button.classList.add('ring-animation7');
+            buttonBack.classList.add('REDBACK7');
+            break;
+        case 8:
+            button.classList.add('ring-animation8');
+            buttonBack.classList.add('REDBACK8');
+            break;
+
+
+        default:
+
+            break;
     }
 }

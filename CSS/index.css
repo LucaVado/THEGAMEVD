@@ -452,10 +452,75 @@ body{
     transition: transform 120ms ease-in-out;
 }
 .IMGBACK:hover {
+    border-radius: 10px;
+    transform: scale(1.1);
+    border: 6px solid red;
+    box-shadow: 0 0 100px red;
+}
+.REDBACK2:hover {
+
 
     transform: scale(1.1);
     -webkit-box-shadow: 5px 5px 10px 0 #BC00CC;
-    box-shadow: 5px 5px 10px 0 #BC00CC;
+    box-shadow: 0 0 120px 0 #BC00CC;
+    border: 5px solid transparent;
+    border-radius: 10px;
+    animation: rainbow 4000ms linear infinite;
+}
+.REDBACK3:hover {
+    transform: scale(1.1);
+    -webkit-box-shadow: 5px 5px 10px 0 #BC00CC;
+    box-shadow: 0 0 150px 20px #BC00CC;
+    border: 5px solid transparent;
+    border-radius: 10px;
+    animation: rainbow 4000ms linear infinite;
+}
+.REDBACK4:hover {
+
+
+    transform: scale(1.1);
+    -webkit-box-shadow: 5px 5px 10px 0 #BC00CC;
+    box-shadow: 0 0 180px 40px #BC00CC;
+    border: 5px solid transparent;
+    border-radius: 10px;
+    animation: rainbow 4000ms linear infinite;
+}
+.REDBACK5:hover {
+
+
+    transform: scale(1.1);
+    -webkit-box-shadow: 5px 5px 10px 0 #BC00CC;
+    box-shadow: 0 0 210px 60px #BC00CC;
+    border: 5px solid transparent;
+    border-radius: 10px;
+    animation: rainbow 4000ms linear infinite;
+}
+.REDBACK6:hover {
+
+
+    transform: scale(1.1);
+    -webkit-box-shadow: 5px 5px 80px 0 #BC00CC;
+    box-shadow: 0 0 240px 80px #BC00CC;
+    border: 5px solid transparent;
+    border-radius: 10px;
+    animation: rainbow 4000ms linear infinite;
+}
+.REDBACK7:hover {
+
+
+    transform: scale(1.1);
+    -webkit-box-shadow: 5px 5px 10px 0 #BC00CC;
+    box-shadow: 0 0 270px 100px #BC00CC;
+    border: 5px solid transparent;
+    border-radius: 10px;
+    animation: rainbow 4000ms linear infinite;
+}
+.REDBACK8:hover {
+
+
+    transform: scale(1.1);
+    -webkit-box-shadow: 5px 5px 10px 0 #BC00CC;
+    box-shadow: 0 0 300px 120px #BC00CC;
     border: 5px solid transparent;
     border-radius: 10px;
     animation: rainbow 4000ms linear infinite;
@@ -498,13 +563,13 @@ body{
 
 }
 
-button::before {
+.button::before {
     content: '';
     border-radius: 1000px;
     min-width: calc(100% + 12px);
     min-height: calc(100% + 12px);
-    border: 6px solid #00FFCB;
-    box-shadow: 0 0 60px rgba(0,255,203,.64);
+    border: 6px solid red;
+    box-shadow: 0 0 60px red;
     position: absolute;
     top: 50%;
     left: 50%;
@@ -514,18 +579,18 @@ button::before {
 
 }
 
-.button:hover, .button:focus {
+.button:hover{
     color: #313133;
     transform: translateY(-6px);
 
 }
 
-button:hover::before, button:focus::before {
+button:hover::before {
     opacity: 1;
 }
 
 
-button:hover::after, button:focus::after {
+button:hover::after {
     animation: none;
     display: none;
 }
@@ -541,7 +606,7 @@ button:hover::after, button:focus::after {
         opacity: 0;
     }
 }
-.button.ring-animation::after {
+.button.ring-animation2::after {
     content: '';
     width: 30px;
     height: 30px;
@@ -552,5 +617,187 @@ button:hover::after, button:focus::after {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    animation: ring 1.5s infinite;
+    animation: ring 2000ms infinite;
+}
+.button.ring-animation3::after {
+    content: '';
+    width: 30px;
+    height: 30px;
+    border-radius: 100%;
+    border: 6px solid #00FFCB;
+    position: absolute;
+    z-index: -1;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    animation: ring 1500ms infinite;
+}
+.button.ring-animation4::after {
+    content: '';
+    width: 30px;
+    height: 30px;
+    border-radius: 100%;
+    border: 6px solid #00FFCB;
+    position: absolute;
+    z-index: -1;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    animation: ring 1000ms infinite;
+}
+.button.ring-animation5::after {
+    content: '';
+    width: 30px;
+    height: 30px;
+    border-radius: 100%;
+    border: 6px solid #00FFCB;
+    position: absolute;
+    z-index: -1;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    animation: ring 500ms infinite;
+}
+.button.ring-animation6::after {
+    content: '';
+    width: 30px;
+    height: 30px;
+    border-radius: 100%;
+    border: 6px solid #00FFCB;
+    position: absolute;
+    z-index: -1;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    animation: ring 300ms infinite;
+}
+.button.ring-animation7::after {
+    content: '';
+    width: 30px;
+    height: 30px;
+    border-radius: 100%;
+    border: 6px solid #00FFCB;
+    position: absolute;
+    z-index: -1;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    animation: ring 400ms infinite;
+}
+.button.ring-animation8::after {
+    content: '';
+    width: 30px;
+    height: 30px;
+    border-radius: 100%;
+    border: 6px solid #00FFCB;
+    position: absolute;
+    z-index: -1;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    animation: ring 200ms infinite;
+}
+.ring-animation2::before {
+    content: '';
+    border-radius: 1000px;
+    min-width: calc(100% + 12px);
+    min-height: calc(100% + 12px);
+    border: 6px solid #00FFCB;
+    box-shadow: 0 0 60px rgba(0,255,203,.64);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    opacity: 0;
+    transition: all .3s ease-in-out 0s;
+}
+.ring-animation3::before {
+    content: '';
+    border-radius: 1000px;
+    min-width: calc(100% + 12px);
+    min-height: calc(100% + 12px);
+    border: 6px solid #00FFCB;
+    box-shadow: 0 0 60px rgba(0,255,203,.64);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    opacity: 0;
+    transition: all .3s ease-in-out 0s;
+
+}
+.ring-animation4::before {
+    content: '';
+    border-radius: 1000px;
+    min-width: calc(100% + 12px);
+    min-height: calc(100% + 12px);
+    border: 6px solid #00FFCB;
+    box-shadow: 0 0 60px rgba(0,255,203,.64);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    opacity: 0;
+    transition: all .3s ease-in-out 0s;
+
+}
+.ring-animation5::before {
+    content: '';
+    border-radius: 1000px;
+    min-width: calc(100% + 12px);
+    min-height: calc(100% + 12px);
+    border: 6px solid #00FFCB;
+    box-shadow: 0 0 60px rgba(0,255,203,.64);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    opacity: 0;
+    transition: all .3s ease-in-out 0s;
+
+}
+.ring-animation6::before {
+    content: '';
+    border-radius: 1000px;
+    min-width: calc(100% + 12px);
+    min-height: calc(100% + 12px);
+    border: 6px solid #00FFCB;
+    box-shadow: 0 0 60px rgba(0,255,203,.64);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    opacity: 0;
+    transition: all .3s ease-in-out 0s;
+
+}
+.ring-animation7::before {
+    content: '';
+    border-radius: 1000px;
+    min-width: calc(100% + 12px);
+    min-height: calc(100% + 12px);
+    border: 6px solid #00FFCB;
+    box-shadow: 0 0 60px rgba(0,255,203,.64);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    opacity: 0;
+    transition: all .3s ease-in-out 0s;
+
+}
+.ring-animation8::before {
+    content: '';
+    border-radius: 1000px;
+    min-width: calc(100% + 12px);
+    min-height: calc(100% + 12px);
+    border: 6px solid #00FFCB;
+    box-shadow: 0 0 60px rgba(0,255,203,.64);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    opacity: 0;
+    transition: all .3s ease-in-out 0s;
+
 }

@@ -223,6 +223,81 @@ body{
     8px 8px 5px 0 black;
 }
 
+.IMGBACK {
+    cursor: pointer;
+    transition: transform 120ms ease-in-out;
+}
+.IMGBACK:hover {
+    border-radius: 10px;
+    transform: scale(1.1);
+    border: 6px solid red;
+    box-shadow: 4px 4px 0 0 black,
+    8px 8px 0 0 black,
+    12px 12px 0 0 black,
+    16px 16px 0 0 black,
+    20px 20px 0 0 black,
+    24px 24px 10px 0 black,
+    30px 30px 0 0 red;
+
+
+}
+.REDBACK2:hover {
+    transform: scale(1.1);
+    -webkit-box-shadow: 5px 5px 10px 0 #BC00CC;
+    box-shadow: 0 0 120px 0 #BC00CC;
+    border: 5px solid transparent;
+    border-radius: 10px;
+    animation: rainbow 4000ms linear infinite;
+}
+.REDBACK3:hover {
+    transform: scale(1.1);
+    -webkit-box-shadow: 5px 5px 10px 0 #BC00CC;
+    box-shadow: 0 0 150px 20px #BC00CC;
+    border: 5px solid transparent;
+    border-radius: 10px;
+    animation: rainbow 4000ms linear infinite;
+}
+.REDBACK4:hover {
+    transform: scale(1.1);
+    -webkit-box-shadow: 5px 5px 10px 0 #BC00CC;
+    box-shadow: 0 0 180px 40px #BC00CC;
+    border: 5px solid transparent;
+    border-radius: 10px;
+    animation: rainbow 4000ms linear infinite;
+}
+.REDBACK5:hover {
+    transform: scale(1.1);
+    -webkit-box-shadow: 5px 5px 10px 0 #BC00CC;
+    box-shadow: 0 0 210px 60px #BC00CC;
+    border: 5px solid transparent;
+    border-radius: 10px;
+    animation: rainbow 4000ms linear infinite;
+}
+.REDBACK6:hover {
+    transform: scale(1.1);
+    -webkit-box-shadow: 5px 5px 80px 0 #BC00CC;
+    box-shadow: 0 0 240px 80px #BC00CC;
+    border: 5px solid transparent;
+    border-radius: 10px;
+    animation: rainbow 4000ms linear infinite;
+}
+.REDBACK7:hover {
+    transform: scale(1.1);
+    -webkit-box-shadow: 5px 5px 10px 0 #BC00CC;
+    box-shadow: 0 0 270px 100px #BC00CC;
+    border: 5px solid transparent;
+    border-radius: 10px;
+    animation: rainbow 4000ms linear infinite;
+}
+.REDBACK8:hover {
+    transform: scale(1.1);
+    -webkit-box-shadow: 5px 5px 10px 0 #BC00CC;
+    box-shadow: 0 0 300px 120px #BC00CC;
+    border: 5px solid transparent;
+    border-radius: 10px;
+    animation: rainbow 4000ms linear infinite;
+}
+
 
 
 .container .board .card-100L {
@@ -475,84 +550,7 @@ body{
     }
 }
 
-.IMGBACK {
-    cursor: pointer;
-    transition: transform 120ms ease-in-out;
-}
-.IMGBACK:hover {
-    border-radius: 10px;
-    transform: scale(1.1);
-    border: 6px solid red;
-    box-shadow: 0 0 100px red;
-}
-.REDBACK2:hover {
 
-
-    transform: scale(1.1);
-    -webkit-box-shadow: 5px 5px 10px 0 #BC00CC;
-    box-shadow: 0 0 120px 0 #BC00CC;
-    border: 5px solid transparent;
-    border-radius: 10px;
-    animation: rainbow 4000ms linear infinite;
-}
-.REDBACK3:hover {
-    transform: scale(1.1);
-    -webkit-box-shadow: 5px 5px 10px 0 #BC00CC;
-    box-shadow: 0 0 150px 20px #BC00CC;
-    border: 5px solid transparent;
-    border-radius: 10px;
-    animation: rainbow 4000ms linear infinite;
-}
-.REDBACK4:hover {
-
-
-    transform: scale(1.1);
-    -webkit-box-shadow: 5px 5px 10px 0 #BC00CC;
-    box-shadow: 0 0 180px 40px #BC00CC;
-    border: 5px solid transparent;
-    border-radius: 10px;
-    animation: rainbow 4000ms linear infinite;
-}
-.REDBACK5:hover {
-
-
-    transform: scale(1.1);
-    -webkit-box-shadow: 5px 5px 10px 0 #BC00CC;
-    box-shadow: 0 0 210px 60px #BC00CC;
-    border: 5px solid transparent;
-    border-radius: 10px;
-    animation: rainbow 4000ms linear infinite;
-}
-.REDBACK6:hover {
-
-
-    transform: scale(1.1);
-    -webkit-box-shadow: 5px 5px 80px 0 #BC00CC;
-    box-shadow: 0 0 240px 80px #BC00CC;
-    border: 5px solid transparent;
-    border-radius: 10px;
-    animation: rainbow 4000ms linear infinite;
-}
-.REDBACK7:hover {
-
-
-    transform: scale(1.1);
-    -webkit-box-shadow: 5px 5px 10px 0 #BC00CC;
-    box-shadow: 0 0 270px 100px #BC00CC;
-    border: 5px solid transparent;
-    border-radius: 10px;
-    animation: rainbow 4000ms linear infinite;
-}
-.REDBACK8:hover {
-
-
-    transform: scale(1.1);
-    -webkit-box-shadow: 5px 5px 10px 0 #BC00CC;
-    box-shadow: 0 0 300px 120px #BC00CC;
-    border: 5px solid transparent;
-    border-radius: 10px;
-    animation: rainbow 4000ms linear infinite;
-}
 .btn-4 {
 
     border: 5px solid transparent;

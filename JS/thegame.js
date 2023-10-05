@@ -295,7 +295,6 @@ const btnPasarTurno = document.getElementById("btnTurno");
 btnPasarTurno.addEventListener("click", pasarTurno);
 const btnPasarTurnoIMG = document.getElementById("btnTurnoIMG");
 btnPasarTurnoIMG.addEventListener("click", pasarTurno);
-const button = document.querySelector('.button');
 
 let draggedElement = null;
 

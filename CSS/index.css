@@ -28,7 +28,7 @@ body{
     border: 5px solid transparent;
     border-radius: 10px;
     animation: rainbow 5s linear infinite;
-
+    overflow: hidden;
 }
 @keyframes rainbow {
     0% {border-color: turquoise}
@@ -570,14 +570,11 @@ body{
 .button {
     width: 50%;
     height: 50%;
-    font-family: 'Nunito', sans-serif;
-    font-size: 22px;
+    font-size: 1em;
     text-transform: uppercase;
-    letter-spacing: 1.3px;
+    letter-spacing: 1px;
     font-weight: 700;
-    color: #313133;
-    background: #4FD1C5;
-    background: linear-gradient(90deg, rgba(129,230,217,1) 0%, rgba(79,209,197,1) 100%);
+    background-color: #4FD1C5;
     border: none;
     border-radius: 1000px;
     box-shadow: 12px 12px 24px rgba(79,209,197,.64);
@@ -585,8 +582,6 @@ body{
     cursor: pointer;
     outline: none;
     position: relative;
-    padding: 10px;
-
 }
 
 .button::before {
@@ -602,13 +597,27 @@ body{
     transform: translate(-50%, -50%);
     opacity: 0;
     transition: all .3s ease-in-out 0s;
-
 }
 
 .button:hover{
-    color: #313133;
-    transform: translateY(-6px);
-
+    transform: translateY(-6px) rotate(720deg);
+    width: 50%;
+    height: 50%;
+    letter-spacing: 1px;
+    font-weight: 700;
+    background-color: #4FD1C5;
+    background-image: url('../IMG/diagrama.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 50% 70%;
+    border: none;
+    border-radius: 1000px;
+    box-shadow: 12px 12px 24px rgba(79,209,197,.64);
+    transition: all 0.3s ease-in-out 0s;
+    cursor: pointer;
+    outline: none;
+    position: relative;
+    color: transparent;
 }
 
 button:hover::before {
@@ -826,4 +835,30 @@ button:hover::after {
     opacity: 0;
     transition: all .3s ease-in-out 0s;
 
+}
+@media (max-width: 700px) {
+    .button {
+        width: 50%;
+        height: 50%;
+        letter-spacing: 1px;
+        font-weight: 700;
+        background-color: #4FD1C5;
+        background-image: url('../IMG/diagrama.png');
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: 70% 60%;
+        border: none;
+        border-radius: 1000px;
+        box-shadow: 12px 12px 24px rgba(79,209,197,.64);
+        transition: all 0.3s ease-in-out 0s;
+        cursor: pointer;
+        outline: none;
+        position: relative;
+        color: transparent;
+    }
+    .button:hover{
+
+        transform: translateY(-6px) rotate(720deg);
+        color: transparent;
+    }
 }

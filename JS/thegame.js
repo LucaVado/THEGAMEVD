@@ -75,12 +75,16 @@ function eliminarCartaMano(cartaMano) {
     mostrarCartasEnMano();
 }
 
-
+function generarMazo(){
+    if(mazoCartas.length === 0) {
+        for (let i = 2; i <= 99; i++) {
+            mazoCartas.push(i);
+        }
+    }
+}
 const mazoCartas = [];
 function comenzarGame() {
-    for (let i = 2; i <= 99; i++) {
-        mazoCartas.push(i);
-    }
+    generarMazo()
     obtenerCartasAleatorias()
     mostrarCartasEnMano()
 

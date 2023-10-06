@@ -77,11 +77,14 @@ function eliminarCartaMano(cartaMano) {
 
 
 const mazoCartas = [];
+function comenzarGame() {
+    for (let i = 2; i <= 99; i++) {
+        mazoCartas.push(i);
+    }
+    obtenerCartasAleatorias()
+    mostrarCartasEnMano()
 
-for (let i = 2; i <= 99; i++) {
-    mazoCartas.push(i);
 }
-
 const manoCartas = [];
 
 function obtenerCartasAleatorias() {
@@ -574,6 +577,8 @@ imageDisplayMano8.addEventListener("drop", drop);
 
 const btnCancelarTurno = document.getElementById("btnCancelar");
 btnCancelarTurno.addEventListener("click", cancelarTurno);
+const btnComenzarGame = document.getElementById("btnGame");
+btnComenzarGame.addEventListener("click", comenzarGame);
 function cancelarTurno(){
     let cantidadDeCeroz = 0;
     for (let i = 0; i < manoCartas.length; i++) {

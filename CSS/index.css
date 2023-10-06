@@ -188,11 +188,9 @@ body{
     grid-row-gap: 0;
     align-items: center;
     justify-items: center;
-
-
 }
 
-.container .board .card-back img {
+.container .board .card-back .IMGBACK{
     max-height: 100%;
     max-width: 35%;
     box-shadow: 4px 4px 0 0 black,
@@ -200,36 +198,51 @@ body{
     12px 12px 0 0 black,
     16px 16px 0 0 black,
     20px 20px 0 0 black,
-    24px 24px 10px 0 black;
+    24px 24px 0 0 black,
+    28px 28px 10px 0 black;
 }
-.container .board .shadow1 img {
+
+.container .board  .card-back .shadow2 {
     box-shadow: 4px 4px 0 0 black,
     8px 8px 0 0 black,
     12px 12px 0 0 black,
     16px 16px 0 0 black,
-    20px 20px 10px 0 black;
+    20px 20px 0 0 black,
+    24px 24px 10px 0 black;
 }
-.container .board .shadow2 img {
+.container .board .card-back .shadow3 {
+    max-height: 100%;
+    max-width: 35%;
     box-shadow: 4px 4px 0 0 black,
     8px 8px 0 0 black,
     12px 12px 0 0 black,
-    16px 16px 10px 0 black;
+    16px 16px 0 0 black,
+    20px 20px 10px 0 black ;
 }
-.container .board .shadow3 img {
+.container .board .card-back .shadow4 {
+    box-shadow: 4px 4px 0 0 black,
+    8px 8px 0 0 black,
+    12px 12px 0 0 black,
+    16px 16px 0 0 black;
+}
+.container .board .card-back .shadow5 {
     box-shadow: 4px 4px 0 0 black,
     8px 8px 0 0 black,
     12px 12px 10px 0 black;
 }
-.container .board .shadow4 img {
+.container .board .card-back .shadow6 {
     box-shadow: 4px 4px 0 0 black,
     8px 8px 5px 0 black;
 }
+.container .board .card-back .shadow7 {
+    box-shadow: 4px 4px 5px 0 black;
+}
 
-.IMGBACK {
+.container .board .card-back .IMGBACK {
     cursor: pointer;
     transition: transform 120ms ease-in-out;
 }
-.IMGBACK:hover {
+.container .board .card-back .IMGBACK:hover {
     border-radius: 10px;
     transform: scale(1.1);
     border: 6px solid red;
@@ -241,17 +254,20 @@ body{
     24px 24px 10px 0 black,
     30px 30px 0 0 red;
 
-
 }
-.REDBACK2:hover {
-    transform: scale(1.1);
-    -webkit-box-shadow: 5px 5px 10px 0 #BC00CC;
-    box-shadow: 0 0 120px 0 #BC00CC;
-    border: 5px solid transparent;
+.container .board .card-back .REDBACK2:hover {
     border-radius: 10px;
-    animation: rainbow 4000ms linear infinite;
+    transform: scale(1.1);
+    border: 6px solid red;
+    box-shadow: 4px 4px 0 0 black,
+    8px 8px 0 0 black,
+    12px 12px 0 0 black,
+    16px 16px 0 0 black,
+    20px 20px 0 0 black,
+    24px 24px 10px 0 black,
+    30px 30px 0 0 red;
 }
-.REDBACK3:hover {
+.container .board .card-back .REDBACK3:hover {
     transform: scale(1.1);
     -webkit-box-shadow: 5px 5px 10px 0 #BC00CC;
     box-shadow: 0 0 150px 20px #BC00CC;
@@ -259,7 +275,7 @@ body{
     border-radius: 10px;
     animation: rainbow 4000ms linear infinite;
 }
-.REDBACK4:hover {
+.container .board .card-back .REDBACK4:hover {
     transform: scale(1.1);
     -webkit-box-shadow: 5px 5px 10px 0 #BC00CC;
     box-shadow: 0 0 180px 40px #BC00CC;
@@ -267,7 +283,7 @@ body{
     border-radius: 10px;
     animation: rainbow 4000ms linear infinite;
 }
-.REDBACK5:hover {
+.container .board .card-back .REDBACK5:hover {
     transform: scale(1.1);
     -webkit-box-shadow: 5px 5px 10px 0 #BC00CC;
     box-shadow: 0 0 210px 60px #BC00CC;
@@ -275,7 +291,7 @@ body{
     border-radius: 10px;
     animation: rainbow 4000ms linear infinite;
 }
-.REDBACK6:hover {
+.container .board .card-back .REDBACK6:hover {
     transform: scale(1.1);
     -webkit-box-shadow: 5px 5px 80px 0 #BC00CC;
     box-shadow: 0 0 240px 80px #BC00CC;
@@ -283,7 +299,7 @@ body{
     border-radius: 10px;
     animation: rainbow 4000ms linear infinite;
 }
-.REDBACK7:hover {
+.container .board .card-back .REDBACK7:hover {
     transform: scale(1.1);
     -webkit-box-shadow: 5px 5px 10px 0 #BC00CC;
     box-shadow: 0 0 270px 100px #BC00CC;
@@ -291,7 +307,7 @@ body{
     border-radius: 10px;
     animation: rainbow 4000ms linear infinite;
 }
-.REDBACK8:hover {
+.container .board .card-back .REDBACK8:hover {
     transform: scale(1.1);
     -webkit-box-shadow: 5px 5px 10px 0 #BC00CC;
     box-shadow: 0 0 300px 120px #BC00CC;

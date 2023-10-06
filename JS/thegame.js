@@ -636,69 +636,85 @@ function eliminarNumerosDuplicados(array, numerosAEliminar) {
 
 }
 function btnAnimation() {
-
     let cantidadDeCerosz = 0;
     for (let i = 0; i < manoCartas.length; i++) {
         if (manoCartas[i] === 0) {
             cantidadDeCerosz++;
         }
     }
+
     const button = document.querySelector('.button');
     const buttonBack = document.querySelector('.IMGBACK');
 
     const regex = /^ring-animation\d+$/;
     const regexBack = /^REDBACK\d+$/;
 
-
     const classes = button.classList;
-    const classesbACK = buttonBack.classList;
-
+    const classesBack = buttonBack.classList;
 
     for (const className of classes) {
         if (regex.test(className)) {
             button.classList.remove(className);
         }
     }
-    for (const className of classesbACK) {
-        if (regexBack.test(className)) {
+
+    const redbackClasses = Array.from(classesBack).filter(className => regexBack.test(className) || className.startsWith('REDBACK'));
+
+    for (const className of redbackClasses) {
+        buttonBack.classList.remove(className);
+    }
+
+    buttonBack.classList.add('REDBACK' + cantidadDeCerosz);
+
+    // Elimina las clases que comienzan con 'shadow'
+    const shadowRegex = /^shadow\d+$/;
+    for (const className of classesBack) {
+        if (shadowRegex.test(className)) {
             buttonBack.classList.remove(className);
         }
     }
 
+    let shadowClass = '';
+
+    if (mazoCartas.length >= 1 && mazoCartas.length <= 19) {
+        shadowClass = 'shadow6';
+    } else if (mazoCartas.length >= 20 && mazoCartas.length <= 39) {
+        shadowClass = 'shadow5';
+    } else if (mazoCartas.length >= 40 && mazoCartas.length <= 59) {
+        shadowClass = 'shadow4';
+    } else if (mazoCartas.length >= 60 && mazoCartas.length <= 79) {
+        shadowClass = 'shadow3';
+    } else if (mazoCartas.length >= 80 && mazoCartas.length <= 100) {
+        shadowClass = 'shadow2';
+    } else if (mazoCartas.length === 0) {
+        shadowClass = 'shadow7';
+    }
+
+    buttonBack.classList.add(shadowClass);
 
     switch (cantidadDeCerosz) {
         case 2:
             button.classList.add('ring-animation2');
-            buttonBack.classList.add('REDBACK2');
             break;
         case 3:
             button.classList.add('ring-animation3');
-            buttonBack.classList.add('REDBACK3');
             break;
         case 4:
             button.classList.add('ring-animation4');
-            buttonBack.classList.add('REDBACK4');
             break;
         case 5:
             button.classList.add('ring-animation5');
-            buttonBack.classList.add('REDBACK5');
             break;
         case 6:
             button.classList.add('ring-animation6');
-            buttonBack.classList.add('REDBACK6');
             break;
         case 7:
             button.classList.add('ring-animation7');
-            buttonBack.classList.add('REDBACK7');
             break;
         case 8:
             button.classList.add('ring-animation8');
-            buttonBack.classList.add('REDBACK8');
             break;
-
-
         default:
-
             break;
     }
 }

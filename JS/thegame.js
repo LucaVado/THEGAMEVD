@@ -125,6 +125,7 @@ function mostrarCartasEnMano() {
         manoCartas.push(0);
     }
 
+
     // Iterar sobre las cartas y mostrarlas o aplicar la clase 'hidden-card'
     for (let i = 0; i < manoCartas.length; i++) {
         const imageDisplay = document.getElementById(i);

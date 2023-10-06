@@ -429,8 +429,7 @@ body{
     grid-area: 2 / 1 / 3 / 2;
     height: calc(100% - 5px);
     width: calc(100% - 10px);
-   display: grid;
-
+    display: grid;
 }
 
 
@@ -556,28 +555,27 @@ body{
     border: 5px solid transparent;
     border-radius: 10px;
     animation: rainbow 4000ms linear infinite;
-
 }
 .wrap {
     height: 100%;
-    display: flex;
+    width: 100%;
+    display: grid;
     align-items: center;
-    justify-content: center;
-
-
+    justify-items: center;
 }
 
-.button {
-    width: 50%;
-    height: 50%;
+.wrap .button {
+
+    width: min(calc(20vw - 35px), calc(20vh - 25px));
+    height: min(calc(20vw - 35px), calc(20vh - 25px));
     font-size: 1em;
     text-transform: uppercase;
     letter-spacing: 1px;
     font-weight: 700;
     background-color: #4FD1C5;
     border: none;
-    border-radius: 1000px;
-    box-shadow: 12px 12px 24px rgba(79,209,197,.64);
+    border-radius: 50%;
+    box-shadow: 0 0 50px rgba(79, 209, 197, .64);
     transition: all 0.3s ease-in-out 0s;
     cursor: pointer;
     outline: none;
@@ -600,9 +598,9 @@ body{
 }
 
 .button:hover{
-    transform: translateY(-6px) rotate(720deg);
-    width: 50%;
-    height: 50%;
+    transform: scale(1.2) translateY(-20px) rotate(720deg);
+    width: min(calc(20vw - 35px), calc(20vh - 25px));
+    height: min(calc(20vw - 35px), calc(20vh - 25px));
     letter-spacing: 1px;
     font-weight: 700;
     background-color: #4FD1C5;
@@ -622,6 +620,7 @@ body{
 
 button:hover::before {
     opacity: 1;
+
 }
 
 
@@ -631,13 +630,14 @@ button:hover::after {
 }
 @keyframes ring {
     0% {
-        width: 30px;
-        height: 30px;
+        width: 1%;
+        height: 1%;
         opacity: 1;
     }
+
     100% {
-        width: 300px;
-        height: 300px;
+        width: 400%;
+        height: 400%;
         opacity: 0;
     }
 }
@@ -653,6 +653,7 @@ button:hover::after {
     left: 50%;
     transform: translate(-50%, -50%);
     animation: ring 2000ms infinite;
+
 }
 .button.ring-animation3::after {
     content: '';
@@ -837,28 +838,11 @@ button:hover::after {
 
 }
 @media (max-width: 700px) {
-    .button {
-        width: 50%;
-        height: 50%;
-        letter-spacing: 1px;
-        font-weight: 700;
-        background-color: #4FD1C5;
+    .button{
         background-image: url('../IMG/diagrama.png');
         background-repeat: no-repeat;
         background-position: center;
-        background-size: 70% 60%;
-        border: none;
-        border-radius: 1000px;
-        box-shadow: 12px 12px 24px rgba(79,209,197,.64);
-        transition: all 0.3s ease-in-out 0s;
-        cursor: pointer;
-        outline: none;
-        position: relative;
-        color: transparent;
-    }
-    .button:hover{
-
-        transform: translateY(-6px) rotate(720deg);
+        background-size: 50% 70%;
         color: transparent;
     }
 }

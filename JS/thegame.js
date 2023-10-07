@@ -1,4 +1,20 @@
+if (localStorage.length > 1){
+    Swal.fire({
+        title: 'Tienes un juego pendiente deseas continuar?',
+        showDenyButton: true,
+        showCancelButton: true,
+        confirmButtonText: 'Continuar!',
+        denyButtonText: `Comenzar Nuevo juego`,
+    }).then((result) => {
+        /* Read more about isConfirmed, isDenied below */
+        if (result.isConfirmed) {
+            cargarProgreso()
+            mostrarCartasEnMano()
+        } else if (result.isDenied) {
 
+        }
+    })
+}
 // CHECKPOINT
 let filaSuperiorIzquierda = [
     1
@@ -82,14 +98,21 @@ function generarMazo(){
         }
     }
 }
-const mazoCartas = [];
+let mazoCartas = [];
+let juegoComenzado = false;
 function comenzarGame() {
-    generarMazo()
-    obtenerCartasAleatorias()
-    mostrarCartasEnMano()
+    if (localStorage.length === 0){
+        generarMazo()
+        obtenerCartasAleatorias()
+        mostrarCartasEnMano()
+        guardarProgreso()
+    }else{
+        cargarProgreso()
+    }
+    juegoComenzado = true;
 
 }
-const manoCartas = [];
+let manoCartas = [];
 
 function obtenerCartasAleatorias() {
     while (manoCartas.length < 8 && mazoCartas.length > 0) {
@@ -202,8 +225,8 @@ const btnVerMatriz = document.getElementById("verMatriz");
 btnVerMatriz.addEventListener("click", mostrarMatricesEnConsola);
 
 function pasarTurno() {
-
-    let cantidadDeCeros = 0;
+    if (juegoComenzado === true){
+        let cantidadDeCeros = 0;
     for (let i = 0; i < manoCartas.length; i++) {
         if (manoCartas[i] === 0) {
             cantidadDeCeros++;
@@ -220,7 +243,7 @@ function pasarTurno() {
 
 
         if (maxRandomCards >= 2) {
-            const randomCards = Array.from({ length: maxRandomCards }, () => {
+            const randomCards = Array.from({length: maxRandomCards}, () => {
                 const randomIndex = Math.floor(Math.random() * mazoCartas.length);
                 return mazoCartas.splice(randomIndex, 1)[0];
             });
@@ -257,7 +280,7 @@ function pasarTurno() {
                 title: 'No tienes mas cartas en el mazo!'
             })
         }
-    } else if(cantidadDeCeros === 0){
+    } else if (cantidadDeCeros === 0) {
         const Toast = Swal.mixin({
             toast: true,
             position: 'top-end',
@@ -274,7 +297,7 @@ function pasarTurno() {
             icon: 'warning',
             title: 'Debes colocar 2 cartas'
         })
-    }else{
+    } else {
         const Toast = Swal.mixin({
             toast: true,
             position: 'top-end',
@@ -295,6 +318,9 @@ function pasarTurno() {
 
     gameOverTurno();
     btnAnimation();
+}else{
+        alert("Aun no comienzas el juego!");
+    }
 
 }
 
@@ -454,72 +480,76 @@ function gameOverTurno() {
 
 }
 function moverCarta(draggedCard, targetElement){
-    const cartaMano = manoCartas[draggedCard.id];
-    let arrayDestino;
-    switch (targetElement.id) {
-        case fieldCard.UnoIzq:
-            arrayDestino = filaSuperiorIzquierda;
-            break;
-        case fieldCard.UnoDer:
-            arrayDestino = filaSuperiorDerecha;
-            break;
-        case fieldCard.CienIzq:
-            arrayDestino = filaInferiorIzquierda;
-            break;
-        case fieldCard.CienDer:
-            arrayDestino = filaInferiorDerecha;
-            break;
-        default:
-            return; // Salir si el destino no es válido
-    }
+    if (juegoComenzado === true) {
+        const cartaMano = manoCartas[draggedCard.id];
+        let arrayDestino;
+        switch (targetElement.id) {
+            case fieldCard.UnoIzq:
+                arrayDestino = filaSuperiorIzquierda;
+                break;
+            case fieldCard.UnoDer:
+                arrayDestino = filaSuperiorDerecha;
+                break;
+            case fieldCard.CienIzq:
+                arrayDestino = filaInferiorIzquierda;
+                break;
+            case fieldCard.CienDer:
+                arrayDestino = filaInferiorDerecha;
+                break;
+            default:
+                return; // Salir si el destino no es válido
+        }
 
-    // Verificar si la carta de la mano es menor o mayor que la última carta en el campo destino
-    if (
-        (targetElement.id === fieldCard.UnoIzq || targetElement.id === fieldCard.UnoDer) &&
-        (cartaMano > arrayDestino[arrayDestino.length - 1] || cartaMano === arrayDestino[arrayDestino.length - 1] - 10)
-    ) {
-        // Permitir el movimiento si es mayor (fila superior)
-        setImageCard(targetElement.id, draggedCard.id);
-        arrayDestino.push(cartaMano);
+        // Verificar si la carta de la mano es menor o mayor que la última carta en el campo destino
+        if (
+            (targetElement.id === fieldCard.UnoIzq || targetElement.id === fieldCard.UnoDer) &&
+            (cartaMano > arrayDestino[arrayDestino.length - 1] || cartaMano === arrayDestino[arrayDestino.length - 1] - 10)
+        ) {
+            // Permitir el movimiento si es mayor (fila superior)
+            setImageCard(targetElement.id, draggedCard.id);
+            arrayDestino.push(cartaMano);
 
-    } else if (
-        (targetElement.id === fieldCard.CienIzq || targetElement.id === fieldCard.CienDer) &&
-        (cartaMano < arrayDestino[arrayDestino.length - 1] || cartaMano === arrayDestino[arrayDestino.length - 1] + 10)
-    ) {
-        // Permitir el movimiento si es menor (fila inferior)
-        setImageCard(targetElement.id, draggedCard.id);
-        arrayDestino.push(cartaMano);
-    } else {
-        // Mostrar un mensaje de error y no permitir el movimiento
-        Swal.fire({
-            position: 'top-end',
-            icon: 'error',
-            title: 'No puedes colocar la carta en ese lugar',
-            showConfirmButton: false,
-            timer: 1500
-        })
-        return;
-    }
+        } else if (
+            (targetElement.id === fieldCard.CienIzq || targetElement.id === fieldCard.CienDer) &&
+            (cartaMano < arrayDestino[arrayDestino.length - 1] || cartaMano === arrayDestino[arrayDestino.length - 1] + 10)
+        ) {
+            // Permitir el movimiento si es menor (fila inferior)
+            setImageCard(targetElement.id, draggedCard.id);
+            arrayDestino.push(cartaMano);
+        } else {
+            // Mostrar un mensaje de error y no permitir el movimiento
+            Swal.fire({
+                position: 'top-end',
+                icon: 'error',
+                title: 'No puedes colocar la carta en ese lugar',
+                showConfirmButton: false,
+                timer: 1500
+            })
+            return;
+        }
 
-    // Verificar si todas las cartas en la mano son 0 y el mazo está vacío
-    let todasLasCartasSonCero = manoCartas.every(carta => carta === 0);
-    if (todasLasCartasSonCero && mazoCartas.length === 0) {
-        Swal.fire({
-            title: 'Custom width, padding, color, background.',
-            width: 600,
-            padding: '3em',
-            color: '#716add',
-            background: '#fff url(../IMG/backgroundIMG.GIF)',
-            backdrop: `
+        // Verificar si todas las cartas en la mano son 0 y el mazo está vacío
+        let todasLasCartasSonCero = manoCartas.every(carta => carta === 0);
+        if (todasLasCartasSonCero && mazoCartas.length === 0) {
+            Swal.fire({
+                title: 'Custom width, padding, color, background.',
+                width: 600,
+                padding: '3em',
+                color: '#716add',
+                background: '#fff url(../IMG/backgroundIMG.GIF)',
+                backdrop: `
     rgba(0,0,123,0.4)
     url("../IMG/victoryIMG.GIF")
     left top
     no-repeat
   `
-        })
+            })
+        }
+        gameOverMovimiento();
+        btnAnimation();
+    }else{
+        alert("Aun no comienza el juego!");
     }
-    gameOverMovimiento();
-    btnAnimation();
 
 }
 
@@ -584,7 +614,8 @@ const btnCancelarTurno = document.getElementById("btnCancelar");
 btnCancelarTurno.addEventListener("click", cancelarTurno);
 const btnComenzarGame = document.getElementById("btnGame");
 btnComenzarGame.addEventListener("click", comenzarGame);
-function cancelarTurno(){
+function cancelarTurno() {
+    if (juegoComenzado === true){
     let cantidadDeCeroz = 0;
     for (let i = 0; i < manoCartas.length; i++) {
         if (manoCartas[i] === 0) {
@@ -601,19 +632,19 @@ function cancelarTurno(){
         const maxRandomCardz = Math.min(zerosIndicez.length, arrayTemporal.length);
 
 
-            zerosIndicez.slice(0, maxRandomCardz).forEach((zeroIndex, i) => {
-                manoCartas[zeroIndex] = arrayTemporal[i];
-            });
+        zerosIndicez.slice(0, maxRandomCardz).forEach((zeroIndex, i) => {
+            manoCartas[zeroIndex] = arrayTemporal[i];
+        });
         filaSuperiorDerecha = eliminarNumerosDuplicados(filaSuperiorDerecha, arrayTemporal);
         filaSuperiorIzquierda = eliminarNumerosDuplicados(filaSuperiorIzquierda, arrayTemporal);
         filaInferiorDerecha = eliminarNumerosDuplicados(filaInferiorDerecha, arrayTemporal);
         filaInferiorIzquierda = eliminarNumerosDuplicados(filaInferiorIzquierda, arrayTemporal);
         mostrarCartasEnMano();
         arrayTemporal = [];
-        const ultimoValor100Derecha = filaInferiorDerecha[filaInferiorDerecha.length-1];
-        const ultimoValor100Izquierda = filaInferiorIzquierda[filaInferiorIzquierda.length-1];
-        const ultimoValor1Derecha = filaSuperiorDerecha[filaSuperiorDerecha.length-1];
-        const ultimoValor1Izquierda = filaSuperiorIzquierda[filaSuperiorIzquierda.length-1];
+        const ultimoValor100Derecha = filaInferiorDerecha[filaInferiorDerecha.length - 1];
+        const ultimoValor100Izquierda = filaInferiorIzquierda[filaInferiorIzquierda.length - 1];
+        const ultimoValor1Derecha = filaSuperiorDerecha[filaSuperiorDerecha.length - 1];
+        const ultimoValor1Izquierda = filaSuperiorIzquierda[filaSuperiorIzquierda.length - 1];
 
         imageDisplaySuperiorDerecha.src = `../IMG/GAME${ultimoValor100Derecha}.png`;
         imageDisplaySuperiorIzquierda.src = `../IMG/GAME${ultimoValor100Izquierda}.png`;
@@ -621,7 +652,7 @@ function cancelarTurno(){
         imageDisplayInferiorIzquierda.src = `../IMG/GAME${ultimoValor1Izquierda}.png`;
 
 
-    }else{
+    } else {
         const Toast = Swal.mixin({
             toast: true,
             position: 'top-end',
@@ -640,6 +671,9 @@ function cancelarTurno(){
         })
     }
     btnAnimation();
+}else{
+    alert("Aun no comienzas el juego!");
+}
 }
 function eliminarNumerosDuplicados(array, numerosAEliminar) {
     return array.filter(num => !numerosAEliminar.includes(num));
@@ -727,4 +761,33 @@ function btnAnimation() {
         default:
             break;
     }
+}
+
+function guardarProgreso() {
+
+    const mazoCartasJSON = JSON.stringify(mazoCartas);
+    const manoCartasJSON = JSON.stringify(manoCartas);
+    const boardSIJSON = JSON.stringify(filaSuperiorIzquierda);
+    const boardSDJSON = JSON.stringify(filaSuperiorDerecha);
+    const boardIIJSON = JSON.stringify(filaInferiorIzquierda);
+    const boardIDJSON = JSON.stringify(filaInferiorDerecha);
+    localStorage.setItem('mazoCartas', mazoCartasJSON);
+    localStorage.setItem('manoCartas', manoCartasJSON);
+    localStorage.setItem('filaSuperiorIzquierda', boardSIJSON);
+    localStorage.setItem('filaSuperiorDerecha', boardSDJSON);
+    localStorage.setItem('filaInferiorIzquierda', boardIIJSON);
+    localStorage.setItem('filaInferiorDerecha', boardIDJSON);
+
+}
+
+
+
+function cargarProgreso() {
+
+    const mazoCartasJSON = localStorage.getItem('mazoCartas');
+    const manoCartasJSON = localStorage.getItem('manoCartas');
+    mazoCartas = JSON.parse(mazoCartasJSON);
+    manoCartas = JSON.parse(manoCartasJSON);
+    mostrarCartasEnMano();
+
 }

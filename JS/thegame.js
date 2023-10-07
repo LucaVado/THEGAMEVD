@@ -10,6 +10,8 @@ if (localStorage.length > 1){
         if (result.isConfirmed) {
             cargarProgreso()
             mostrarCartasEnMano()
+            displayCurrentImage()
+            console.log(filaSuperiorIzquierda);
         } else if (result.isDenied) {
         guardarProgreso()
         }
@@ -107,6 +109,7 @@ function comenzarGame() {
         obtenerCartasAleatorias()
         mostrarCartasEnMano()
         guardarProgreso()
+
     }
         juegoComenzado = true;
 
@@ -544,7 +547,7 @@ function moverCarta(draggedCard, targetElement){
         }
         gameOverMovimiento();
         btnAnimation();
-
+    guardarProgreso()
 
 }
 
@@ -779,8 +782,16 @@ function cargarProgreso() {
 
     const mazoCartasJSON = localStorage.getItem('mazoCartas');
     const manoCartasJSON = localStorage.getItem('manoCartas');
+    const boardSIJSON = localStorage.getItem('mazoCartas');
+    const boardSDJSON = localStorage.getItem('manoCartas');
+    const boardIIJSON = localStorage.getItem('mazoCartas');
+    const boardIDJSON = localStorage.getItem('manoCartas');
     mazoCartas = JSON.parse(mazoCartasJSON);
     manoCartas = JSON.parse(manoCartasJSON);
+    filaSuperiorIzquierda = JSON.parse(boardSIJSON);
+    filaSuperiorDerecha = JSON.parse(boardSDJSON);
+    filaInferiorIzquierda = JSON.parse(boardIIJSON);
+    filaInferiorDerecha = JSON.parse(boardIDJSON);
     mostrarCartasEnMano();
 
 }

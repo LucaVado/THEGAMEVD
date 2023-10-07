@@ -11,7 +11,7 @@ if (localStorage.length > 1){
             cargarProgreso()
             mostrarCartasEnMano()
         } else if (result.isDenied) {
-
+        guardarProgreso()
         }
     })
 }
@@ -101,15 +101,14 @@ function generarMazo(){
 let mazoCartas = [];
 let juegoComenzado = false;
 function comenzarGame() {
-    if (localStorage.length === 0){
+    if (juegoComenzado === false) {
+
         generarMazo()
         obtenerCartasAleatorias()
         mostrarCartasEnMano()
         guardarProgreso()
-    }else{
-        cargarProgreso()
     }
-    juegoComenzado = true;
+        juegoComenzado = true;
 
 }
 let manoCartas = [];
@@ -225,7 +224,7 @@ const btnVerMatriz = document.getElementById("verMatriz");
 btnVerMatriz.addEventListener("click", mostrarMatricesEnConsola);
 
 function pasarTurno() {
-    if (juegoComenzado === true){
+
         let cantidadDeCeros = 0;
     for (let i = 0; i < manoCartas.length; i++) {
         if (manoCartas[i] === 0) {
@@ -318,9 +317,7 @@ function pasarTurno() {
 
     gameOverTurno();
     btnAnimation();
-}else{
-        alert("Aun no comienzas el juego!");
-    }
+
 
 }
 
@@ -480,7 +477,7 @@ function gameOverTurno() {
 
 }
 function moverCarta(draggedCard, targetElement){
-    if (juegoComenzado === true) {
+
         const cartaMano = manoCartas[draggedCard.id];
         let arrayDestino;
         switch (targetElement.id) {
@@ -547,9 +544,7 @@ function moverCarta(draggedCard, targetElement){
         }
         gameOverMovimiento();
         btnAnimation();
-    }else{
-        alert("Aun no comienza el juego!");
-    }
+
 
 }
 
@@ -615,7 +610,7 @@ btnCancelarTurno.addEventListener("click", cancelarTurno);
 const btnComenzarGame = document.getElementById("btnGame");
 btnComenzarGame.addEventListener("click", comenzarGame);
 function cancelarTurno() {
-    if (juegoComenzado === true){
+
     let cantidadDeCeroz = 0;
     for (let i = 0; i < manoCartas.length; i++) {
         if (manoCartas[i] === 0) {
@@ -671,9 +666,7 @@ function cancelarTurno() {
         })
     }
     btnAnimation();
-}else{
-    alert("Aun no comienzas el juego!");
-}
+
 }
 function eliminarNumerosDuplicados(array, numerosAEliminar) {
     return array.filter(num => !numerosAEliminar.includes(num));

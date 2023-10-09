@@ -1,8 +1,8 @@
 Swal.fire({
-    title: 'Error!',
-    text: 'Do you want to continue',
-    icon: 'error',
-    confirmButtonText: 'Cool'
+    title: 'Bienvenido!',
+    text: 'Comienza THE GAME',
+    icon: 'info',
+    confirmButtonText: 'Continuar'
 })
 if (localStorage.length > 1){
     Swal.fire({
@@ -19,7 +19,7 @@ if (localStorage.length > 1){
             cargarProgreso()
             console.log(filaSuperiorIzquierda);
         } else if (result.isDenied) {
-        guardarProgreso()
+            localStorage.clear();
         }
     })
 }

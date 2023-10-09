@@ -1,3 +1,9 @@
+Swal.fire({
+    title: 'Error!',
+    text: 'Do you want to continue',
+    icon: 'error',
+    confirmButtonText: 'Cool'
+})
 if (localStorage.length > 1){
     Swal.fire({
         title: 'Tienes un juego pendiente deseas continuar?',

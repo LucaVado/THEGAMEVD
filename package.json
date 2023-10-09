@@ -10,5 +10,10 @@
   },
   "devDependencies": {
     "vite": "^4.4.5"
+  },
+  "dependencies": {
+    "@sweetalert2/theme-borderless": "^5.0.15",
+    "@sweetalert2/theme-dark": "^5.0.15",
+    "sweetalert2": "^11.7.32"
   }
 }

@@ -793,5 +793,4 @@ function cargarProgreso() {
     filaInferiorIzquierda = JSON.parse(boardIIJSON);
     filaInferiorDerecha = JSON.parse(boardIDJSON);
     mostrarCartasEnMano();
-
 }

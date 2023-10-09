@@ -9,8 +9,6 @@ if (localStorage.length > 1){
         /* Read more about isConfirmed, isDenied below */
         if (result.isConfirmed) {
             cargarProgreso()
-            mostrarCartasEnMano()
-            displayCurrentImage()
             console.log(filaSuperiorIzquierda);
         } else if (result.isDenied) {
         guardarProgreso()
@@ -42,6 +40,16 @@ const fieldCard = {
     CienDer : "GAME100Derecha"
 };
 
+function mostrarCartasTablero(){
+    let vars1 = filaSuperiorIzquierda.slice(-1)[0];
+    let vars2 = filaSuperiorDerecha.slice(-1)[0];
+    let vars3 = filaInferiorIzquierda.slice(-1)[0];
+    let vars4 = filaInferiorDerecha.slice(-1)[0];
+    imageDisplaySuperiorIzquierda.src = `../IMG/GAME${vars1}.png`;
+    imageDisplaySuperiorDerecha.src = `../IMG/GAME${vars2}.png`;
+    imageDisplayInferiorIzquierda.src = `../IMG/GAME${vars3}.png`;
+    imageDisplayInferiorDerecha.src = `../IMG/GAME${vars4}.png`;
+}
 function setImageCard(valorX,valorAdd){
 
     let miImagenL = document.getElementById(valorX);
@@ -93,13 +101,20 @@ function eliminarCartaMano(cartaMano) {
     mostrarCartasEnMano();
 }
 
-function generarMazo(){
-    if(mazoCartas.length === 0) {
+function generarMazo() {
+    if (mazoCartas.length === 0) {
         for (let i = 2; i <= 99; i++) {
             mazoCartas.push(i);
         }
+
+        // Baraja el mazo (Fisher-Yates Shuffle)
+        for (let i = mazoCartas.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [mazoCartas[i], mazoCartas[j]] = [mazoCartas[j], mazoCartas[i]];
+        }
     }
 }
+
 let mazoCartas = [];
 let juegoComenzado = false;
 function comenzarGame() {
@@ -107,6 +122,7 @@ function comenzarGame() {
 
         generarMazo()
         obtenerCartasAleatorias()
+        displayCurrentImage()
         mostrarCartasEnMano()
         guardarProgreso()
 
@@ -118,16 +134,12 @@ let manoCartas = [];
 
 function obtenerCartasAleatorias() {
     while (manoCartas.length < 8 && mazoCartas.length > 0) {
-        const indiceAleatorio = Math.floor(Math.random() * mazoCartas.length);
-        const cartaAleatoria = mazoCartas.splice(indiceAleatorio, 1)[0];
+        const cartaAleatoria = mazoCartas.pop();
         manoCartas.push(cartaAleatoria);
     }
-
-
 }
 
-// Llama a la función para obtener cartas aleatorias al cargar la página
-obtenerCartasAleatorias();
+
 
 function mostrarCartasEnMano() {
     const cantidadDeCeros = manoCartas.filter(numero => numero === 0).length;
@@ -169,15 +181,10 @@ function mostrarCartasEnMano() {
 }
 
 
-
-// Llama a la función para mostrar las cartas en la mano
-
-mostrarCartasEnMano();
-
-const imageDisplaySuperiorIzquierda = document.getElementById("GAME100Izquierda"); // Obtiene el elemento de imagen por su ID.
-const imageDisplaySuperiorDerecha = document.getElementById("GAME100Derecha");
-const imageDisplayInferiorIzquierda = document.getElementById("GAME1Izquierda");
-const imageDisplayInferiorDerecha = document.getElementById("GAME1Derecha");
+const imageDisplaySuperiorIzquierda = document.getElementById("GAME1Izquierda"); // Obtiene el elemento de imagen por su ID.
+const imageDisplaySuperiorDerecha = document.getElementById("GAME1Derecha");
+const imageDisplayInferiorIzquierda = document.getElementById("GAME100Izquierda");
+const imageDisplayInferiorDerecha = document.getElementById("GAME100Derecha");
 
 const imageDisplayMano1 = document.getElementById("0");
 const imageDisplayMano2 = document.getElementById("1");
@@ -209,7 +216,7 @@ function displayCurrentImage() {
 
 }
 
-displayCurrentImage(); // Llama a la función para mostrar la imagen actual en la carga inicial.
+ // Llama a la función para mostrar la imagen actual en la carga inicial.
 
 // Función para mostrar las matrices en la consola
 function mostrarMatricesEnConsola() {
@@ -506,16 +513,15 @@ function moverCarta(draggedCard, targetElement){
             (cartaMano > arrayDestino[arrayDestino.length - 1] || cartaMano === arrayDestino[arrayDestino.length - 1] - 10)
         ) {
             // Permitir el movimiento si es mayor (fila superior)
-            setImageCard(targetElement.id, draggedCard.id);
-            arrayDestino.push(cartaMano);
+setImageCard(targetElement.id, draggedCard.id);
 
         } else if (
             (targetElement.id === fieldCard.CienIzq || targetElement.id === fieldCard.CienDer) &&
             (cartaMano < arrayDestino[arrayDestino.length - 1] || cartaMano === arrayDestino[arrayDestino.length - 1] + 10)
         ) {
             // Permitir el movimiento si es menor (fila inferior)
-            setImageCard(targetElement.id, draggedCard.id);
-            arrayDestino.push(cartaMano);
+setImageCard(targetElement.id, draggedCard.id);
+
         } else {
             // Mostrar un mensaje de error y no permitir el movimiento
             Swal.fire({
@@ -547,7 +553,7 @@ function moverCarta(draggedCard, targetElement){
         }
         gameOverMovimiento();
         btnAnimation();
-    guardarProgreso()
+        guardarProgreso()
 
 }
 
@@ -556,7 +562,6 @@ imageDisplaySuperiorIzquierda.addEventListener("dragstart", dragStart);
 imageDisplaySuperiorDerecha.addEventListener("dragstart", dragStart);
 imageDisplayInferiorIzquierda.addEventListener("dragstart", dragStart);
 imageDisplayInferiorDerecha.addEventListener("dragstart", dragStart);
-
 imageDisplayMano1.addEventListener("dragstart", dragStart);
 imageDisplayMano2.addEventListener("dragstart", dragStart);
 imageDisplayMano3.addEventListener("dragstart", dragStart);
@@ -639,15 +644,7 @@ function cancelarTurno() {
         filaInferiorIzquierda = eliminarNumerosDuplicados(filaInferiorIzquierda, arrayTemporal);
         mostrarCartasEnMano();
         arrayTemporal = [];
-        const ultimoValor100Derecha = filaInferiorDerecha[filaInferiorDerecha.length - 1];
-        const ultimoValor100Izquierda = filaInferiorIzquierda[filaInferiorIzquierda.length - 1];
-        const ultimoValor1Derecha = filaSuperiorDerecha[filaSuperiorDerecha.length - 1];
-        const ultimoValor1Izquierda = filaSuperiorIzquierda[filaSuperiorIzquierda.length - 1];
-
-        imageDisplaySuperiorDerecha.src = `../IMG/GAME${ultimoValor100Derecha}.png`;
-        imageDisplaySuperiorIzquierda.src = `../IMG/GAME${ultimoValor100Izquierda}.png`;
-        imageDisplayInferiorDerecha.src = `../IMG/GAME${ultimoValor1Derecha}.png`;
-        imageDisplayInferiorIzquierda.src = `../IMG/GAME${ultimoValor1Izquierda}.png`;
+        mostrarCartasTablero()
 
 
     } else {
@@ -760,13 +757,14 @@ function btnAnimation() {
 }
 
 function guardarProgreso() {
-
+    const arrayTemporalJSON = JSON.stringify(arrayTemporal);
     const mazoCartasJSON = JSON.stringify(mazoCartas);
     const manoCartasJSON = JSON.stringify(manoCartas);
     const boardSIJSON = JSON.stringify(filaSuperiorIzquierda);
     const boardSDJSON = JSON.stringify(filaSuperiorDerecha);
     const boardIIJSON = JSON.stringify(filaInferiorIzquierda);
     const boardIDJSON = JSON.stringify(filaInferiorDerecha);
+    localStorage.setItem('arrayTemporal', arrayTemporalJSON);
     localStorage.setItem('mazoCartas', mazoCartasJSON);
     localStorage.setItem('manoCartas', manoCartasJSON);
     localStorage.setItem('filaSuperiorIzquierda', boardSIJSON);
@@ -779,13 +777,14 @@ function guardarProgreso() {
 
 
 function cargarProgreso() {
-
+    const arrayTemporalJSON = localStorage.getItem('arrayTemporal');
     const mazoCartasJSON = localStorage.getItem('mazoCartas');
     const manoCartasJSON = localStorage.getItem('manoCartas');
-    const boardSIJSON = localStorage.getItem('mazoCartas');
-    const boardSDJSON = localStorage.getItem('manoCartas');
-    const boardIIJSON = localStorage.getItem('mazoCartas');
-    const boardIDJSON = localStorage.getItem('manoCartas');
+    const boardSIJSON = localStorage.getItem('filaSuperiorIzquierda');
+    const boardSDJSON = localStorage.getItem('filaSuperiorDerecha');
+    const boardIIJSON = localStorage.getItem('filaInferiorIzquierda');
+    const boardIDJSON = localStorage.getItem('filaInferiorDerecha');
+    arrayTemporal = JSON.parse(arrayTemporalJSON);
     mazoCartas = JSON.parse(mazoCartasJSON);
     manoCartas = JSON.parse(manoCartasJSON);
     filaSuperiorIzquierda = JSON.parse(boardSIJSON);
@@ -793,5 +792,6 @@ function cargarProgreso() {
     filaInferiorIzquierda = JSON.parse(boardIIJSON);
     filaInferiorDerecha = JSON.parse(boardIDJSON);
     mostrarCartasEnMano();
+    mostrarCartasTablero()
 
 }

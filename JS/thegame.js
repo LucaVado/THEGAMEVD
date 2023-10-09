@@ -3,6 +3,8 @@ if (localStorage.length > 1){
         title: 'Tienes un juego pendiente deseas continuar?',
         showDenyButton: true,
         showCancelButton: true,
+        allowOutsideClick: false,
+        allowEscapeKey: false,
         confirmButtonText: 'Continuar!',
         denyButtonText: `Comenzar Nuevo juego`,
     }).then((result) => {
@@ -252,18 +254,36 @@ function pasarTurno() {
 
 
         if (maxRandomCards >= 2) {
-            const randomCards = Array.from({length: maxRandomCards}, () => {
-                const randomIndex = Math.floor(Math.random() * mazoCartas.length);
-                return mazoCartas.splice(randomIndex, 1)[0];
-            });
-            console.log("que es :" + randomCards);
+            for (let i = 0; i < maxRandomCards; i++) {
+                if (mazoCartas.length > 0) {
+                    const card = mazoCartas.shift(); // Toma la primera carta del mazo
+                    manoCartas[zerosIndices[i]] = card;
+                } else {
+                    // Manejo de error si no hay suficientes cartas en el mazo
+                    const Toast = Swal.mixin({
+                        toast: true,
+                        position: 'top-end',
+                        showConfirmButton: false,
+                        timer: 3000,
+                        timerProgressBar: true,
+                        didOpen: (toast) => {
+                            toast.addEventListener('mouseenter', Swal.stopTimer)
+                            toast.addEventListener('mouseleave', Swal.resumeTimer)
+                        }
+                    });
 
-            zerosIndices.slice(0, maxRandomCards).forEach((zeroIndex, i) => {
-                manoCartas[zeroIndex] = randomCards[i];
-            });
+                    Toast.fire({
+                        icon: 'error',
+                        title: 'No tienes más cartas en el mazo!'
+                    });
+
+                    break; // Sale del bucle si no hay más cartas en el mazo
+                }
+            }
             arrayTemporal = [];
             mostrarCartasEnMano();
-        } else if (maxRandomCards === 1) {
+        }
+ else if (maxRandomCards === 1) {
             const randomIndex = Math.floor(Math.random() * mazoCartas.length);
             const randomCard = mazoCartas.splice(randomIndex, 1)[0];
 
@@ -417,6 +437,8 @@ function gameOverMovimiento() {
                 cancelButtonText: 'Ver tablero',
                 confirmButtonText: 'Guardar partida',
                 denyButtonText: `No guardar`,
+                allowOutsideClick: false,
+                allowEscapeKey: false,
 
 
 
@@ -426,6 +448,8 @@ function gameOverMovimiento() {
                     Swal.fire({
                         title: 'Escribe tu nombre:',
                         input: 'text',
+                        allowOutsideClick: false,
+                        allowEscapeKey: false,
 
 
                         showCancelButton: true,
@@ -438,6 +462,7 @@ function gameOverMovimiento() {
 
                     if (ipAddress) {
                         Swal.fire(`Your IP address is ${ipAddress}`)
+
                     }
                 } else if (result.isDenied) {
                     Swal.fire('Cambios no guardados!', '', 'error')
@@ -466,6 +491,8 @@ function gameOverTurno() {
             title: 'Perdiste! no puedes colocar mas cartas',
             showDenyButton: true,
             showCancelButton: true,
+            allowOutsideClick: false,
+            allowEscapeKey: false,
 
             cancelButtonText: 'Ver tablero',
             confirmButtonText: 'Guardar partida',
@@ -525,7 +552,7 @@ setImageCard(targetElement.id, draggedCard.id);
         } else {
             // Mostrar un mensaje de error y no permitir el movimiento
             Swal.fire({
-                position: 'top-end',
+                position: 'top-start',
                 icon: 'error',
                 title: 'No puedes colocar la carta en ese lugar',
                 showConfirmButton: false,
@@ -538,6 +565,8 @@ setImageCard(targetElement.id, draggedCard.id);
         let todasLasCartasSonCero = manoCartas.every(carta => carta === 0);
         if (todasLasCartasSonCero && mazoCartas.length === 0) {
             Swal.fire({
+                allowOutsideClick: false,
+                allowEscapeKey: false,
                 title: 'Custom width, padding, color, background.',
                 width: 600,
                 padding: '3em',

@@ -657,6 +657,8 @@ const btnCancelarTurno = document.getElementById("btnCancelar");
 btnCancelarTurno.addEventListener("click", cancelarTurno);
 const btnComenzarGame = document.getElementById("btnGame");
 btnComenzarGame.addEventListener("click", comenzarGame);
+const btnSeed = document.getElementById("btnSeed");
+btnSeed.addEventListener("click", mostrarSeed);
 function cancelarTurno() {
 
     let cantidadDeCeroz = 0;
@@ -861,10 +863,11 @@ function generarMazoConSemilla(semilla) {
 
     return { mazo: mazoCartas, semilla }; // Devuelve el mazo y la semilla
 }
-
+let resultadoGeneracion;
+let semilla;
 // Función para jugar una partida con una semilla
 function jugarPartida(semilla) {
-    const resultadoGeneracion = generarMazoConSemilla(semilla);
+    resultadoGeneracion = generarMazoConSemilla(semilla);
 
     console.log("Semilla utilizada:", resultadoGeneracion.semilla);
     console.log("Mazo generado:", resultadoGeneracion.mazo);
@@ -878,3 +881,14 @@ function nuevaPartida() {
     jugarPartida(semillaAleatoria);
 }
 
+
+
+
+function mostrarSeed(){
+    
+    Swal.fire(
+        'Good job!',
+        `Tu semilla del mazo es: ${resultadoGeneracion.semilla}`,
+        'success'
+        )
+}

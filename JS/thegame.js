@@ -1,3 +1,5 @@
+import seedrandom from 'seedrandom';
+const random = seedrandom('seedValue');
 Swal.fire({
     title: 'Bienvenido!',
     text: 'Comienza THE GAME',
@@ -128,11 +130,12 @@ let juegoComenzado = false;
 function comenzarGame() {
     if (juegoComenzado === false) {
 
-        generarMazo()
+        nuevaPartida()
         manoCartas = [0, 0, 0, 0, 0, 0, 0, 0]
         displayCurrentImage()
 
         guardarProgreso()
+        console.log(mazoCartas);
 
     }
         juegoComenzado = true;
@@ -833,3 +836,45 @@ function cargarProgreso() {
     mostrarCartasTablero()
 
 }
+
+
+
+// Función para generar una semilla aleatoria única
+function generarSemillaAleatoria() {
+    return Math.random().toString(36).substring(2);
+}
+
+// Función para generar el mazo con una semilla y devolverlo junto con la semilla
+function generarMazoConSemilla(semilla) {
+    const rng = seedrandom(semilla); // Crea la función generadora de números pseudoaleatorios con la semilla
+    mazoCartas = [];
+
+    for (let i = 2; i <= 99; i++) {
+        mazoCartas.push(i);
+    }
+
+    // Baraja el mazo (Fisher-Yates Shuffle) utilizando la función generadora
+    for (let i = mazoCartas.length - 1; i > 0; i--) {
+        const j = Math.floor(rng() * (i + 1));
+        [mazoCartas[i], mazoCartas[j]] = [mazoCartas[j], mazoCartas[i]];
+    }
+
+    return { mazo: mazoCartas, semilla }; // Devuelve el mazo y la semilla
+}
+
+// Función para jugar una partida con una semilla
+function jugarPartida(semilla) {
+    const resultadoGeneracion = generarMazoConSemilla(semilla);
+
+    console.log("Semilla utilizada:", resultadoGeneracion.semilla);
+    console.log("Mazo generado:", resultadoGeneracion.mazo);
+    // Aquí puedes continuar con la lógica del juego utilizando el mazo generado
+}
+
+// Función para iniciar una nueva partida con una semilla aleatoria
+function nuevaPartida() {
+    const semillaAleatoria = generarSemillaAleatoria();
+    console.log("Nueva partida con semilla aleatoria:", semillaAleatoria);
+    jugarPartida(semillaAleatoria);
+}
+

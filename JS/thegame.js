@@ -129,9 +129,9 @@ function comenzarGame() {
     if (juegoComenzado === false) {
 
         generarMazo()
-        obtenerCartasAleatorias()
+        manoCartas = [0, 0, 0, 0, 0, 0, 0, 0]
         displayCurrentImage()
-        mostrarCartasEnMano()
+
         guardarProgreso()
 
     }
@@ -287,6 +287,7 @@ function pasarTurno() {
                 }
             }
             arrayTemporal = [];
+            guardarProgreso()
             mostrarCartasEnMano();
         }
  else if (maxRandomCards === 1) {
@@ -296,6 +297,7 @@ function pasarTurno() {
             const zeroIndex = zerosIndices[0];
             manoCartas[zeroIndex] = randomCard;
             arrayTemporal = [];
+            guardarProgreso()
             mostrarCartasEnMano();
         } else {
             const Toast = Swal.mixin({
@@ -680,6 +682,7 @@ function cancelarTurno() {
         mostrarCartasEnMano();
         arrayTemporal = [];
         mostrarCartasTablero()
+        guardarProgreso()
 
 
     } else {

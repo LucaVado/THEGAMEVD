@@ -659,6 +659,8 @@ const btnComenzarGame = document.getElementById("btnGame");
 btnComenzarGame.addEventListener("click", comenzarGame);
 const btnSeed = document.getElementById("btnSeed");
 btnSeed.addEventListener("click", mostrarSeed);
+const btnReglas = document.getElementById("btnReglas");
+btnReglas.addEventListener("click", reglas);
 function cancelarTurno() {
 
     let cantidadDeCeroz = 0;
@@ -891,4 +893,12 @@ function mostrarSeed(){
         `Tu semilla del mazo es: ${resultadoGeneracion.semilla}`,
         'success'
         )
+}
+function reglas(){
+
+    Swal.fire({
+        imageUrl: 'https://placeholder.pics/svg/300x1500',
+        imageHeight: 1500,
+        imageAlt: 'A tall image'
+    })
 }

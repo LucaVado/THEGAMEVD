@@ -1,5 +1,4 @@
 import seedrandom from 'seedrandom';
-const random = seedrandom('seedValue');
 Swal.fire({
     title: 'Bienvenido!',
     text: 'Comienza THE GAME',
@@ -427,6 +426,7 @@ function gameOverMovimiento() {
             cantidadDeCeros++;
         }
     }
+    let mazoCheck;
     mazoCheck = mazoCartas.length;
 
 

@@ -10,7 +10,7 @@ document.addEventListener("DOMContentLoaded", function () {
         localStorage.setItem("seed", seed);
 
         // Redirige al juego
-        window.location.href = "index.html";
+        window.location.href = "thegame.html";
     });
 
     // Si existe un nombre de jugador y una seed guardados en localStorage, llena los campos

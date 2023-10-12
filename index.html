@@ -1,114 +1,16 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="CSS/index.css">
-    <link rel="shortcut icon" href="IMG/favicon.png">
-    <script src="node_modules/sweetalert2/dist/sweetalert2.min.js"></script>
-    <link rel="stylesheet" href="node_modules/sweetalert2/dist/sweetalert2.min.css">
-    <link rel="stylesheet" href="node_modules/@sweetalert2/theme-borderless/borderless.css">
-
-    <title>THE GAME RAINBOW</title>
+    <link rel="stylesheet" type="text/css" href="CSS/index.css">
 </head>
 <body>
-<div class="container">
-    <div class="item lateralIzquierdo">
-
-    </div>
-    <div class="board">
-        <div class="card card-1L">
-            <div class="flecha">
-                <img id="flecha1I" src="IMG/flechaIndicador1100.png" alt="indicador">
-            </div>
-            <div class="card wflecha">
-                <img id="GAME1Izquierda" src="IMG/GAMEBACK.png" alt="No image" draggable="true">
-            </div>
-        </div>
-        <div class="card card-1D">
-            <div class="flecha">
-                <img id="flecha1D" src="IMG/flechaIndicador1100.png" alt="indicador">
-            </div>
-            <div class="card wflecha">
-                <img id="GAME1Derecha" src="IMG/GAMEBACK.png" alt="No image" draggable="true">
-            </div>
-        </div>
-
-        <div class="card card-back">
-            <img src="IMG/GAMEBACK.png" alt="GAMEBACK" id="btnTurnoIMG" class="IMGBACK">
-        </div>
-        <div class="card card-100L">
-            <div class="flecha">
-                <img id="flecha100I" src="IMG/flechaIndicador1001.png" alt="indicador">
-            </div>
-            <div class="card wflecha">
-                <img id="GAME100Izquierda" src="IMG/GAMEBACK.png" alt="No image" draggable="true">
-
-            </div>
-        </div>
-        <div class="card card-100D">
-            <div class="flecha">
-                <img id="flecha100D" src="IMG/flechaIndicador1001.png" alt="indicador">
-            </div>
-            <div class="card wflecha">
-                <img id="GAME100Derecha" src="IMG/GAMEBACK.png" alt="No image" draggable="true">
-            </div>
-        </div>
-    </div>
-    <div class="item lateralDerecho">
-        <div class="button-1" id="btnSeed">
-            Semilla
-        </div>
-        <div class="button-1" id="btnReglas">
-            Reglas
-        </div>
-    </div>
-    <div class="item lateralIzquierdoDown">
-        <div class="wrap">
-            <button class="button" id="btnTurno">
-                Turno
-            </button>
-
-        </div>
-    </div>
-    <div class="item Hand">
-        <div class="card" >
-            <img id="0" src="IMG/GAMEBACK.png" alt="No image" draggable="true">
-        </div>
-        <div class="card" >
-            <img id="1" src="IMG/GAMEBACK.png" alt="No image" draggable="true">
-        </div>
-        <div class="card" >
-            <img id="2" src="IMG/GAMEBACK.png" alt="No image" draggable="true">
-        </div>
-        <div class="card" >
-            <img id="3" src="IMG/GAMEBACK.png" alt="No image" draggable="true">
-        </div>
-        <div class="card" >
-            <img id="4" src="IMG/GAMEBACK.png" alt="No image" draggable="true">
-        </div>
-        <div class="card" >
-            <img id="5" src="IMG/GAMEBACK.png" alt="No image" draggable="true">
-        </div>
-        <div class="card" >
-            <img id="6" src="IMG/GAMEBACK.png" alt="No image" draggable="true">
-        </div>
-        <div class="card" >
-            <img id="7" src="IMG/GAMEBACK.png" alt="No image" draggable="true">
-        </div>
-    </div>
-    <div class="item lateralDerechoDown">
-        <div class="btnD1">
-            <button class="glow-on-hover" type="button" id="btnGame">Comenzar Juego</button>
-        </div>
-        <div class="btnD2">
-            <button class="glow-on-hover" type="button" id="verMatriz">Ver Consola</button>
-        </div>
-        <div class="btnD3">
-            <button class="glow-on-hover" type="button" id="btnCancelar">CANCELAR</button>
-        </div>
-    </div>
+<div class="menu">
+    <h1>Nombre del Jugador</h1>
+    <input type="text" id="playerName" placeholder="Tu Nombre">
+    <h1>Configuración de Mazo</h1>
+    <input type="text" id="seed" placeholder="Seed del Mazo">
+    <button id="startGame">Comenzar Juego</button>
 </div>
-<script type="module" src="JS/thegame.js"></script>
 </body>
+<script src="JS/index.js"></script>
 </html>

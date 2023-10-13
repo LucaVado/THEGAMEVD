@@ -7,72 +7,144 @@
 }
 
 html{
-    border: 5px solid black;
     width: 100%;
     height: 100%;
-    overflow: hidden;
 }
 
 body{
-    border: 5px solid black;
     width: 100%;
     height: 100%;
     background: #223;
-    overflow: hidden;
+
 }
 
 .parent {
     width: 100%;
     height: 100%;
-    border: 5px solid blue;
+    border: 5px solid red;
     display: grid;
-    grid-template-columns: 1fr;
-    grid-template-rows: 1fr 1fr;
-    gap: 2%;
-    padding: 1%;
+    grid-template-columns: 100%;
+    grid-template-rows: 70% 30%;
+
 }
 
 .div1 {
+    width: 100%;
+    height: 100%;
     border: 5px solid yellow;
     grid-area: 1 / 1 / 2 / 2;
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: 33% 34% 33%;
 }
 .hijo1{
+    width: 100%;
+    height: 100%;
     border: 5px solid blue;
+    display: grid;
+
 }
 .hijo2{
-    border: 5px solid green;
+    width: 100%;
+    height: 100%;
+    border: 5px solid blue;
+    display: grid;
 }
 .hijo3{
-    border: 5px solid red;
+    width: 100%;
+    height: 100%;
+    border: 5px solid blue;
+    display: grid;
+
 }
+
+.hijastro1{
+    border: 5px solid blue;
+    width: 100%;
+    height: 50%;
+    margin: auto;
+
+}
+.hijastro2{
+    border: 5px solid blue;
+    width: 100%;
+    height: 50%;
+    margin: auto;
+}
+.hijastro3{
+    border: 5px solid blue;
+    width: 100%;
+    height: 50%;
+    margin: auto;
+}
+.div2 {
+    border: 5px solid yellow;
+    grid-area: 2 / 1 / 3 / 2;
+    display: grid;
+}
+.child1{
+    border: 5px solid darkmagenta;
+}
+
 @media (max-width: 800px) {
     .div1 {
-        border: 5px solid yellow;
+        border: 5px solid white;
         grid-area: 1 / 1 / 2 / 2;
         display: grid;
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: 50% 50%;
     }
     .hijo3 {
         grid-column: span 2;
     }
+    .hijastro1{
+        border: 5px solid blue;
+        width: 100%;
+        height: 70%;
+        margin: auto;
+
+    }
+    .hijastro2{
+        border: 5px solid blue;
+        width: 100%;
+        height: 70%;
+        margin: auto;
+    }
+    .hijastro3{
+        border: 5px solid blue;
+        width: 100%;
+        height: 70%;
+        margin: auto;
+    }
+
 }
 @media (max-width: 400px) {
     .div1 {
         border: 5px solid yellow;
         grid-area: 1 / 1 / 2 / 2;
         display: grid;
-        grid-template-columns: 1fr;
+        grid-template-columns: 100%;
     }
     .hijo3 {
         grid-column: span 1;
     }
-}
-.div2 {
-    border: 5px solid yellow;
-    grid-area: 2 / 1 / 3 / 2;
-}
-.child1{
-    border: 5px solid darkmagenta;
+    .hijastro1{
+        border: 5px solid blue;
+        width: 100%;
+        height: 90%;
+        margin: auto;
+
+    }
+    .hijastro2{
+        border: 5px solid blue;
+        width: 100%;
+        height: 90%;
+        margin: auto;
+    }
+    .hijastro3{
+        border: 5px solid blue;
+        width: 100%;
+        height: 90%;
+        margin: auto;
+    }
+
+
 }

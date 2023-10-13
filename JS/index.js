@@ -3,6 +3,7 @@ document.addEventListener("DOMContentLoaded", function() {
     const jugarNuevaPartidaButton = document.getElementById("jugarNuevaPartida");
     const jugarConSeedButton = document.getElementById("jugarConSeed");
 
+
     verReglasButton.addEventListener("click", function() {
         Swal.fire({
             title: "Reglas del Juego",
@@ -62,4 +63,58 @@ document.addEventListener("DOMContentLoaded", function() {
             }
         });
     });
+
+    const juegoPendiente = localStorage.getItem("juegoPendiente");
+
+    if (juegoPendiente) {
+        const cuadroJuegoPendiente = document.getElementById("cuadroJuegoPendiente");
+        if (cuadroJuegoPendiente) {
+            cuadroJuegoPendiente.style.display = "block";
+        }
+    }
+
+    const verJuegoPendienteButton = document.getElementById("verJuegoPendiente");
+    if (verJuegoPendienteButton) {
+        verJuegoPendienteButton.addEventListener("click", function() {
+            // Obtén los datos del juego pendiente desde localStorage
+            const nombre = localStorage.getItem("nombre");
+            const seed = localStorage.getItem("seed");
+
+            // Calcula el porcentaje de la partida (ejemplo: utilizando el array "mazoCartas" con 100 cartas)
+            const mazoCartas = JSON.parse(localStorage.getItem("mazoCartas"));
+            const porcentaje = 100 - (mazoCartas.length / 100) * 100;
+
+
+
+            // Muestra la alerta con los datos del juego pendiente y botones "Continuar" y "Cancelar"
+            Swal.fire({
+                title: "Detalles del Juego Pendiente",
+                html: `
+        <div class="custom-alert">
+            <p><strong>Nombre:</strong> ${nombre}</p>
+            <p><strong>Seed:</strong> ${seed}</p>
+            <p><strong>Porcentaje de la partida:</strong> ${porcentaje}%</p>
+        </div>`,
+                icon: "info",
+                showCancelButton: true,
+                confirmButtonText: "Continuar",
+                cancelButtonText: "Cancelar",
+                customClass: {
+                    confirmButton: "custom-confirm-button",
+                    cancelButton: "custom-cancel-button"
+                }
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    localStorage.setItem("continueFunction", "true");
+                    window.location.href = "thegame.html";
+                }
+            });
+
+        });
+    }
+
+
+
+
+
 });

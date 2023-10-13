@@ -7,6 +7,15 @@ document.addEventListener("DOMContentLoaded", function() {
     if (nombreElement) {
         nombreElement.textContent = nombreGuardado;
     }
+    const continueFunction = localStorage.getItem("continueFunction");
+
+    if (continueFunction === "true") {
+        // Ejecuta la función o la lógica que necesitas después de presionar "Continuar"
+        cargarProgreso() // Ajusta el nombre de la función según tus necesidades
+
+        // Limpia la señal en localStorage para que no se ejecute nuevamente
+        localStorage.removeItem("continueFunction");
+    }
 
 });
 let seedYaCreada;
@@ -111,27 +120,33 @@ function generarMazo() {
     }
 }
 
+function juegoComenzadoLS(){
+
+    localStorage.setItem("juegoPendiente", "true");
+
+}
 let mazoCartas = [];
 let juegoComenzado = false;
 function comenzarGame() {
     if (juegoComenzado === false) {
-        if (seedYaCreada){
-        jugarPartida(seedYaCreada)
-        manoCartas = [0, 0, 0, 0, 0, 0, 0, 0]
-        displayCurrentImage()
 
-        guardarProgreso()
-        console.log(mazoCartas);
+        if (seedYaCreada){
+            jugarPartida(seedYaCreada)
+            manoCartas = [0, 0, 0, 0, 0, 0, 0, 0]
+            displayCurrentImage()
+            juegoComenzadoLS()
+            guardarProgreso()
+            console.log(mazoCartas);
         }else {
             nuevaPartida()
             manoCartas = [0, 0, 0, 0, 0, 0, 0, 0]
             displayCurrentImage()
-
+            juegoComenzadoLS()
             guardarProgreso()
             console.log(mazoCartas);
         }
     }
-        juegoComenzado = true;
+    juegoComenzado = true;
 
 }
 let manoCartas = [];
@@ -220,7 +235,7 @@ function displayCurrentImage() {
 
 }
 
- // Llama a la función para mostrar la imagen actual en la carga inicial.
+// Llama a la función para mostrar la imagen actual en la carga inicial.
 
 // Función para mostrar las matrices en la consola
 function mostrarMatricesEnConsola() {
@@ -239,7 +254,7 @@ btnVerMatriz.addEventListener("click", mostrarMatricesEnConsola);
 
 function pasarTurno() {
 
-        let cantidadDeCeros = 0;
+    let cantidadDeCeros = 0;
     for (let i = 0; i < manoCartas.length; i++) {
         if (manoCartas[i] === 0) {
             cantidadDeCeros++;
@@ -286,7 +301,7 @@ function pasarTurno() {
             guardarProgreso()
             mostrarCartasEnMano();
         }
- else if (maxRandomCards === 1) {
+        else if (maxRandomCards === 1) {
             const randomIndex = Math.floor(Math.random() * mazoCartas.length);
             const randomCard = mazoCartas.splice(randomIndex, 1)[0];
 
@@ -520,74 +535,74 @@ function gameOverTurno() {
 }
 function moverCarta(draggedCard, targetElement){
 
-        const cartaMano = manoCartas[draggedCard.id];
-        let arrayDestino;
-        switch (targetElement.id) {
-            case fieldCard.UnoIzq:
-                arrayDestino = filaSuperiorIzquierda;
-                break;
-            case fieldCard.UnoDer:
-                arrayDestino = filaSuperiorDerecha;
-                break;
-            case fieldCard.CienIzq:
-                arrayDestino = filaInferiorIzquierda;
-                break;
-            case fieldCard.CienDer:
-                arrayDestino = filaInferiorDerecha;
-                break;
-            default:
-                return; // Salir si el destino no es válido
-        }
+    const cartaMano = manoCartas[draggedCard.id];
+    let arrayDestino;
+    switch (targetElement.id) {
+        case fieldCard.UnoIzq:
+            arrayDestino = filaSuperiorIzquierda;
+            break;
+        case fieldCard.UnoDer:
+            arrayDestino = filaSuperiorDerecha;
+            break;
+        case fieldCard.CienIzq:
+            arrayDestino = filaInferiorIzquierda;
+            break;
+        case fieldCard.CienDer:
+            arrayDestino = filaInferiorDerecha;
+            break;
+        default:
+            return; // Salir si el destino no es válido
+    }
 
-        // Verificar si la carta de la mano es menor o mayor que la última carta en el campo destino
-        if (
-            (targetElement.id === fieldCard.UnoIzq || targetElement.id === fieldCard.UnoDer) &&
-            (cartaMano > arrayDestino[arrayDestino.length - 1] || cartaMano === arrayDestino[arrayDestino.length - 1] - 10)
-        ) {
-            // Permitir el movimiento si es mayor (fila superior)
-setImageCard(targetElement.id, draggedCard.id);
+    // Verificar si la carta de la mano es menor o mayor que la última carta en el campo destino
+    if (
+        (targetElement.id === fieldCard.UnoIzq || targetElement.id === fieldCard.UnoDer) &&
+        (cartaMano > arrayDestino[arrayDestino.length - 1] || cartaMano === arrayDestino[arrayDestino.length - 1] - 10)
+    ) {
+        // Permitir el movimiento si es mayor (fila superior)
+        setImageCard(targetElement.id, draggedCard.id);
 
-        } else if (
-            (targetElement.id === fieldCard.CienIzq || targetElement.id === fieldCard.CienDer) &&
-            (cartaMano < arrayDestino[arrayDestino.length - 1] || cartaMano === arrayDestino[arrayDestino.length - 1] + 10)
-        ) {
-            // Permitir el movimiento si es menor (fila inferior)
-setImageCard(targetElement.id, draggedCard.id);
+    } else if (
+        (targetElement.id === fieldCard.CienIzq || targetElement.id === fieldCard.CienDer) &&
+        (cartaMano < arrayDestino[arrayDestino.length - 1] || cartaMano === arrayDestino[arrayDestino.length - 1] + 10)
+    ) {
+        // Permitir el movimiento si es menor (fila inferior)
+        setImageCard(targetElement.id, draggedCard.id);
 
-        } else {
-            // Mostrar un mensaje de error y no permitir el movimiento
-            Swal.fire({
-                position: 'top-start',
-                icon: 'error',
-                title: 'No puedes colocar la carta en ese lugar',
-                showConfirmButton: false,
-                timer: 1500
-            })
-            return;
-        }
+    } else {
+        // Mostrar un mensaje de error y no permitir el movimiento
+        Swal.fire({
+            position: 'top-start',
+            icon: 'error',
+            title: 'No puedes colocar la carta en ese lugar',
+            showConfirmButton: false,
+            timer: 1500
+        })
+        return;
+    }
 
-        // Verificar si todas las cartas en la mano son 0 y el mazo está vacío
-        let todasLasCartasSonCero = manoCartas.every(carta => carta === 0);
-        if (todasLasCartasSonCero && mazoCartas.length === 0) {
-            Swal.fire({
-                allowOutsideClick: false,
-                allowEscapeKey: false,
-                title: 'Custom width, padding, color, background.',
-                width: 600,
-                padding: '3em',
-                color: '#716add',
-                background: '#fff url(../IMG/backgroundIMG.GIF)',
-                backdrop: `
+    // Verificar si todas las cartas en la mano son 0 y el mazo está vacío
+    let todasLasCartasSonCero = manoCartas.every(carta => carta === 0);
+    if (todasLasCartasSonCero && mazoCartas.length === 0) {
+        Swal.fire({
+            allowOutsideClick: false,
+            allowEscapeKey: false,
+            title: 'Custom width, padding, color, background.',
+            width: 600,
+            padding: '3em',
+            color: '#716add',
+            background: '#fff url(../IMG/backgroundIMG.GIF)',
+            backdrop: `
     rgba(0,0,123,0.4)
     url("../IMG/victoryIMG.GIF")
     left top
     no-repeat
   `
-            })
-        }
-        gameOverMovimiento();
-        btnAnimation();
-        guardarProgreso()
+        })
+    }
+    gameOverMovimiento();
+    btnAnimation();
+    guardarProgreso()
 
 }
 
@@ -884,12 +899,12 @@ function nuevaPartida() {
 
 
 function mostrarSeed(){
-    
+
     Swal.fire(
         'Good job!',
         `Tu semilla del mazo es: ${resultadoGeneracion.semilla}`,
         'success'
-        )
+    )
 }
 function reglas(){
 

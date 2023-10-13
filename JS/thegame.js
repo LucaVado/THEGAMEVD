@@ -1,10 +1,13 @@
 import seedrandom from 'seedrandom';
-Swal.fire({
-    title: 'Bienvenido!',
-    text: 'Comienza THE GAME',
-    icon: 'info',
-    confirmButtonText: 'Continuar'
-})
+document.addEventListener("DOMContentLoaded", function() {
+    const nombreGuardado = localStorage.getItem("nombre");
+
+    const nombreElement = document.getElementById("nombre");
+    if (nombreElement) {
+        nombreElement.textContent = nombreGuardado;
+    }
+});
+
 if (localStorage.length > 1){
     Swal.fire({
         title: 'Tienes un juego pendiente deseas continuar?',
@@ -904,4 +907,20 @@ function reglas(){
         imageHeight: 1500,
         imageAlt: 'A tall image'
     })
+}
+const salirGame = document.getElementById("salir");
+salirGame.addEventListener("click", salirGameF);
+function salirGameF(){
+    Swal.fire({
+        title: 'Seguro que quieres salir? Perderas tu progreso!',
+        showCancelButton: true,
+        confirmButtonText: 'Salir',
+    }).then((result) => {
+        /* Read more about isConfirmed, isDenied below */
+        if (result.isConfirmed) {
+            localStorage.clear();
+            window.location.href = "index.html";
+        }
+    })
+
 }

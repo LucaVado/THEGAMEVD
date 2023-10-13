@@ -33,8 +33,8 @@ document.addEventListener("DOMContentLoaded", function() {
         }).then((result) => {
             if (result.isConfirmed) {
                 const nombre = result.value;
-                // Lógica para jugar la nueva partida con el nombre ingresado
-                alert("Comenzando nueva partida para: " + nombre);
+                localStorage.setItem("nombre", nombre); // Guarda el nombre en localStorage
+                window.location.href = "thegame.html"; // Redirige a "thegame.html"
             }
         });
     });

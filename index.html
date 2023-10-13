@@ -5,33 +5,41 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>The Game - Menú</title>
     <link rel="stylesheet" href="CSS/index.css">
+    <link rel="shortcut icon" href="IMG/favicon.png">
+    <script src="node_modules/sweetalert2/dist/sweetalert2.min.js"></script>
+    <link rel="stylesheet" href="node_modules/sweetalert2/dist/sweetalert2.min.css">
+    <link rel="stylesheet" href="node_modules/@sweetalert2/theme-borderless/borderless.css">
 </head>
 <body>
 <div class="parent">
     <div class="div1">
         <div class="hijo1">
             <div class="hijastro1">
-
+                <button id="verReglas">Ver Reglas del Juego</button>
             </div>
         </div>
         <div class="hijo2">
             <div class="hijastro2">
-
+                <button id="jugarNuevaPartida">Jugar Nueva Partida</button>
             </div>
         </div>
         <div class="hijo3">
             <div class="hijastro3">
-
+                <button id="jugarConSeed">Jugar Partida con Seed</button>
             </div>
         </div>
     </div>
 
     <div class="div2">
         <div class="child1">
-
+            <div id="cuadroJuegoPendiente" style="display: none;">
+                <p>¡Tienes un juego pendiente!</p>
+                <button id="verJuegoPendiente">VER</button>
+            </div>
         </div>
+
     </div>
 </div>
-<script src="JS/index.js"></script>
+<script type="module" src="JS/index.js"></script>
 </body>
 </html>

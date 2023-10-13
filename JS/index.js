@@ -53,12 +53,12 @@ document.addEventListener("DOMContentLoaded", function() {
                 }
                 return { nombre, seed };
             }
-
         }).then((result) => {
             if (result.isConfirmed) {
                 const { nombre, seed } = result.value;
-                // Lógica para jugar con la Seed y el nombre
-                alert("Comenzando partida para: " + nombre + " con la Seed: " + seed);
+                localStorage.setItem("nombre", nombre); // Guarda el nombre en localStorage
+                localStorage.setItem("seed", seed); // Guarda la seed en localStorage
+                window.location.href = "thegame.html"; // Redirige a "thegame.html"
             }
         });
     });

@@ -148,10 +148,3 @@ body{
 
 
 }
-#nuevaPartida:disabled {
-    background-color: rgb(128, 128, 128);
-}
-
-#jugarConSeed:disabled {
-    background-color: rgb(128, 128, 128);
-}

@@ -1,32 +1,16 @@
 import seedrandom from 'seedrandom';
 document.addEventListener("DOMContentLoaded", function() {
     const nombreGuardado = localStorage.getItem("nombre");
+    const seedYaCreada = localStorage.getItem("seed");
 
     const nombreElement = document.getElementById("nombre");
     if (nombreElement) {
         nombreElement.textContent = nombreGuardado;
     }
+
 });
 
-if (localStorage.length > 1){
-    Swal.fire({
-        title: 'Tienes un juego pendiente deseas continuar?',
-        showDenyButton: true,
-        showCancelButton: true,
-        allowOutsideClick: false,
-        allowEscapeKey: false,
-        confirmButtonText: 'Continuar!',
-        denyButtonText: `Comenzar Nuevo juego`,
-    }).then((result) => {
-        /* Read more about isConfirmed, isDenied below */
-        if (result.isConfirmed) {
-            cargarProgreso()
-            console.log(filaSuperiorIzquierda);
-        } else if (result.isDenied) {
-            localStorage.clear();
-        }
-    })
-}
+
 // CHECKPOINT
 let filaSuperiorIzquierda = [
     1

@@ -1,7 +1,7 @@
 import seedrandom from 'seedrandom';
 document.addEventListener("DOMContentLoaded", function() {
-    const nombreGuardado = localStorage.getItem("nombre");
-    const seedYaCreada = localStorage.getItem("seed");
+    let nombreGuardado = localStorage.getItem("nombre");
+    seedYaCreada = localStorage.getItem("seed");
 
     const nombreElement = document.getElementById("nombre");
     if (nombreElement) {
@@ -9,7 +9,7 @@ document.addEventListener("DOMContentLoaded", function() {
     }
 
 });
-
+let seedYaCreada;
 
 // CHECKPOINT
 let filaSuperiorIzquierda = [
@@ -115,14 +115,21 @@ let mazoCartas = [];
 let juegoComenzado = false;
 function comenzarGame() {
     if (juegoComenzado === false) {
-
-        nuevaPartida()
+        if (seedYaCreada){
+        jugarPartida(seedYaCreada)
         manoCartas = [0, 0, 0, 0, 0, 0, 0, 0]
         displayCurrentImage()
 
         guardarProgreso()
         console.log(mazoCartas);
+        }else {
+            nuevaPartida()
+            manoCartas = [0, 0, 0, 0, 0, 0, 0, 0]
+            displayCurrentImage()
 
+            guardarProgreso()
+            console.log(mazoCartas);
+        }
     }
         juegoComenzado = true;
 
@@ -856,7 +863,7 @@ function generarMazoConSemilla(semilla) {
     return { mazo: mazoCartas, semilla }; // Devuelve el mazo y la semilla
 }
 let resultadoGeneracion;
-let semilla;
+
 // Función para jugar una partida con una semilla
 function jugarPartida(semilla) {
     resultadoGeneracion = generarMazoConSemilla(semilla);

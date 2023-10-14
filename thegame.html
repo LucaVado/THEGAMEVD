@@ -20,6 +20,11 @@
         <div class="button-1" id="salir">
             Salir
         </div>
+        <div class="button-1" id="btnScore">
+            SCORE
+        </div>
+
+
     </div>
     <div class="board">
         <div class="card card-1L">
@@ -66,6 +71,34 @@
         </div>
         <div class="button-1" id="btnReglas">
             Reglas
+        </div>
+        <!-- Modal -->
+        <div id="myModal" class="modal">
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <div class="highPage">
+                    <div class="skulls">
+                        <h1>High Scores</h1>
+                        <table>
+                            <thead>
+                            <tr>
+                                <th>Rank</th>
+                                <th>Score</th>
+                                <th>Name</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <td>1st</td>
+                                <td>0</td>
+                                <td></td>
+                            </tr>
+                            <!-- Otras filas de la tabla -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
     <div class="item lateralIzquierdoDown">
@@ -114,6 +147,7 @@
         </div>
     </div>
 </div>
+
 <script type="module" src="JS/thegame.js"></script>
 </body>
 </html>

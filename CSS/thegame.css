@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
 *,
 *::before,
 *::after {
@@ -933,4 +934,90 @@ button:hover::after {
         background-size: 50% 70%;
         color: transparent;
     }
+}
+
+/* Estilos para la modal */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+}
+
+.modal-content {
+    background-color: #f4f4f4;
+    margin: 10% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    max-width: 600px;
+    position: relative;
+}
+
+.close {
+    position: absolute;
+    right: 0;
+    top: 0;
+    padding: 10px;
+    cursor: pointer;
+}
+
+
+.highPage {
+    position: relative;
+    color: #0b0;
+    font-size: 21px;
+    line-height: 1.5;
+    padding: 32px 16px;
+    max-width: 960px;
+    margin: 0 auto;
+    font-family: 'Press Start 2P', cursive;
+}
+
+.skulls {
+    position: relative;
+    padding: 16px 0 24px;
+    max-width: 600px;
+    margin: 0 auto;
+    border: 24px solid;
+    border-image: url(https://skullctf.com/images/skull-border.svg) 32 round;
+}
+
+.highPage h1 {
+    text-align: center;
+}
+
+.highPage table {
+    text-transform: uppercase;
+    width: 440px;
+    margin: 0 auto;
+}
+
+.highPage table th {
+    min-width: 140px;
+    text-align: left;
+}
+
+.highPage table tr:nth-child(1) td {
+    color: red;
+}
+
+.highPage table tr:nth-child(2) td {
+    color: purple;
+}
+
+.highPage table tr:nth-child(3) td {
+    color: salmon;
+}
+
+.highPage table tr:nth-child(4) td {
+    color: orange;
+}
+
+.highPage table tr:nth-child(5) td {
+    color: yellow;
 }

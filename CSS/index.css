@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
 *,
 *::before,
 *::after {
@@ -82,15 +83,29 @@ body{
     margin: auto;
 }
 .div2 {
-
+    width: 100%;
+    height: 100%;
     grid-area: 2 / 1 / 3 / 2;
     display: grid;
+
 }
 .child1{
+    width: 100%;
+    height: 100%;
 
     display: grid;
-    justify-content: center;
-    align-content: center;
+    grid-template-columns: repeat( auto-fit, minmax(250px, 1fr) );
+    grid-template-rows: 1fr;
+    grid-column-gap: 5%;
+    padding: 8% 4% 8% 4%;
+
+}
+
+.childraso1{
+
+}
+.childraso2{
+
 }
 
 @media (max-width: 800px) {
@@ -133,6 +148,7 @@ body{
     }
     .hijo3 {
         grid-column: span 1;
+
     }
     .hijastro1{
 
@@ -146,19 +162,19 @@ body{
         width: 100%;
         height: 90%;
         margin: auto;
+
     }
     .hijastro3{
 
         width: 100%;
         height: 90%;
         margin: auto;
+
     }
 
 
 }
-.childraso1{
 
-}
 .glow-on-hover {
     width: 100%;
     height: 100%;
@@ -212,4 +228,80 @@ body{
     left: 0;
     top: 0;
     border-radius: 10px;
+}
+/* Estilos para la modal */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+.modal-content {
+    margin: 10% auto;
+    padding: 20px;
+    width: 80%;
+    max-width: 600px;
+    position: relative;
+}
+
+
+
+.highPage {
+    position: relative;
+    color: #0b0;
+    font-size: 21px;
+    line-height: 1.5;
+    padding: 32px 16px;
+    max-width: 960px;
+    margin: 0 auto;
+    font-family: 'Press Start 2P', cursive;
+}
+
+.skulls {
+    position: relative;
+    padding: 16px 0 24px;
+    max-width: 600px;
+    margin: 0 auto;
+    border: 24px solid;
+    border-image: url(https://skullctf.com/images/skull-border.svg) 32 round;
+}
+
+.highPage h1 {
+    text-align: center;
+}
+
+.highPage table {
+    text-transform: uppercase;
+    width: 440px;
+    margin: 0 auto;
+}
+
+.highPage table th {
+    min-width: 140px;
+    text-align: left;
+}
+
+.highPage table tr:nth-child(1) td {
+    color: red;
+}
+
+.highPage table tr:nth-child(2) td {
+    color: purple;
+}
+
+.highPage table tr:nth-child(3) td {
+    color: salmon;
+}
+
+.highPage table tr:nth-child(4) td {
+    color: orange;
+}
+
+.highPage table tr:nth-child(5) td {
+    color: yellow;
 }

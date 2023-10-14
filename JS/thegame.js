@@ -917,7 +917,7 @@ function salirGameF(){
         showCancelButton: true,
         confirmButtonText: 'Salir',
     }).then((result) => {
-        /* Read more about isConfirmed, isDenied below */
+
         if (result.isConfirmed) {
             localStorage.clear();
             window.location.href = "index.html";
@@ -926,16 +926,16 @@ function salirGameF(){
 }
 
 
-// Obtén el botón "SCORE" y la modal
+
 const btnScore = document.getElementById("btnScore");
 const modal = document.getElementById("myModal");
 
-// Cuando se haga clic en el botón "SCORE", muestra la modal
+
 btnScore.addEventListener("click", function() {
     modal.style.display = "block";
 });
 
-// Cuando se haga clic en la "x" (cerrar), oculta la modal
+
 const closeBtn = document.querySelector(".close");
 closeBtn.addEventListener("click", function() {
     modal.style.display = "none";

@@ -6,10 +6,10 @@ document.addEventListener("DOMContentLoaded", function() {
 
     verReglasButton.addEventListener("click", function() {
         Swal.fire({
-            title: "Reglas del Juego",
-            text: "Aquí van las reglas del juego.",
-            icon: "info"
-        });
+            title: 'REGLAS THE GAME',
+            imageUrl: '../IMG/rules.png',
+            imageAlt: 'RULES'
+        })
     });
 
     jugarNuevaPartidaButton.addEventListener("click", function() {

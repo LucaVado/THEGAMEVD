@@ -818,7 +818,6 @@ function guardarProgreso() {
     const boardSDJSON = JSON.stringify(filaSuperiorDerecha);
     const boardIIJSON = JSON.stringify(filaInferiorIzquierda);
     const boardIDJSON = JSON.stringify(filaInferiorDerecha);
-    const juegoGuardadoJSON = JSON.stringify(game);
     localStorage.setItem('arrayTemporal', arrayTemporalJSON);
     localStorage.setItem('mazoCartas', mazoCartasJSON);
     localStorage.setItem('manoCartas', manoCartasJSON);
@@ -826,11 +825,9 @@ function guardarProgreso() {
     localStorage.setItem('filaSuperiorDerecha', boardSDJSON);
     localStorage.setItem('filaInferiorIzquierda', boardIIJSON);
     localStorage.setItem('filaInferiorDerecha', boardIDJSON);
-    localStorage.setItem('juegoGuardado', juegoGuardadoJSON);
 
 }
 
-let game = "si";
 function cargarProgreso() {
     const arrayTemporalJSON = localStorage.getItem('arrayTemporal');
     const mazoCartasJSON = localStorage.getItem('mazoCartas');
@@ -839,7 +836,6 @@ function cargarProgreso() {
     const boardSDJSON = localStorage.getItem('filaSuperiorDerecha');
     const boardIIJSON = localStorage.getItem('filaInferiorIzquierda');
     const boardIDJSON = localStorage.getItem('filaInferiorDerecha');
-    const juegoGuardadoJSON = localStorage.getItem('juegoGuardado');
     arrayTemporal = JSON.parse(arrayTemporalJSON);
     mazoCartas = JSON.parse(mazoCartasJSON);
     manoCartas = JSON.parse(manoCartasJSON);
@@ -847,7 +843,6 @@ function cargarProgreso() {
     filaSuperiorDerecha = JSON.parse(boardSDJSON);
     filaInferiorIzquierda = JSON.parse(boardIIJSON);
     filaInferiorDerecha = JSON.parse(boardIDJSON);
-    game = JSON.parse(juegoGuardadoJSON);
     mostrarCartasEnMano();
     mostrarCartasTablero()
 
@@ -909,9 +904,9 @@ function mostrarSeed(){
 function reglas(){
 
     Swal.fire({
-        imageUrl: 'https://placeholder.pics/svg/300x1500',
-        imageHeight: 1500,
-        imageAlt: 'A tall image'
+        title: 'REGLAS THE GAME',
+        imageUrl: '../IMG/rules.png',
+        imageAlt: 'RULES'
     })
 }
 const salirGame = document.getElementById("salir");
@@ -928,5 +923,4 @@ function salirGameF(){
             window.location.href = "index.html";
         }
     })
-
 }

@@ -45,7 +45,7 @@
                         <div class="highPage">
                             <div class="skulls">
                                 <h1>High Scores</h1>
-                                <table>
+                                <table id="puntuacionesTable">
                                     <thead>
                                     <tr>
                                         <th>Rank</th>
@@ -54,56 +54,7 @@
                                     </tr>
                                     </thead>
                                     <tbody>
-                                    <tr>
-                                        <td>1st</td>
-                                        <td>0</td>
-                                        <td></td>
-                                    </tr>
-                                    <tr>
-                                        <td>2nd</td>
-                                        <td>0</td>
-                                        <td></td>
-                                    </tr>
-                                    <tr>
-                                        <td>3rd</td>
-                                        <td>0</td>
-                                        <td></td>
-                                    </tr>
-                                    <tr>
-                                        <td>4th</td>
-                                        <td>0</td>
-                                        <td></td>
-                                    </tr>
-                                    <tr>
-                                        <td>5th</td>
-                                        <td>0</td>
-                                        <td></td>
-                                    </tr>
-                                    <tr>
-                                        <td>6th</td>
-                                        <td>0</td>
-                                        <td></td>
-                                    </tr>
-                                    <tr>
-                                        <td>7th</td>
-                                        <td>0</td>
-                                        <td></td>
-                                    </tr>
-                                    <tr>
-                                        <td>8th</td>
-                                        <td>0</td>
-                                        <td></td>
-                                    </tr>
-                                    <tr>
-                                        <td>9th</td>
-                                        <td>0</td>
-                                        <td></td>
-                                    </tr>
-                                    <tr>
-                                        <td>10th</td>
-                                        <td>0</td>
-                                        <td></td>
-                                    </tr>
+                                    <!-- Filas de puntuaciones se agregarán aquí dinámicamente desde JavaScript -->
                                     </tbody>
                                 </table>
                                 <button class="glow-on-hover close" type="button">CLOSE</button>
@@ -123,6 +74,11 @@
     </div>
 
 </div>
+<script src="https://www.gstatic.com/firebasejs/5.0.0/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/5.0.0/firebase-database.js"></script>
+
+
+<script type="module" src="JS/mail.js"></script>
 <script type="module" src="JS/index.js"></script>
 </body>
 </html>

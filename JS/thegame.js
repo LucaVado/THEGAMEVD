@@ -1,7 +1,12 @@
 import seedrandom from 'seedrandom';
+
+let seedYaCreada;
+let nombreGuardado;
 document.addEventListener("DOMContentLoaded", function() {
-    let nombreGuardado = localStorage.getItem("nombre");
+    nombreGuardado = localStorage.getItem("nombre");
     seedYaCreada = localStorage.getItem("seed");
+    console.log(nombreGuardado);
+    console.log(seedYaCreada);
 
     const nombreElement = document.getElementById("nombre");
     if (nombreElement) {
@@ -18,7 +23,6 @@ document.addEventListener("DOMContentLoaded", function() {
     }
 
 });
-let seedYaCreada;
 
 // CHECKPOINT
 let filaSuperiorIzquierda = [
@@ -67,7 +71,7 @@ function setImageCard(valorX,valorAdd){
             filaSuperiorIzquierda.push(temporal2);
             vars = filaSuperiorIzquierda.slice(-1)[0];
             miImagenL.src = `../IMG/GAME${vars}.png`;
-            eliminarCartaMano(valorAdd);
+             eliminarCartaMano(valorAdd);
             arrayTemporal.push(temporal2);
             mostrarCartasEnMano();
             break;
@@ -105,7 +109,7 @@ function eliminarCartaMano(cartaMano) {
     manoCartas[cartaMano] = 0;
     mostrarCartasEnMano();
 }
-
+/*
 function generarMazo() {
     if (mazoCartas.length === 0) {
         for (let i = 2; i <= 99; i++) {
@@ -119,11 +123,9 @@ function generarMazo() {
         }
     }
 }
-
+*/
 function juegoComenzadoLS(){
-
     localStorage.setItem("juegoPendiente", "true");
-
 }
 let mazoCartas = [];
 let juegoComenzado = false;
@@ -136,28 +138,25 @@ function comenzarGame() {
             displayCurrentImage()
             juegoComenzadoLS()
             guardarProgreso()
-            console.log(mazoCartas);
         }else {
             nuevaPartida()
             manoCartas = [0, 0, 0, 0, 0, 0, 0, 0]
             displayCurrentImage()
             juegoComenzadoLS()
             guardarProgreso()
-            console.log(mazoCartas);
         }
     }
     juegoComenzado = true;
-
 }
 let manoCartas = [];
-
+/*
 function obtenerCartasAleatorias() {
     while (manoCartas.length < 8 && mazoCartas.length > 0) {
         const cartaAleatoria = mazoCartas.pop();
         manoCartas.push(cartaAleatoria);
     }
 }
-
+*/
 
 
 function mostrarCartasEnMano() {
@@ -180,7 +179,6 @@ function mostrarCartasEnMano() {
     for (let i = 0; i < cerosAlFinal; i++) {
         manoCartas.push(0);
     }
-
 
     // Iterar sobre las cartas y mostrarlas o aplicar la clase 'hidden-card'
     for (let i = 0; i < manoCartas.length; i++) {
@@ -911,22 +909,39 @@ function reglas(){
 }
 const salirGame = document.getElementById("salir");
 salirGame.addEventListener("click", salirGameF);
-function salirGameF(){
+function salirGameF() {
     Swal.fire({
-        title: 'Seguro que quieres salir? Perderas tu progreso!',
+        title: '¿Seguro que quieres salir? ¡Perderás tu progreso!',
         showCancelButton: true,
         confirmButtonText: 'Salir',
     }).then((result) => {
-
         if (result.isConfirmed) {
-            localStorage.clear();
+            cargarGameBaseDeDatos()
             window.location.href = "index.html";
         }
-    })
+    });
 }
-
-
-
+let score;
+function procesarScore(){
+    const mazoScore = mazoCartas.length;
+    let count = 0;
+    for (let i = 0; i < manoCartas.length; i++) {
+        if (manoCartas[i] !== 0) {
+            count++;
+        }
+    }
+    score = mazoScore + count;
+}
+function cargarGameBaseDeDatos(){
+    procesarScore()
+    const nuevoUsuario = {
+        nombre: nombreGuardado,
+        score: score,
+        seed: resultadoGeneracion.semilla
+    };
+    // Guardar el objeto en el localStorage
+    localStorage.setItem('nuevoUsuario', JSON.stringify(nuevoUsuario));
+}
 const btnScore = document.getElementById("btnScore");
 const modal = document.getElementById("myModal");
 

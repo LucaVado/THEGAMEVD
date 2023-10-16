@@ -63,12 +63,10 @@ rankRef.on('value', (snapshot) => {
 });
 
 
-// Datos del nuevo usuario
-const nuevoUsuario = {
-    nombre: "Nuevo Usuario1",
-    score: 10, // El puntaje del nuevo usuario
-    seed: "nueva_seed32"
-};
-
-// Agregar el nuevo usuario a la base de datos
-rankRef.push(nuevoUsuario);
+const nuevoUsuario = JSON.parse(localStorage.getItem('nuevoUsuario'));
+if (nuevoUsuario) {
+    rankRef.push(nuevoUsuario);
+    localStorage.clear()
+} else {
+    console.log('No se encontraron datos en el localStorage');
+}

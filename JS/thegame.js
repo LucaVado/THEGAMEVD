@@ -2,6 +2,8 @@ import seedrandom from 'seedrandom';
 import { rankRef } from './firebaseConfig';
 let seedYaCreada;
 let nombreGuardado;
+let juegoTerminado = false;
+
 
 document.addEventListener("DOMContentLoaded", function() {
     nombreGuardado = localStorage.getItem("nombre");
@@ -494,6 +496,7 @@ function gameOverMovimiento() {
             btnCancelarTurno.disabled = true;
             btnPasarTurnoContainer.classList.add("disabled");
             cargarGameBaseDeDatos()
+            juegoTerminado = true;
         }
     }
 }
@@ -538,6 +541,7 @@ function gameOverTurno() {
         btnCancelarTurno.disabled = true;
         btnPasarTurnoContainer.classList.add("disabled");
         cargarGameBaseDeDatos()
+        juegoTerminado = true;
     } else {
         console.log("No todas las condiciones se cumplen.");
     }
@@ -613,6 +617,7 @@ function moverCarta(draggedCard, targetElement){
         btnCancelarTurno.disabled = true;
         btnPasarTurnoContainer.classList.add("disabled");
         cargarGameBaseDeDatos()
+        juegoTerminado = true;
     }
     gameOverMovimiento();
     btnAnimation();
@@ -932,7 +937,9 @@ function salirGameF() {
         confirmButtonText: 'Salir',
     }).then((result) => {
         if (result.isConfirmed) {
-            cargarGameBaseDeDatos()
+            if (!juegoTerminado){
+                cargarGameBaseDeDatos()
+            }
             window.location.href = "index.html";
         }
     });

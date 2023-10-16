@@ -1,7 +1,8 @@
 import seedrandom from 'seedrandom';
-
+import { rankRef } from './firebaseConfig';
 let seedYaCreada;
 let nombreGuardado;
+
 document.addEventListener("DOMContentLoaded", function() {
     nombreGuardado = localStorage.getItem("nombre");
     seedYaCreada = localStorage.getItem("seed");
@@ -131,7 +132,9 @@ let mazoCartas = [];
 let juegoComenzado = false;
 function comenzarGame() {
     if (juegoComenzado === false) {
-
+        btnPasarTurnoContainer.classList.remove("disabled");
+        btnPasarTurno.disabled = false;
+        btnCancelarTurno.disabled = false;
         if (seedYaCreada){
             jugarPartida(seedYaCreada)
             manoCartas = [0, 0, 0, 0, 0, 0, 0, 0]
@@ -373,6 +376,7 @@ const btnPasarTurno = document.getElementById("btnTurno");
 btnPasarTurno.addEventListener("click", pasarTurno);
 const btnPasarTurnoIMG = document.getElementById("btnTurnoIMG");
 btnPasarTurnoIMG.addEventListener("click", pasarTurno);
+const btnPasarTurnoContainer = document.getElementById("btnPasarTurnoContainer");
 
 let draggedElement = null;
 
@@ -486,6 +490,10 @@ function gameOverMovimiento() {
                     Swal.fire('Cambios no guardados!', '', 'error')
                 }
             })
+            btnPasarTurno.disabled = true;
+            btnCancelarTurno.disabled = true;
+            btnPasarTurnoContainer.classList.add("disabled");
+            cargarGameBaseDeDatos()
         }
     }
 }
@@ -526,6 +534,10 @@ function gameOverTurno() {
                 Swal.fire('Cambios no guardados!', '', 'error')
             }
         })
+        btnPasarTurno.disabled = true;
+        btnCancelarTurno.disabled = true;
+        btnPasarTurnoContainer.classList.add("disabled");
+        cargarGameBaseDeDatos()
     } else {
         console.log("No todas las condiciones se cumplen.");
     }
@@ -597,6 +609,10 @@ function moverCarta(draggedCard, targetElement){
     no-repeat
   `
         })
+        btnPasarTurno.disabled = true;
+        btnCancelarTurno.disabled = true;
+        btnPasarTurnoContainer.classList.add("disabled");
+        cargarGameBaseDeDatos()
     }
     gameOverMovimiento();
     btnAnimation();
@@ -858,7 +874,7 @@ function generarMazoConSemilla(semilla) {
     const rng = seedrandom(semilla); // Crea la función generadora de números pseudoaleatorios con la semilla
     mazoCartas = [];
 
-    for (let i = 2; i <= 99; i++) {
+    for (let i = 2; i <= 10; i++) {
         mazoCartas.push(i);
     }
 
@@ -939,8 +955,13 @@ function cargarGameBaseDeDatos(){
         score: score,
         seed: resultadoGeneracion.semilla
     };
-    // Guardar el objeto en el localStorage
-    localStorage.setItem('nuevoUsuario', JSON.stringify(nuevoUsuario));
+    if (nuevoUsuario) {
+        rankRef.push(nuevoUsuario);
+        localStorage.clear()
+    } else {
+        console.log('No se encontraron datos en el localStorage');
+    }
+
 }
 const btnScore = document.getElementById("btnScore");
 const modal = document.getElementById("myModal");
@@ -991,3 +1012,6 @@ const svg = `
 const blob = new Blob([svg], {type: 'image/svg+xml'})
 const svgUrl = URL.createObjectURL(blob);
 document.querySelector('.skulls').style.borderImageSource = `url(${svgUrl})`;
+btnPasarTurno.disabled = true;
+btnCancelarTurno.disabled = true;
+btnPasarTurnoContainer.classList.add("disabled");

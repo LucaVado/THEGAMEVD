@@ -1012,3 +1012,8 @@ button:hover::after {
 .highPage table tr:nth-child(5) td {
     color: yellow;
 }
+
+.disabled {
+    pointer-events: none;
+    opacity: 0.6; /* Puedes ajustar la opacidad o aplicar otros estilos para indicar que está deshabilitado. */
+}

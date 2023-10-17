@@ -5,6 +5,7 @@ let nombreGuardado;
 let juegoTerminado = false;
 
 
+
 document.addEventListener("DOMContentLoaded", function() {
     nombreGuardado = localStorage.getItem("nombre");
     seedYaCreada = localStorage.getItem("seed");
@@ -410,6 +411,8 @@ function dragStart(event) {
 function dragEnd() {
     // Restablece el elemento arrastrado a nulo después de soltarlo
     draggedElement = null;
+
+
 }
 
 function dragOver(event) {

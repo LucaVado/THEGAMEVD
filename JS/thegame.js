@@ -958,21 +958,40 @@ function procesarScore(){
     }
     score = mazoScore + count;
 }
-function cargarGameBaseDeDatos(){
-    procesarScore()
+function cargarGameBaseDeDatos() {
+    procesarScore();
     const nuevoUsuario = {
         nombre: nombreGuardado,
         score: score,
-        seed: resultadoGeneracion.semilla
+        seed: resultadoGeneracion.semilla,
+        vecesjugada: 1, // Inicialmente establecido en 1
     };
+
     if (nuevoUsuario) {
-        rankRef.push(nuevoUsuario);
-        localStorage.clear()
+        // Consulta a la base de datos para verificar registros existentes
+        rankRef.orderByChild('nombre').equalTo(nuevoUsuario.nombre).once('value', (snapshot) => {
+            const records = snapshot.val();
+
+            if (records !== null) {
+                // Se encontraron registros para el jugador, verifica si ya jugó con la semilla.
+                for (const key in records) {
+                    if (records[key].seed === nuevoUsuario.seed) {
+                        // Ya jugó con esta semilla, incrementa el contador.
+                        nuevoUsuario.vecesjugada = records[key].vecesjugada + 1;
+                        break;
+                    }
+                }
+            }
+
+            // Agrega o actualiza el registro en la base de datos.
+            rankRef.push(nuevoUsuario);
+            localStorage.clear();
+        });
     } else {
         console.log('No se encontraron datos en el localStorage');
     }
-
 }
+
 const btnScore = document.getElementById("btnScore");
 const modal = document.getElementById("myModal");
 

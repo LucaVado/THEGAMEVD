@@ -515,12 +515,12 @@ body{
     box-shadow: 0 15px 50px rgba(0,0,0,0.25);
     z-index: 50;
 }
-.containerCard:active .card
+.containerCard:hover .card
 {
     filter: brightness(0.25);
 }
 
-.containerCard .card:active
+.containerCard .card:hover
 {
     translate: calc(var(--i) * 20%) -20%;
     z-index: 100;

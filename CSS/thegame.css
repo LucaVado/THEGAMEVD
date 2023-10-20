@@ -501,7 +501,6 @@ body{
     width: 40%;
     position: absolute;
     border-radius: 8px;
-    cursor: pointer;
     transition: 0.5s;
     transform-origin: 50% 100%;
     transform: rotate(calc(var(--i) * 4deg)) translate(calc(var(--i) * 20%), 0%)
@@ -718,7 +717,7 @@ body{
     border-radius: 1000px;
     box-shadow: 12px 12px 24px rgba(79,209,197,.64);
     transition: all 0.3s ease-in-out 0s;
-    cursor: pointer;
+    cursor: none;
     outline: none;
     position: relative;
     color: transparent;

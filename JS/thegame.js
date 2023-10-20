@@ -968,22 +968,31 @@ function cargarGameBaseDeDatos() {
     };
 
     if (nuevoUsuario) {
-        // Consulta a la base de datos para verificar registros existentes
-        rankRef.orderByChild('nombre').equalTo(nuevoUsuario.nombre).once('value', (snapshot) => {
+        // Consulta a la base de datos para contar los registros existentes
+        rankRef.once('value', (snapshot) => {
             const records = snapshot.val();
 
             if (records !== null) {
                 // Se encontraron registros para el jugador, verifica si ya jugó con la semilla.
                 for (const key in records) {
                     if (records[key].seed === nuevoUsuario.seed) {
-                        // Ya jugó con esta semilla, incrementa el contador.
-                        nuevoUsuario.vecesjugada = records[key].vecesjugada + 1;
-                        break;
+                        // Ya jugó con esta semilla, verifica el score.
+                        if (nuevoUsuario.score < records[key].score) {
+                            // Nuevo score es menor, actualiza el registro y suma las veces jugadas.
+                            const nuevasVecesJugadas = records[key].vecesjugada + 1;
+                            rankRef.child(key).update({ score: nuevoUsuario.score, vecesjugada: nuevasVecesJugadas });
+                            localStorage.clear();
+                        } else {
+                            // Nuevo score es igual o mayor, aumenta veces jugadas.
+                            rankRef.child(key).update({ vecesjugada: records[key].vecesjugada + 1 });
+                            localStorage.clear();
+                        }
+                        return;
                     }
                 }
             }
 
-            // Agrega o actualiza el registro en la base de datos.
+            // Agrega un nuevo registro a la base de datos.
             rankRef.push(nuevoUsuario);
             localStorage.clear();
         });
@@ -991,6 +1000,7 @@ function cargarGameBaseDeDatos() {
         console.log('No se encontraron datos en el localStorage');
     }
 }
+
 
 const btnScore = document.getElementById("btnScore");
 const modal = document.getElementById("myModal");

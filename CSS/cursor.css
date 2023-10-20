@@ -1,0 +1,50 @@
+*,
+*:hover,
+*::before,
+*::after {
+    cursor: none;
+}
+
+#custom-cursor {
+    width: 10px;
+    height: 10px;
+    border: 2px solid red;
+    border-radius: 100%;
+    position: absolute;
+    pointer-events: none;
+    animation: blinkBoth 7000ms infinite;
+    z-index: 1000000;
+}
+
+
+@keyframes blinkBoth {
+    0% {
+        background-color: red;
+        border-color: violet;
+    }
+    17% {
+        background-color: orange;
+        border-color: indigo;
+    }
+    34% {
+        background-color: yellow;
+        border-color: blue;
+    }
+    51% {
+        background-color: green;
+        border-color: green;
+    }
+    68% {
+        background-color: blue;
+        border-color: yellow;
+    }
+    85% {
+        background-color: indigo;
+        border-color: orange;
+    }
+    100% {
+        background-color: violet;
+        border-color: red;
+    }
+}
+

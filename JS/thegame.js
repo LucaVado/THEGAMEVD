@@ -996,27 +996,42 @@ function cargarGameBaseDeDatos() {
 
             // No se encontró un registro con la misma semilla o el nuevo score es igual o mayor.
             // Verifica si hay menos de 10 registros o si el score es menor que el score más alto
-            rankRef.orderByChild('score').limitToLast(10).once('value', (snapshot) => {
-                const topScores = snapshot.val();
-                const keys = Object.keys(topScores);
-                const recordWithHighestScore = topScores[keys[keys.length-1]]; // El último registro será el de score más alto
+            rankRef.once('value', (snapshot) => {
+                const allScores = snapshot.val();
+                const sortedScores = Object.keys(allScores)
+                    .map(key => ({ ...allScores[key], id: key })) // Incluye la clave en los objetos
+                    .sort((a, b) => b.score - a.score || b.vecesjugada - a.vecesjugada);
+                const recordWithHighestScore = sortedScores[0];
 
+                console.log('Score más alto: ' + recordWithHighestScore.score); // Para comprobar el score más alto
+                console.log('Score más alto: ' + recordWithHighestScore.score); // Para comprobar el score más alto// Para comprobar el score más alto
+                console.log('Score más alto: ' + recordWithHighestScore.score); // Para comprobar el score más alto
                 console.log('Score más alto: ' + recordWithHighestScore.score); // Para comprobar el score más alto
                 console.log('Sccore del ingresante ' + nuevoUsuario.score);
                 console.log('Score más alto: ' + recordWithHighestScore.score);
                 console.log('Veces jugadas del ingresante ' + nuevoUsuario.vecesjugada);
                 console.log('Veces jugadas del mayoer score ' + recordWithHighestScore.vecesjugada);
-                if (keys.length < 10 || nuevoUsuario.score < recordWithHighestScore.score || (nuevoUsuario.score === recordWithHighestScore.score && nuevoUsuario.vecesjugada < recordWithHighestScore.vecesjugada)) {
+
+                if (sortedScores.length < 10 || nuevoUsuario.score < recordWithHighestScore.score || (nuevoUsuario.score === recordWithHighestScore.score && nuevoUsuario.vecesjugada < recordWithHighestScore.vecesjugada)) {
                     // Hay menos de 10 registros o el nuevo score es menor que el score más alto, o el score es igual pero tiene menos veces jugadas, agrega un nuevo registro a la base de datos.
                     rankRef.push(nuevoUsuario);
+
+                    // Si hay 10 registros, elimina el registro con el score más alto y la mayor cantidad de veces jugadas.
+                    if (sortedScores.length === 10) {
+                        rankRef.child(recordWithHighestScore.id).remove();
+                    }
+
                     localStorage.clear();
                 }
             });
+
         });
     } else {
         console.log('No se encontraron datos en el localStorage');
     }
 }
+
+
 
 
 

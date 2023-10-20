@@ -968,17 +968,19 @@ function cargarGameBaseDeDatos() {
     };
 
     if (nuevoUsuario) {
-        // Consulta a la base de datos para contar los registros existentes
-        rankRef.once('value', (snapshot) => {
+        // Consulta a la base de datos para verificar registros existentes
+        rankRef.orderByChild('nombre').equalTo(nuevoUsuario.nombre).once('value', (snapshot) => {
             const records = snapshot.val();
 
             if (records !== null) {
                 // Se encontraron registros para el jugador, verifica si ya jugó con la semilla.
                 for (const key in records) {
                     if (records[key].seed === nuevoUsuario.seed) {
+                        console.log(nuevoUsuario.score);
+                        console.log(records[key].score);
                         // Ya jugó con esta semilla, verifica el score.
                         if (nuevoUsuario.score < records[key].score) {
-                            // Nuevo score es menor, actualiza el registro y suma las veces jugadas.
+                            // Nuevo score es menor, actualiza el registro.
                             const nuevasVecesJugadas = records[key].vecesjugada + 1;
                             rankRef.child(key).update({ score: nuevoUsuario.score, vecesjugada: nuevasVecesJugadas });
                             localStorage.clear();
@@ -992,14 +994,31 @@ function cargarGameBaseDeDatos() {
                 }
             }
 
-            // Agrega un nuevo registro a la base de datos.
-            rankRef.push(nuevoUsuario);
-            localStorage.clear();
+            // No se encontró un registro con la misma semilla o el nuevo score es igual o mayor.
+            // Verifica si hay menos de 10 registros o si el score es menor que el score más alto
+            rankRef.orderByChild('score').limitToLast(10).once('value', (snapshot) => {
+                const topScores = snapshot.val();
+                const keys = Object.keys(topScores);
+                const recordWithHighestScore = topScores[keys[keys.length-1]]; // El último registro será el de score más alto
+
+                console.log('Score más alto: ' + recordWithHighestScore.score); // Para comprobar el score más alto
+                console.log('Sccore del ingresante ' + nuevoUsuario.score);
+                console.log('Score más alto: ' + recordWithHighestScore.score);
+                console.log('Veces jugadas del ingresante ' + nuevoUsuario.vecesjugada);
+                console.log('Veces jugadas del mayoer score ' + recordWithHighestScore.vecesjugada);
+                if (keys.length < 10 || nuevoUsuario.score < recordWithHighestScore.score || (nuevoUsuario.score === recordWithHighestScore.score && nuevoUsuario.vecesjugada < recordWithHighestScore.vecesjugada)) {
+                    // Hay menos de 10 registros o el nuevo score es menor que el score más alto, o el score es igual pero tiene menos veces jugadas, agrega un nuevo registro a la base de datos.
+                    rankRef.push(nuevoUsuario);
+                    localStorage.clear();
+                }
+            });
         });
     } else {
         console.log('No se encontraron datos en el localStorage');
     }
 }
+
+
 
 
 const btnScore = document.getElementById("btnScore");

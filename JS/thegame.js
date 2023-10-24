@@ -1012,12 +1012,12 @@ function cargarGameBaseDeDatos() {
                 console.log('Veces jugadas del ingresante ' + nuevoUsuario.vecesjugada);
                 console.log('Veces jugadas del mayoer score ' + recordWithHighestScore.vecesjugada);
 
-                if (sortedScores.length < 10 || nuevoUsuario.score < recordWithHighestScore.score || (nuevoUsuario.score === recordWithHighestScore.score && nuevoUsuario.vecesjugada < recordWithHighestScore.vecesjugada)) {
+                if (sortedScores.length < 50 || nuevoUsuario.score < recordWithHighestScore.score || (nuevoUsuario.score === recordWithHighestScore.score && nuevoUsuario.vecesjugada < recordWithHighestScore.vecesjugada)) {
                     // Hay menos de 10 registros o el nuevo score es menor que el score más alto, o el score es igual pero tiene menos veces jugadas, agrega un nuevo registro a la base de datos.
                     rankRef.push(nuevoUsuario);
 
                     // Si hay 10 registros, elimina el registro con el score más alto y la mayor cantidad de veces jugadas.
-                    if (sortedScores.length === 10) {
+                    if (sortedScores.length === 50) {
                         rankRef.child(recordWithHighestScore.id).remove();
                     }
 

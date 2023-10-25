@@ -1,3 +1,4 @@
+
 *,
 *::before,
 *::after {
@@ -256,6 +257,7 @@ body{
     display: flex;
     justify-content: center;
     align-items: center;
+    border: 5px solid black;
 }
 .nav-list li{
     position: relative;
@@ -269,7 +271,13 @@ body{
 
 }
 
+.rank {
+    border: 5px solid black;
+    height: 700px;
+    width: 500px;
+}
 
+/* Estilos para la modal */
 
 /* Estilos para la modal */
 .modal {
@@ -281,15 +289,13 @@ body{
     width: 100%;
     height: 100%;
     background-color: rgba(0, 0, 0, 0.4);
+
 }
 
 .modal-content {
-    margin: 10% auto;
-    padding: 20px;
-    width: 80%;
-    max-width: 600px;
+    width: 100%;
+    height: 100%;
     position: relative;
-    overflow-y: initial !important
 }
 
 
@@ -297,22 +303,16 @@ body{
 .highPage {
     position: relative;
     color: #0b0;
-    font-size: 21px;
+    font-size: 10px;
     line-height: 1.5;
-    padding: 32px 16px;
-    max-width: 960px;
-    margin: 0 auto;
     font-family: 'Press Start 2P', cursive;
-    height: 80vh;
     overflow-y: auto;
 }
 
 .skulls {
     position: relative;
     padding: 16px 0 24px;
-    max-width: 600px;
-    margin: 0 auto;
-    border: 24px solid;
+    border: 2lvw solid;
     border-image: url(https://skullctf.com/images/skull-border.svg) 32 round;
 }
 
@@ -322,12 +322,11 @@ body{
 
 .highPage table {
     text-transform: uppercase;
-    width: 440px;
     margin: 0 auto;
 }
 
 .highPage table th {
-    min-width: 140px;
+    min-width: 20%;
     text-align: left;
 }
 

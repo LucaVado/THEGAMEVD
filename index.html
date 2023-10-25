@@ -76,7 +76,9 @@
 
                         </section>
                         <img class="gallery__item" src="IMG/home/2.jpg" alt="Alt" id="seccionDestino4">
-
+                        <button id="verReglas">Reglas</button>
+                        <button id="jugarNuevaPartida">Reglas</button>
+                        <button id="jugarConSeed">Reglas</button>
                         <div class="text-block gallery__item">
                             <h2 class="text-block__h">PLAY</h2>
                             <p class="text-block__p">SubPlayI.</p>
@@ -92,8 +94,33 @@
                             <h2 class="text-block__h">PLAY</h2>
                             <p class="text-block__p">SubPlayD</p>
                         </div>
+                        <div class="gallery__item rank" id="seccionDestino3">
+                        <!-- RANK -->
 
-                        <img class="gallery__item" src="IMG/home/4.jpg" alt="Alt" id="seccionDestino3">
+                            <div class="modal-content">
+                                <div class="highPage">
+                                    <div class="skulls">
+                                        <h1>High Scores</h1>
+                                        <table id="puntuacionesTable">
+                                            <thead>
+                                            <tr>
+                                                <th>Rank</th>
+                                                <th>Score</th>
+                                                <th>Name</th>
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+                                            </tbody>
+                                        </table>
+                                        <button class="glow-on-hover close" id="btnScore">VER RANK COMPLETO</button>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                        </div>
+
+
                         <img class="gallery__item" src="IMG/home/5.jpg" alt="Alt" id="seccionDestino">
                         <img class="gallery__item" src="IMG/home/3.jpg" alt="Alt">
 
@@ -104,6 +131,30 @@
         </div>
 
     </div>
+    <div id="myModal" class="modal">
+        <div class="modal-content">
+            <div class="highPage">
+                <div class="skulls">
+                    <h1>High Scores</h1>
+                    <table id="puntuacionesTable1">
+                        <thead>
+                        <tr>
+                            <th>Rank</th>
+                            <th>Score</th>
+                            <th>Name</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        </tbody>
+                    </table>
+                    <button class="glow-on-hover close" type="button">CLOSE</button>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
 </div>
 <script src="https://www.gstatic.com/firebasejs/5.0.0/firebase-app.js"></script>
 <script src="https://www.gstatic.com/firebasejs/5.0.0/firebase-database.js"></script>

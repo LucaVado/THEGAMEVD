@@ -262,13 +262,13 @@ body{
     list-style: none;
 
 }
-.nav-list li a{
+
+.nav-list li .btnNav{
     position: relative;
-    margin: 0 15px;
-    text-decoration: none;
-    color: #fff;
+    margin: 2lvw;
 
 }
+
 
 
 /* Estilos para la modal */

@@ -232,6 +232,45 @@ body{
     }
 }
 
+/* NAVBAR*/
+.navbarSticky {
+
+    height: 50px;
+    width: 80%;
+    top: 1%;
+    left: 10%;
+    right: 10%;
+    position: sticky;
+    z-index: 10;
+    border-radius: 50px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: 0.6s;
+}
+.navbarSticky .logoNav {
+    height: 80%;
+}
+.nav-list {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.nav-list li{
+    position: relative;
+    list-style: none;
+
+}
+.nav-list li a{
+    position: relative;
+    margin: 0 15px;
+    text-decoration: none;
+    color: #fff;
+
+}
+
+
 /* Estilos para la modal */
 .modal {
     display: none;

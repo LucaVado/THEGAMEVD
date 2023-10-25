@@ -4,6 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>The Game - Menú</title>
+    <script src="libs/gsap/gsap.min.js" defer></script>
+    <script src="libs/gsap/ScrollTrigger.min.js" defer></script>
+    <script src="libs/gsap/ScrollSmoother.min.js" defer></script>
     <link rel="stylesheet" href="CSS/index.css">
     <link rel="stylesheet" href="CSS/cursor.css">
     <link rel="shortcut icon" href="IMG/favicon.png">
@@ -13,67 +16,85 @@
 </head>
 <body>
 <div id="custom-cursor"></div>
-<div class="parent">
-    <div class="div1">
-        <div class="hijo1">
-            <div class="hijastro1">
-                <button class="glow-on-hover" type="button" id="verReglas">Ver Reglas del Juego</button>
-            </div>
-        </div>
-        <div class="hijo2">
-            <div class="hijastro2">
-                <button class="glow-on-hover" type="button" id="jugarNuevaPartida">Jugar Nueva Partida</button>
-            </div>
-        </div>
-        <div class="hijo3">
-            <div class="hijastro3">
-                <button class="glow-on-hover" type="button" id="jugarConSeed">Jugar Partida con Seed</button>
-            </div>
-        </div>
-    </div>
 
-    <div class="div2">
-        <div class="child1">
+<div class="wrapper">
+    <div class="content">
 
+        <header class="hero-section">
 
-            <div class="childraso1" id="cuadroJuegoPendiente" style="display: none;">
-                <button class="glow-on-hover" type="button" id="verJuegoPendiente">JUEGO PENDIENTE!</button>
+            <img data-speed=".6" class="hero" src="IMG/home/rgb1.gif" alt="Alt" id="halo" >
+            <div class="container">
+                <div data-speed=".75" class="main-header">
+                    <h1 class="main-title">THE GAME</h1>
+                </div>
             </div>
-            <div class="childraso2">
-                <button class="glow-on-hover" type="button" id="btnScore">RANKING</button>
-                <!-- Modal -->
-                <div id="myModal" class="modal">
-                    <div class="modal-content">
-                        <div class="highPage">
-                            <div class="skulls">
-                                <h1>High Scores</h1>
-                                <table id="puntuacionesTable">
-                                    <thead>
-                                    <tr>
-                                        <th>Rank</th>
-                                        <th>Score</th>
-                                        <th>Name</th>
-                                    </tr>
-                                    </thead>
-                                    <tbody>
-                                    </tbody>
-                                </table>
-                                <button class="glow-on-hover close" type="button">CLOSE</button>
+        </header>
+
+        <div class="portfolio">
+            <div class="container">
+                <main class="gallery">
+
+                    <div data-speed=".9" class="gallery__left">
+
+                        <section class="gallery__item">
+                            <div class="accordion-item" id="seccionDestino">
+                                <img src="IMG/home/rgb1.gif" alt="Nyx">
+                                <div>
+                                    <h2>Nyx</h2>
+                                    <p>
+                                        Primer Div
+                                    </p>
+                                </div>
                             </div>
+                            <div class="accordion-item item-active">
+                                <img src="IMG/home/rgb.gif" alt="Zero">
+                                <div>
+                                    <h2>Zero</h2>
+                                    <p>
+                                        Nueva Partida
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="accordion-item">
+                                <img src="IMG/home/rgb2.gif" alt="Vortex">
+                                <div>
+                                    <h2>Nueva Partida Con Semilla</h2>
+                                    <p>
+                                        Tercer div
+                                    </p>
+                                </div>
+                            </div>
+
+                        </section>
+                        <img class="gallery__item" src="IMG/home/2.jpg" alt="Alt">
+
+                        <div class="text-block gallery__item">
+                            <h2 class="text-block__h">PLAY</h2>
+                            <p class="text-block__p">SubPlayI.</p>
                         </div>
+
+                        <img class="gallery__item" src="IMG/home/6.jpg" alt="Alt">
 
                     </div>
 
-                </div>
+                    <div data-speed="1.1" class="gallery__right" >
+
+                        <div class="text-block gallery__item" >
+                            <h2 class="text-block__h">PLAY</h2>
+                            <p class="text-block__p">SubPlayD</p>
+                        </div>
+
+                        <img class="gallery__item" src="IMG/home/4.jpg" alt="Alt">
+                        <img class="gallery__item" src="IMG/home/5.jpg" alt="Alt">
+                        <img class="gallery__item" src="IMG/home/3.jpg" alt="Alt">
+
+                    </div>
+
+                </main>
             </div>
-
-
         </div>
 
-
-
     </div>
-
 </div>
 <script src="https://www.gstatic.com/firebasejs/5.0.0/firebase-app.js"></script>
 <script src="https://www.gstatic.com/firebasejs/5.0.0/firebase-database.js"></script>

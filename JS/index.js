@@ -259,3 +259,11 @@ const svg = `
 const blob = new Blob([svg], {type: 'image/svg+xml'})
 const svgUrl = URL.createObjectURL(blob);
 document.querySelector('.skulls').style.borderImageSource = `url(${svgUrl})`;
+
+
+document.getElementById('btnScore').addEventListener('click', function() {
+    document.getElementById('modal-overlay').style.display = 'block';
+});
+document.getElementById('close-modal').addEventListener('click', function() {
+    document.getElementById('modal-overlay').style.display = 'none';
+});

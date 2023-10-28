@@ -232,29 +232,6 @@ document.addEventListener("DOMContentLoaded", function() {
 
 });
 
-
-const btnScore = document.getElementById("btnScore");
-const modal = document.getElementById("myModal");
-
-
-btnScore.addEventListener("click", function() {
-    modal.style.display = "block";
-});
-
-
-const closeBtn = document.querySelector(".close");
-closeBtn.addEventListener("click", function() {
-    modal.style.display = "none";
-});
-
-
-window.addEventListener("click", function(event) {
-    if (event.target === modal) {
-        modal.style.display = "none";
-    }
-});
-
-
 const svg = `
 <svg version="1.1" height="96" width="96" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
  <style>

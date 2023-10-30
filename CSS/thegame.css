@@ -953,7 +953,12 @@ button:hover::after {
 }
 
 /* Estilos para la modal */
-.modal {
+.rank {
+    height: auto;
+    width: 100%;
+}
+
+.modal-overlay {
     display: none;
     position: fixed;
     z-index: 1;
@@ -961,14 +966,18 @@ button:hover::after {
     top: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.4);
+    overflow: auto;
+    background-color: rgba(0,0,0,0.9);
+}
+
+.modal {
+    margin: 15% auto;
+    width: 80%;
 }
 
 .modal-content {
-    margin: 10% auto;
-    padding: 20px;
-    width: 80%;
-    max-width: 600px;
+    width: 100%;
+    height: 100%;
     position: relative;
 }
 
@@ -977,20 +986,16 @@ button:hover::after {
 .highPage {
     position: relative;
     color: #0b0;
-    font-size: 21px;
-    line-height: 1.5;
-    padding: 32px 16px;
-    max-width: 960px;
-    margin: 0 auto;
+    font-size: 1em;
+    line-height: 2.5;
     font-family: 'Press Start 2P', cursive;
+    overflow-y: auto;
 }
 
 .skulls {
     position: relative;
     padding: 16px 0 24px;
-    max-width: 600px;
-    margin: 0 auto;
-    border: 24px solid;
+    border: 2lvw solid;
     border-image: url(https://skullctf.com/images/skull-border.svg) 32 round;
 }
 
@@ -1000,12 +1005,11 @@ button:hover::after {
 
 .highPage table {
     text-transform: uppercase;
-    width: 440px;
     margin: 0 auto;
 }
 
 .highPage table th {
-    min-width: 140px;
+    min-width: 30%;
     text-align: left;
 }
 
@@ -1027,9 +1031,4 @@ button:hover::after {
 
 .highPage table tr:nth-child(5) td {
     color: yellow;
-}
-
-.disabled {
-    pointer-events: none;
-    opacity: 0.6; /* Puedes ajustar la opacidad o aplicar otros estilos para indicar que está deshabilitado. */
 }

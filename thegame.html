@@ -75,28 +75,32 @@
             Reglas
         </div>
         <!-- Modal -->
-        <div id="myModal" class="modal">
-            <div class="modal-content">
+        <div id="modal-overlay" class="modal-overlay">
+        <div class="modal">
+            <div class="modal-body">
                 <div class="highPage">
                     <div class="skulls">
-                        <h1>High Scores</h1>
-                        <table id="puntuacionesTable">
+                        <h1>Mejores Puntuajes</h1>
+                        <table id="puntuacionesTableCompleta">
                             <thead>
                             <tr>
                                 <th>Rank</th>
                                 <th>Score</th>
                                 <th>Name</th>
-                            </tr>
+                                <th>N.Juegos</th>
+                                <th>Seed</th>
                             </thead>
                             <tbody>
                             </tbody>
                         </table>
-                        <button class="glow-on-hover close" type="button">CLOSE</button>
                     </div>
                 </div>
-
+            </div>
+            <div class="modal-footer">
+                <button id="close-modal" class="glow-on-hover close-modal-btn">Cerrar</button>
             </div>
         </div>
+    </div>
     </div>
     <div class="item lateralIzquierdoDown">
         <div class="wrap">

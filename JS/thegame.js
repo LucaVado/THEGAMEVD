@@ -1033,26 +1033,16 @@ function cargarGameBaseDeDatos() {
 
 
 
-const btnScore = document.getElementById("btnScore");
-const modal = document.getElementById("myModal");
 
-
-btnScore.addEventListener("click", function() {
-    modal.style.display = "block";
+document.getElementById('btnScore').addEventListener('click', function() {
+    document.getElementById('modal-overlay').style.display = 'block';
+});
+document.getElementById('close-modal').addEventListener('click', function() {
+    document.getElementById('modal-overlay').style.display = 'none';
 });
 
 
-const closeBtn = document.querySelector(".close");
-closeBtn.addEventListener("click", function() {
-    modal.style.display = "none";
-});
 
-
-window.addEventListener("click", function(event) {
-    if (event.target === modal) {
-        modal.style.display = "none";
-    }
-});
 
 
 const svg = `

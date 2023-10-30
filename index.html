@@ -19,11 +19,12 @@
 <div class="navbarSticky">
     <img src="IMG/favicon.png" class="logoNav">
     <ul class="nav-list">
-        <li><button class="btnNav" id="botonIrASeccion1">Home</button></li>
+        <li><button class="btnNav activo" id="botonIrASeccion1">Home</button></li>
         <li><button class="btnNav" id="botonIrASeccion2">Jugar</button></li>
         <li><button class="btnNav" id="botonIrASeccion3">Rank</button></li>
         <li><button class="btnNav" id="botonIrASeccion4">Reglas</button></li>
-        <li><button class="btnNav" id="botonIrASeccion">Extra</button></li>
+        <li><button class="btnNav" id="botonIrASeccion5">Extra</button></li>
+        <li><button class="btnNav" id="botonIrASeccion6">Partida Pentiente</button></li>
     </ul>
 </div>
 <div class="wrapper">
@@ -71,8 +72,8 @@
 
                     <div data-speed=".9" class="gallery__left">
 
-                        <section class="gallery__item" id="seccionDestino2">
-                            <div class="accordion-item">
+                        <section class="gallery__item" >
+                            <div class="accordion-item" id="seccionDestino2">
                                 <img src="IMG/home/rgb1.gif" alt="Nyx">
                                 <div>
                                     <h2>Proximamente</h2>
@@ -85,32 +86,39 @@
                                 <img src="IMG/home/rgb.gif" alt="Zero">
                                 <div>
                                     <h2>Comenzar Nuevo Juego</h2>
-                                    <button id="jugarNuevaPartida">Reglas</button>
+                                    <button class="btn" type="button" id="jugarNuevaPartida">
+                                        <strong>COMENZAR</strong>
+                                        <div id="container-stars">
+                                            <div id="stars"></div>
+                                        </div>
+
+                                        <div id="glow">
+                                            <div class="circle"></div>
+                                            <div class="circle"></div>
+                                        </div>
+                                    </button>
                                 </div>
                             </div>
                             <div class="accordion-item">
                                 <img src="IMG/home/rgb2.gif" alt="Vortex">
                                 <div>
                                     <h2>Nueva Partida Con Semilla</h2>
-                                    <button id="jugarConSeed">Reglas</button>
+                                    <button class="btn" type="button" id="jugarConSeed">
+                                        <strong>COMENZAR</strong>
+                                        <div id="container-stars">
+                                            <div id="stars"></div>
+                                        </div>
+
+                                        <div id="glow">
+                                            <div class="circle"></div>
+                                            <div class="circle"></div>
+                                        </div>
+                                    </button>
                                 </div>
                             </div>
 
                         </section>
-                        <div class="gallery__item">
-                            <div class="myCard">
-                                <div class="innerCard">
-                                    <div class="frontSide">
-                                        <p class="title">FRONT SIDE</p>
-                                        <p>Hover Me</p>
-                                    </div>
-                                    <div class="backSide">
-                                        <p class="title">BACK SIDE</p>
-                                        <p>Leave Me</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+
 
 
 
@@ -121,7 +129,18 @@
 
                         </div>
 
-                        <img class="gallery__item" src="IMG/home/6.jpg" alt="Alt">
+                        <div class="gallery__item myCard" id="seccionDestino5">
+                            <div class="innerCard">
+                                <div class="frontSide">
+                                    <p class="title">Partida Pentiente?</p>
+                                    <p>..........</p>
+                                </div>
+                                <div class="backSide">
+                                    <p class="title">No hay partida pentiente</p>
+                                    <p>Comienza una!</p>
+                                </div>
+                            </div>
+                        </div>
 
                     </div>
 
@@ -158,7 +177,7 @@
 
 
 
-                        <img class="gallery__item" src="IMG/home/5.jpg" alt="Alt" id="seccionDestino">
+                        <img class="gallery__item" src="IMG/home/5.jpg" alt="Alt" id="seccionDestino6">
                         <img class="gallery__item" src="IMG/home/3.jpg" alt="Alt">
 
                     </div>

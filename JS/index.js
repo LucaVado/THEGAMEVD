@@ -49,59 +49,44 @@ if (ScrollTrigger.isTouch !== 1) {
 
 }
 
-// Obtén el botón y la sección de destino por su ID
-const botonIrASeccion1 = document.getElementById("botonIrASeccion1");
-const botonIrASeccion2 = document.getElementById("botonIrASeccion2");
-const botonIrASeccion3 = document.getElementById("botonIrASeccion3");
-const botonIrASeccion4 = document.getElementById("botonIrASeccion4");
-const botonIrASeccion = document.getElementById("botonIrASeccion");
-const seccionDestino1 = document.getElementById("seccionDestino1");
-const seccionDestino2 = document.getElementById("seccionDestino2");
-const seccionDestino3 = document.getElementById("seccionDestino3");
-const seccionDestino4 = document.getElementById("seccionDestino4");
-const seccionDestino = document.getElementById("seccionDestino");
+// Obtén los botones y las secciones de destino por su ID
+const botones = document.querySelectorAll(".btnNav");
+const seccionesDestino = [
+    document.getElementById("seccionDestino1"),
+    document.getElementById("seccionDestino2"),
+    document.getElementById("seccionDestino3"),
+    document.getElementById("seccionDestino4"),
+    document.getElementById("seccionDestino5"),
+    document.getElementById("seccionDestino6")
+];
 
-botonIrASeccion1.addEventListener("click", function () {
-    const offset = seccionDestino1.getBoundingClientRect().top + window.scrollY;
+// Función para desplazarse suavemente a una sección
+function scrollToSection(seccion) {
+    const offset = seccion.getBoundingClientRect().top + window.scrollY;
     window.scrollTo({
         top: offset,
         behavior: "smooth"
     });
-});
+}
 
-botonIrASeccion2.addEventListener("click", function () {
-    const offset = seccionDestino2.getBoundingClientRect().top + window.scrollY;
-    window.scrollTo({
-        top: offset,
-        behavior: "smooth"
+
+botones.forEach((boton, index) => {
+    boton.addEventListener("click", () => {
+        scrollToSection(seccionesDestino[index]);
+
+        /*
+        //Poder cambiar la clase
+
+        botones.forEach((btn) => {
+            btn.classList.remove("activo");
+        });
+        boton.classList.add("activo");
+        */
+
     });
+
+
 });
-
-botonIrASeccion3.addEventListener("click", function () {
-    const offset = seccionDestino3.getBoundingClientRect().top + window.scrollY;
-    window.scrollTo({
-        top: offset,
-        behavior: "smooth"
-    });
-});
-
-botonIrASeccion4.addEventListener("click", function () {
-    const offset = seccionDestino4.getBoundingClientRect().top + window.scrollY;
-    window.scrollTo({
-        top: offset,
-        behavior: "smooth"
-    });
-});
-
-botonIrASeccion.addEventListener("click", function () {
-    const offset = seccionDestino.getBoundingClientRect().top + window.scrollY;
-    window.scrollTo({
-        top: offset,
-        behavior: "smooth"
-    });
-});
-
-
 
 const items = document.querySelectorAll(".accordion-item");
 items.forEach((item) => {
@@ -267,3 +252,5 @@ document.getElementById('btnScore').addEventListener('click', function() {
 document.getElementById('close-modal').addEventListener('click', function() {
     document.getElementById('modal-overlay').style.display = 'none';
 });
+
+

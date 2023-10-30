@@ -34,7 +34,7 @@ rankRef.on('value', (snapshot) => {
     let rank = 1;
     for (const entry of rankArray) {
         //Detiene el bucle limitandolo a 10
-        if (rank > 10) {
+        if (rank > 5) {
             break;
         }
         const usuario = entry.nombre;

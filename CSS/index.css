@@ -625,6 +625,7 @@ strong {
     to {
         transform: translateY(-135rem);
     }
+
 }
 
 @keyframes animStarRotate {
@@ -639,7 +640,7 @@ strong {
 
 @keyframes gradient_301 {
     0% {
-        background-position: 0% 50%;
+        background-position: 0 50%;
     }
 
     50% {
@@ -647,7 +648,7 @@ strong {
     }
 
     100% {
-        background-position: 0% 50%;
+        background-position: 0 50%;
     }
 }
 
@@ -677,7 +678,8 @@ strong {
     height: 4em;
     margin: 1em;
     position: relative;
-    animation: gradient 55s linear infinite;
+    animation: gradient 35s linear infinite;
+    transition: .3s;
 
 }
 
@@ -692,7 +694,7 @@ strong {
     height: 100%;
     background: inherit;
     filter: blur(4px);
-
+    transition: .3s;
 }
 
 .rgb-border .btnRgb {
@@ -711,6 +713,7 @@ strong {
     color: #fff;
     font-size: 1.1em;
     letter-spacing: 1px;
+    transition: .3s;
 
 }
 
@@ -727,4 +730,13 @@ strong {
         background-position: 0.1em 0.1em;
     }
 
+}
+
+.rgb-border:hover::before {
+    filter: blur(10px);
+}
+
+.rgb-border:hover {
+    transform: scale(1.2);
+    animation: gradient 15s linear infinite;
 }

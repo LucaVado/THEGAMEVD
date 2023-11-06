@@ -1,10 +1,17 @@
-@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
 *,
 *::before,
 *::after {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
+    font-family: Lumberjack, serif;
+    font-weight: normal;
+}
+@font-face {
+    font-family: 'Lumberjack';
+    src:url(../fonts/LumberjackRough.otf);
+    font-weight: normal;
+    font-style: normal;
 }
 
 html{
@@ -988,7 +995,6 @@ button:hover::after {
     color: #0b0;
     font-size: 1em;
     line-height: 2.5;
-    font-family: 'Press Start 2P', cursive;
     overflow-y: auto;
 }
 

@@ -5,6 +5,8 @@
     box-sizing: border-box;
     margin: 0;
     padding: 0;
+    font-family: Lumberjack, serif;
+    font-weight: normal;
 }
 :root {
     --index: calc(1vw + 1vh);
@@ -17,16 +19,12 @@ html{
     height: 100%;
 }
 @font-face {
-    font-family: raleway-c;
-    src: url(../fonts/raleway-regular.woff2);
+    font-family: 'Lumberjack';
+    src:url(../fonts/LumberjackRough.otf);
+    font-weight: normal;
+    font-style: normal;
 }
-@font-face {
-    font-family: outfit-c;
-    src: url(../fonts/outfit-regular.woff2);
-}
-h1, h2, h3, h4, h5, h6 {
-    font-family: outfit-c;
-}
+
 /* will-change */
 .content, .hero, .main-header, .gallery > * {
     will-change: transform;
@@ -34,8 +32,6 @@ h1, h2, h3, h4, h5, h6 {
 body{
     background-image: url(../img/home/bg.jpg);
     background-size: 50px;
-    color: #fafafa;
-    font-family: raleway-c;
     overflow-x: hidden;
 
 }
@@ -305,7 +301,6 @@ body{
     color: #0b0;
     font-size: 1em;
     line-height: 2.5;
-    font-family: 'Press Start 2P', cursive;
     overflow-y: auto;
 }
 
@@ -530,7 +525,6 @@ body{
 
 strong {
     z-index: 2;
-    font-family: 'Avalors Personal Use';
     font-size: 12px;
     letter-spacing: 5px;
     color: #FFFFFF;

@@ -13,6 +13,14 @@
     <title>THE GAME RAINBOW</title>
 </head>
 <body>
+<audio id="audioCartaColocada" src="audio/cartaColocada.mp3"></audio>
+<audio id="audioCartaHover" src="audio/cartaPuesta.mp3"></audio>
+<audio id="audioComiezaJuego" src="audio/comienzaJuego.mp3"></audio>
+<audio id="audioFondo" src="audio/musicaFondoGAME.mp3" loop></audio>
+
+<button id="toggleMuteButton">Toggle Mute</button>
+<input type="range" id="volumeControl" min="0" max="1" step="0.1" value="1">
+
 <div id="custom-cursor"></div>
 <div class="container">
     <div class="item lateralIzquierdo">
@@ -112,14 +120,14 @@
     </div>
     <div class="item Hand">
         <div class="containerCard">
-            <img class="card" id="0" style="--i:-4;" src="IMG/GAMEBACK.png" alt="No image" draggable="true">
-            <img class="card" id="1" style="--i:-3;" src="IMG/GAMEBACK.png" alt="No image" draggable="true">
-            <img class="card" id="2" style="--i:-2;" src="IMG/GAMEBACK.png" alt="No image" draggable="true">
-            <img class="card" id="3" style="--i:-1;" src="IMG/GAMEBACK.png" alt="No image" draggable="true">
-            <img class="card" id="4" style="--i:0;" src="IMG/GAMEBACK.png" alt="No image" draggable="true">
-            <img class="card" id="5" style="--i:1;" src="IMG/GAMEBACK.png" alt="No image" draggable="true">
-            <img class="card" id="6" style="--i:2;" src="IMG/GAMEBACK.png" alt="No image" draggable="true">
-            <img class="card" id="7" style="--i:3;" src="IMG/GAMEBACK.png" alt="No image" draggable="true">
+            <img class="card amano" id="0" style="--i:-4;" src="IMG/GAMEBACK.png" alt="No image" draggable="true">
+            <img class="card amano" id="1" style="--i:-3;" src="IMG/GAMEBACK.png" alt="No image" draggable="true">
+            <img class="card amano" id="2" style="--i:-2;" src="IMG/GAMEBACK.png" alt="No image" draggable="true">
+            <img class="card amano" id="3" style="--i:-1;" src="IMG/GAMEBACK.png" alt="No image" draggable="true">
+            <img class="card amano" id="4" style="--i:0;" src="IMG/GAMEBACK.png" alt="No image" draggable="true">
+            <img class="card amano" id="5" style="--i:1;" src="IMG/GAMEBACK.png" alt="No image" draggable="true">
+            <img class="card amano" id="6" style="--i:2;" src="IMG/GAMEBACK.png" alt="No image" draggable="true">
+            <img class="card amano" id="7" style="--i:3;" src="IMG/GAMEBACK.png" alt="No image" draggable="true">
         </div>
     </div>
     <div class="item lateralDerechoDown">

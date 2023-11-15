@@ -3,6 +3,75 @@ import { rankRef } from './firebaseConfig';
 let seedYaCreada;
 let nombreGuardado;
 let juegoTerminado = false;
+const soundComienzaJuego = document.getElementById('audioComienzaJuego');
+const soundCartaColocada = document.getElementById('audioCartaColocada');
+document.addEventListener("DOMContentLoaded", function () {
+    const cartas = document.querySelectorAll('.amano');
+    const audioFondo = document.getElementById('audioFondo');
+    const volumeControl = document.getElementById("volumeControl");
+    const toggleMuteButton = document.getElementById("toggleMuteButton");
+
+    // Muta el audio de fondo al inicio
+    audioFondo.muted = true;
+
+    // Función para reproducir el audio de fondo y desmutarlo después de reproducir
+    function reproducirAudioFondo() {
+        audioFondo.play().then(() => {
+            // Espera un breve período antes de ajustar el volumen
+            setTimeout(() => {
+                // Ajusta el valor del rango de volumen
+                if (audioFondo.muted) {
+                    volumeControl.value = 0;
+                } else {
+                    volumeControl.value = audioFondo.volume;
+                }
+            }, 0); // ajusta el tiempo de espera según sea necesario
+        }).catch((error) => {
+            console.error('Error al reproducir el audio de fondo:', error);
+        });
+    }
+
+    // Función para mutear o desmutear el audio de fondo
+    function toggleMute() {
+        audioFondo.muted = !audioFondo.muted;
+    }
+
+    // Función para ajustar el volumen del audio de fondo
+    function ajustarVolumen() {
+        audioFondo.volume = volumeControl.value;
+    }
+
+    // Define la función para reproducir el audio
+    function reproducirAudio() {
+        const audio = new Audio('../audio/cartaPuesta.mp3');
+        // Muta el audio
+        audio.muted = true;
+        // Reproduce el audio
+        audio.play().then(() => {
+            // Desmuta el audio después de reproducir
+            audio.muted = false;
+        }).catch((error) => {
+            console.error('Error al reproducir el audio:', error);
+        });
+    }
+
+    // Agrega el evento de "hover" a cada imagen
+    cartas.forEach(function (carta) {
+        carta.addEventListener("mouseenter", reproducirAudio);
+    });
+
+    // Evento para reproducir el audio de comienza juego al cargar la página
+    document.addEventListener("DOMContentLoaded", function () {
+        audioComienzaJuego.play();
+    });
+
+    // Evento de clic en el botón para reproducir el audio de fondo
+    toggleMuteButton.addEventListener("click", reproducirAudioFondo);
+
+    // Agrega eventos y controles para mutear/desmutear y ajustar volumen
+    toggleMuteButton.addEventListener("click", toggleMute);
+    volumeControl.addEventListener("input", ajustarVolumen);
+});
 
 
 
@@ -144,12 +213,14 @@ function comenzarGame() {
             displayCurrentImage()
             juegoComenzadoLS()
             guardarProgreso()
+            soundComienzaJuego.play();
         }else {
             nuevaPartida()
             manoCartas = [0, 0, 0, 0, 0, 0, 0, 0]
             displayCurrentImage()
             juegoComenzadoLS()
             guardarProgreso()
+            soundComienzaJuego.play();
         }
     }
     juegoComenzado = true;
@@ -557,15 +628,19 @@ function moverCarta(draggedCard, targetElement){
     switch (targetElement.id) {
         case fieldCard.UnoIzq:
             arrayDestino = filaSuperiorIzquierda;
+            soundCartaColocada.play();
             break;
         case fieldCard.UnoDer:
             arrayDestino = filaSuperiorDerecha;
+            soundCartaColocada.play();
             break;
         case fieldCard.CienIzq:
             arrayDestino = filaInferiorIzquierda;
+            soundCartaColocada.play();
             break;
         case fieldCard.CienDer:
             arrayDestino = filaInferiorDerecha;
+            soundCartaColocada.play();
             break;
         default:
             return; // Salir si el destino no es válido

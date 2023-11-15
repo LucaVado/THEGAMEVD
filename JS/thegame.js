@@ -7,9 +7,10 @@ const soundComienzaJuego = document.getElementById('audioComienzaJuego');
 const soundCartaColocada = document.getElementById('audioCartaColocada');
 document.addEventListener("DOMContentLoaded", function () {
     const cartas = document.querySelectorAll('.amano');
+    const audioComienzaJuego = document.getElementById('audioComienzaJuego');
     const audioFondo = document.getElementById('audioFondo');
     const volumeControl = document.getElementById("volumeControl");
-    const toggleMuteButton = document.getElementById("toggleMuteButton");
+    const muteSwitch = document.getElementById("check-5");
 
     // Muta el audio de fondo al inicio
     audioFondo.muted = true;
@@ -17,15 +18,8 @@ document.addEventListener("DOMContentLoaded", function () {
     // Función para reproducir el audio de fondo y desmutarlo después de reproducir
     function reproducirAudioFondo() {
         audioFondo.play().then(() => {
-            // Espera un breve período antes de ajustar el volumen
-            setTimeout(() => {
-                // Ajusta el valor del rango de volumen
-                if (audioFondo.muted) {
-                    volumeControl.value = 0;
-                } else {
-                    volumeControl.value = audioFondo.volume;
-                }
-            }, 0); // ajusta el tiempo de espera según sea necesario
+            // Ajusta el valor del rango de volumen
+            volumeControl.value = audioFondo.volume;
         }).catch((error) => {
             console.error('Error al reproducir el audio de fondo:', error);
         });
@@ -34,6 +28,12 @@ document.addEventListener("DOMContentLoaded", function () {
     // Función para mutear o desmutear el audio de fondo
     function toggleMute() {
         audioFondo.muted = !audioFondo.muted;
+
+        // Ajusta el estado del interruptor de mute
+        muteSwitch.checked = audioFondo.muted;
+
+        // Ajusta el valor del rango de volumen
+        volumeControl.value = audioFondo.muted ? 0 : audioFondo.volume;
     }
 
     // Función para ajustar el volumen del audio de fondo
@@ -65,12 +65,14 @@ document.addEventListener("DOMContentLoaded", function () {
         audioComienzaJuego.play();
     });
 
-    // Evento de clic en el botón para reproducir el audio de fondo
-    toggleMuteButton.addEventListener("click", reproducirAudioFondo);
+    // Evento de clic en el interruptor para mutear/desmutear el audio de fondo
+    muteSwitch.addEventListener("change", toggleMute);
 
-    // Agrega eventos y controles para mutear/desmutear y ajustar volumen
-    toggleMuteButton.addEventListener("click", toggleMute);
+    // Agrega eventos y controles para ajustar el volumen
     volumeControl.addEventListener("input", ajustarVolumen);
+
+    // Reproduce el audio de fondo al cargar la página
+    reproducirAudioFondo();
 });
 
 

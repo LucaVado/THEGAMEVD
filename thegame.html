@@ -15,7 +15,7 @@
 <body>
 <audio id="audioCartaColocada" src="audio/cartaColocada.mp3"></audio>
 <audio id="audioCartaHover" src="audio/cartaPuesta.mp3"></audio>
-<audio id="audioComiezaJuego" src="audio/comienzaJuego.mp3"></audio>
+<audio id="audioComienzaJuego" src="audio/comienzaJuego.mp3"></audio>
 <audio id="audioFondo" src="audio/musicaFondoGAME.mp3" loop></audio>
 
 
@@ -84,11 +84,11 @@
 
         <div class="checkbox-wrapper-5">
             <div class="check">
-                <input checked="" id="check-5" type="checkbox">
+                <input id="check-5" type="checkbox">
                 <label for="check-5"></label>
             </div>
         </div>
-        <input type="range" id="volumeControl" min="0" max="1" step="0.1" value="1" class="slider">
+        <input type="range" id="volumeControl" min="0" max="100" step="1" value="50" class="slider">
 
         <!-- Modal -->
         <div id="modal-overlay" class="modal-overlay">

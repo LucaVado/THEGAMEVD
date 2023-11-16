@@ -1,5 +1,54 @@
 gsap.registerPlugin(ScrollTrigger, ScrollSmoother)
 
+document.addEventListener("DOMContentLoaded", function () {
+    const audioFondo = document.getElementById('audioFondoHome');
+    const volumeControl = document.getElementById("volumeControl");
+    const muteSwitch = document.getElementById("check-5");
+
+    // Muta el audio de fondo al inicio
+    audioFondo.muted = true;
+
+    // Función para reproducir el audio de fondo y desmutarlo después de reproducir
+    function reproducirAudioFondo() {
+        if (muteSwitch.checked) {
+            audioFondo.play().then(() => {
+                // Ajusta el valor del rango de volumen
+                volumeControl.value = audioFondo.volume;
+            }).catch((error) => {
+                console.error('Error al reproducir el audio de fondo:', error);
+            });
+        }
+    }
+
+    // Función para mutear o desmutear el audio de fondo
+    function toggleMute() {
+        audioFondo.muted = !audioFondo.muted;
+
+        // Ajusta el estado del interruptor de mute
+        muteSwitch.checked = audioFondo.muted;
+
+        // Ajusta el valor del rango de volumen
+        volumeControl.value = audioFondo.muted ? 0 : audioFondo.volume;
+    }
+
+    // Función para ajustar el volumen del audio de fondo
+    function ajustarVolumen() {
+        audioFondo.volume = volumeControl.value;
+    }
+
+
+
+
+    // Evento de clic en el interruptor para mutear/desmutear el audio de fondo
+    muteSwitch.addEventListener("change", toggleMute);
+
+    // Agrega eventos y controles para ajustar el volumen
+    volumeControl.addEventListener("input", ajustarVolumen);
+
+    // Reproduce el audio de fondo al cargar la página
+    reproducirAudioFondo();
+});
+
 if (ScrollTrigger.isTouch !== 1) {
 
     ScrollSmoother.create({

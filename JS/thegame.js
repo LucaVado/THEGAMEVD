@@ -20,10 +20,8 @@ checkbox.addEventListener('change', function() {
         backgroundMusic.play();
         // Si el checkbox está marcado, establecer el volumen al valor guardado inicialmente
         backgroundMusic.volume = initialVolume;
-        volumeControl.value = initialVolume * 100; // Actualizar el rango al valor inicial
     } else {
         backgroundMusic.pause();
-        volumeControl.value = 0; // Si se detiene, establecer el volumen a 0 en el rango
     }
 });
 

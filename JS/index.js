@@ -135,6 +135,7 @@ items.forEach((item) => {
 document.addEventListener("DOMContentLoaded", function() {
     const verReglasButton = document.getElementById("verReglas");
     const jugarNuevaPartidaButton = document.getElementById("jugarNuevaPartida");
+    const jugarNuevaPartidaExtremoButton = document.getElementById("jugarNuevaPartidaExtremo");
     const jugarConSeedButton = document.getElementById("jugarConSeed");
 
 
@@ -146,12 +147,48 @@ document.addEventListener("DOMContentLoaded", function() {
         })
     });
 
+    jugarNuevaPartidaExtremoButton.addEventListener("click", function() {
+        Swal.fire({
+            title: "Ingrese su intento de Nombre",
+            input: "text",
+            inputAttributes: {
+                autocapitalize: "off",
+                maxlength: 4
+            },
+            showCancelButton: true,
+            confirmButtonText: "Intentarlo",
+            cancelButtonText: "Mejor no!",
+            showLoaderOnConfirm: true,
+            preConfirm: (nombre) => {
+                return new Promise((resolve) => {
+                    if (nombre.trim() === "") {
+                        Swal.showValidationMessage("Por favor, ingresa por lo menos 1 letra! pero mas de 4 no:)");
+                    } else {
+                        resolve(nombre);
+                    }
+                    if (nombre.length > 4) {
+                        Swal.showValidationMessage("Ingrese un nombre de máximo 4 caracteres.");
+                    } else {
+                        resolve(nombre);
+                    }
+                });
+            }
+        }).then((result) => {
+            if (result.isConfirmed) {
+                const nombre = result.value;
+                localStorage.setItem("nombre", nombre); // Guarda el nombre en localStorage
+                window.location.href = "thegame.html"; // Redirige a "thegame.html"
+            }
+        });
+    });
+
     jugarNuevaPartidaButton.addEventListener("click", function() {
         Swal.fire({
             title: "Ingrese su Nombre",
             input: "text",
             inputAttributes: {
-                autocapitalize: "off"
+                autocapitalize: "off",
+                maxlength: 4
             },
             showCancelButton: true,
             confirmButtonText: "Jugar",
@@ -178,13 +215,17 @@ document.addEventListener("DOMContentLoaded", function() {
         Swal.fire({
             title: "Ingrese Nombre y Seed",
             html:
-                '<input id="swal-input1" class="swal2-input" placeholder="Nombre">' +
+                '<input id="swal-input1" class="swal2-input" placeholder="Nombre" maxlength="4">' +
                 '<input id="swal-input2" class="swal2-input" placeholder="Seed">',
             preConfirm: () => {
                 const nombre = document.getElementById("swal-input1").value.trim();
                 const seed = document.getElementById("swal-input2").value.trim();
                 if (nombre === "" || seed === "") {
                     Swal.showValidationMessage("Por favor, complete ambos campos.");
+                    return false;
+                } else if (nombre.length > 4) {
+                    Swal.showValidationMessage("Ingrese un nombre de máximo 4 caracteres.");
+                    return false;
                 }
                 return { nombre, seed };
             }
@@ -196,6 +237,7 @@ document.addEventListener("DOMContentLoaded", function() {
                 window.location.href = "thegame.html"; // Redirige a "thegame.html"
             }
         });
+
     });
 
     const juegoPendiente = localStorage.getItem("juegoPendiente");

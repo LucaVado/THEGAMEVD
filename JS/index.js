@@ -177,7 +177,7 @@ document.addEventListener("DOMContentLoaded", function() {
             if (result.isConfirmed) {
                 const nombre = result.value;
                 localStorage.setItem("nombre", nombre); // Guarda el nombre en localStorage
-                window.location.href = "thegame.html"; // Redirige a "thegame.html"
+                window.location.href = "thegameDificil.html"; // Redirige a "thegame.html"
             }
         });
     });

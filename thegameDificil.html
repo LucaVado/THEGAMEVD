@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="CSS/thegame.css">
+    <link rel="stylesheet" href="CSS/cursor.css">
+    <link rel="shortcut icon" href="IMG/favicon.png">
+    <script src="node_modules/sweetalert2/dist/sweetalert2.min.js"></script>
+    <link rel="stylesheet" href="node_modules/sweetalert2/dist/sweetalert2.min.css">
+    <link rel="stylesheet" href="node_modules/@sweetalert2/theme-borderless/borderless.css">
+
+    <title>THE GAME RAINBOW</title>
+</head>
+<body>
+<audio id="audioCartaColocada" src="audio/cartaColocada.mp3"></audio>
+<audio id="audioCartaHover" src="audio/cartaPuesta.mp3"></audio>
+<audio id="audioComienzaJuego" src="audio/comienzaJuego.mp3"></audio>
+<audio id="audioFondo" src="audio/musicaFondoGAME.mp3" loop></audio>
+
+
+
+<div id="custom-cursor"></div>
+<div class="container">
+    <div class="item lateralIzquierdo">
+        <div class="button-1" id="nombre">
+            Invalido
+        </div>
+        <div class="button-1" id="salir">
+            Uir!
+        </div>
+        <div class="button-1" id="btnScore">
+            SCORE
+        </div>
+
+
+    </div>
+    <div class="board">
+        <div class="card card-1L">
+            <div class="flecha">
+                <img id="flecha1I" src="IMG/flechaIndicador1100.png" alt="indicador">
+            </div>
+            <div class="card wflecha">
+                <img id="GAME1Izquierda" src="IMG/GAMEBACK.png" alt="No image" draggable="true">
+            </div>
+        </div>
+        <div class="card card-1D">
+            <div class="flecha">
+                <img id="flecha1D" src="IMG/flechaIndicador1100.png" alt="indicador">
+            </div>
+            <div class="card wflecha">
+                <img id="GAME1Derecha" src="IMG/GAMEBACK.png" alt="No image" draggable="true">
+            </div>
+        </div>
+
+        <div class="card card-back" id="btnPasarTurnoContainer">
+            <img src="IMG/GAMEBACK.png" alt="GAMEBACK" id="btnTurnoIMG" class="IMGBACK">
+        </div>
+        <div class="card card-100L">
+            <div class="flecha">
+                <img id="flecha100I" src="IMG/flechaIndicador1001.png" alt="indicador">
+            </div>
+            <div class="card wflecha">
+                <img id="GAME100Izquierda" src="IMG/GAMEBACK.png" alt="No image" draggable="true">
+
+            </div>
+        </div>
+        <div class="card card-100D">
+            <div class="flecha">
+                <img id="flecha100D" src="IMG/flechaIndicador1001.png" alt="indicador">
+            </div>
+            <div class="card wflecha">
+                <img id="GAME100Derecha" src="IMG/GAMEBACK.png" alt="No image" draggable="true">
+            </div>
+        </div>
+    </div>
+    <div class="item lateralDerecho">
+        <div class="button-1" id="btnSeed">
+            Semilla
+        </div>
+        <div class="button-1" id="btnReglas">
+            Reglas
+        </div>
+
+        <div class="checkbox-wrapper-5">
+            <div class="check">
+                <input id="check-5" type="checkbox">
+                <label for="check-5"></label>
+            </div>
+        </div>
+        <input type="range" id="volumeControl" min="0" max="100" step="1" value="50" class="slider">
+
+        <!-- Modal -->
+        <div id="modal-overlay" class="modal-overlay">
+        <div class="modal">
+            <div class="modal-body">
+                <div class="highPage">
+                    <div class="skulls">
+                        <h1>Mejores Puntuajes</h1>
+                        <table id="puntuacionesTableCompleta">
+                            <thead>
+                            <tr>
+                                <th>Rank</th>
+                                <th>Score</th>
+                                <th>Name</th>
+                                <th>N.Juegos</th>
+                                <th>Seed</th>
+                            </thead>
+                            <tbody>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button id="close-modal" class="glow-on-hover close-modal-btn">Cerrar</button>
+            </div>
+        </div>
+    </div>
+    </div>
+    <div class="item lateralIzquierdoDown">
+        <div class="wrap">
+            <button class="button" id="btnTurno">
+                Turno
+            </button>
+
+        </div>
+    </div>
+    <div class="item Hand">
+        <div class="containerCard">
+            <img class="card amano" id="0" style="--i:-3;" src="IMG/GAMEBACK.png" alt="No image" draggable="true">
+            <img class="card amano" id="1" style="--i:-2;" src="IMG/GAMEBACK.png" alt="No image" draggable="true">
+            <img class="card amano" id="2" style="--i:-1;" src="IMG/GAMEBACK.png" alt="No image" draggable="true">
+            <img class="card amano" id="3" style="--i:0;" src="IMG/GAMEBACK.png" alt="No image" draggable="true">
+            <img class="card amano" id="4" style="--i:1;" src="IMG/GAMEBACK.png" alt="No image" draggable="true">
+            <img class="card amano" id="5" style="--i:2;" src="IMG/GAMEBACK.png" alt="No image" draggable="true">
+            <img class="card amano" id="6" style="--i:3;" src="IMG/GAMEBACK.png" alt="No image" draggable="true">
+
+        </div>
+    </div>
+    <div class="item lateralDerechoDown">
+        <div class="btnD1">
+            <button class="glow-on-hover" type="button" id="btnGame">Comenzar Juego</button>
+        </div>
+        <div class="btnD2">
+            <button class="glow-on-hover" type="button" id="verMatriz">Ver Consola</button>
+        </div>
+        <div class="btnD3">
+            <button class="glow-on-hover" type="button" id="btnCancelar">CANCELAR</button>
+        </div>
+    </div>
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.10.1/gsap.min.js"></script>
+<script src="https://www.gstatic.com/firebasejs/5.0.0/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/5.0.0/firebase-database.js"></script>
+<script type="module" src="JS/cursor.js"></script>
+<script type="module" src="JS/mail.js"></script>
+<script type="module" src="JS/thegame.js"></script>
+</body>
+</html>

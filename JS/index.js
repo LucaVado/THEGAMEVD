@@ -1,53 +1,36 @@
 gsap.registerPlugin(ScrollTrigger, ScrollSmoother)
 
-document.addEventListener("DOMContentLoaded", function () {
-    const audioFondo = document.getElementById('audioFondoHome');
-    const volumeControl = document.getElementById("volumeControl");
-    const muteSwitch = document.getElementById("check-5");
 
-    // Muta el audio de fondo al inicio
-    audioFondo.muted = true;
+// Obtener los elementos del DOM
+const checkbox = document.getElementById('check-5');
+const volumeControl = document.getElementById('volumeControl');
+const backgroundMusic = document.getElementById('audioFondoHome');
 
-    // Función para reproducir el audio de fondo y desmutarlo después de reproducir
-    function reproducirAudioFondo() {
-        if (muteSwitch.checked) {
-            audioFondo.play().then(() => {
-                // Ajusta el valor del rango de volumen
-                volumeControl.value = audioFondo.volume;
-            }).catch((error) => {
-                console.error('Error al reproducir el audio de fondo:', error);
-            });
-        }
+// Guardar el volumen inicial
+let initialVolume = 0.5; // Volumen inicial, en este caso, 50%
+
+// Función para reproducir o detener la música de fondo según el estado del checkbox
+checkbox.addEventListener('change', function() {
+    if (this.checked) {
+        backgroundMusic.play();
+        // Si el checkbox está marcado, establecer el volumen al valor guardado inicialmente
+        backgroundMusic.volume = initialVolume;
+    } else {
+        backgroundMusic.pause();
     }
-
-    // Función para mutear o desmutear el audio de fondo
-    function toggleMute() {
-        audioFondo.muted = !audioFondo.muted;
-
-        // Ajusta el estado del interruptor de mute
-        muteSwitch.checked = audioFondo.muted;
-
-        // Ajusta el valor del rango de volumen
-        volumeControl.value = audioFondo.muted ? 0 : audioFondo.volume;
-    }
-
-    // Función para ajustar el volumen del audio de fondo
-    function ajustarVolumen() {
-        audioFondo.volume = volumeControl.value;
-    }
-
-
-
-
-    // Evento de clic en el interruptor para mutear/desmutear el audio de fondo
-    muteSwitch.addEventListener("change", toggleMute);
-
-    // Agrega eventos y controles para ajustar el volumen
-    volumeControl.addEventListener("input", ajustarVolumen);
-
-    // Reproduce el audio de fondo al cargar la página
-    reproducirAudioFondo();
 });
+
+// Función para ajustar el volumen de la música según el valor del rango de volumen
+volumeControl.addEventListener('input', function() {
+    const volumeValue = parseFloat(this.value) / 100;
+    backgroundMusic.volume = volumeValue;
+
+    // Si el checkbox está marcado, actualiza el valor inicial del volumen
+    if (checkbox.checked) {
+        initialVolume = volumeValue;
+    }
+});
+
 
 if (ScrollTrigger.isTouch !== 1) {
 

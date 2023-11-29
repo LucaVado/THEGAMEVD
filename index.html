@@ -25,7 +25,7 @@
             <label for="check-5"></label>
         </div>
     </div>
-    <input type="range" id="volumeControl" min="0" max="1" step="0.1" value="1" class="slider">
+    <input type="range" id="volumeControl" min="0" max="100" step="1" value="50" class="slider">
     <ul class="nav-list">
         <li><button class="btnNav activo" id="botonIrASeccion1">Home</button></li>
         <li><button class="btnNav" id="botonIrASeccion2">Jugar</button></li>
@@ -81,13 +81,21 @@
                     <div data-speed=".9" class="gallery__left">
 
                         <section class="gallery__item" >
-                            <div class="accordion-item" id="seccionDestino2">
-                                <img src="IMG/home/rgb1.gif" alt="Nyx">
+                            <div class="accordion-item">
+                                <img src="IMG/home/rgb1.gif" alt="Zero">
                                 <div>
-                                    <h2>Proximamente</h2>
-                                    <p>
-                                        .....
-                                    </p>
+                                    <h2>Modo Extremo!</h2>
+                                    <button class="btn" type="button" id="jugarNuevaPartida">
+                                        <strong>INTENTARLO!</strong>
+                                        <div id="container-stars">
+                                            <div id="stars"></div>
+                                        </div>
+
+                                        <div id="glow">
+                                            <div class="circle"></div>
+                                            <div class="circle"></div>
+                                        </div>
+                                    </button>
                                 </div>
                             </div>
                             <div class="accordion-item item-active">

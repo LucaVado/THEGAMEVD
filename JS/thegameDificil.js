@@ -199,14 +199,14 @@ function comenzarGame() {
         btnCancelarTurno.disabled = false;
         if (seedYaCreada){
             jugarPartida(seedYaCreada)
-            manoCartas = [0, 0, 0, 0, 0, 0, 0, 0]
+            manoCartas = [0, 0, 0, 0, 0, 0, 0]
             displayCurrentImage()
             juegoComenzadoLS()
             guardarProgreso()
             soundComienzaJuego.play();
         }else {
             nuevaPartida()
-            manoCartas = [0, 0, 0, 0, 0, 0, 0, 0]
+            manoCartas = [0, 0, 0, 0, 0, 0, 0]
             displayCurrentImage()
             juegoComenzadoLS()
             guardarProgreso()
@@ -277,7 +277,6 @@ const imageDisplayMano4 = document.getElementById("3");
 const imageDisplayMano5 = document.getElementById("4");
 const imageDisplayMano6 = document.getElementById("5");
 const imageDisplayMano7 = document.getElementById("6");
-const imageDisplayMano8 = document.getElementById("7");
 
 // Función que muestra la imagen actual en el elemento de imagen.
 function displayCurrentImage() {
@@ -331,11 +330,11 @@ function pasarTurno() {
         return indices;
     }, []);
 
-    if (zerosIndices.length >= 2) {
+    if (zerosIndices.length >= 3) {
         const maxRandomCards = Math.min(zerosIndices.length, mazoCartas.length);
 
 
-        if (maxRandomCards >= 2) {
+        if (maxRandomCards >= 3) {
             for (let i = 0; i < maxRandomCards; i++) {
                 if (mazoCartas.length > 0) {
                     const card = mazoCartas.shift(); // Toma la primera carta del mazo
@@ -408,9 +407,26 @@ function pasarTurno() {
 
         Toast.fire({
             icon: 'warning',
-            title: 'Debes colocar 2 cartas'
+            title: 'Debes colocar 3 cartas'
         })
-    } else {
+    } else if (cantidadDeCeros === 1) {
+        const Toast = Swal.mixin({
+            toast: true,
+            position: 'top-end',
+            showConfirmButton: false,
+            timer: 3000,
+            timerProgressBar: true,
+            didOpen: (toast) => {
+                toast.addEventListener('mouseenter', Swal.stopTimer)
+                toast.addEventListener('mouseleave', Swal.resumeTimer)
+            }
+        })
+
+        Toast.fire({
+            icon: 'warning',
+            title: 'Debes colocar 2 carta mas'
+        })
+    } else if (cantidadDeCeros === 2) {
         const Toast = Swal.mixin({
             toast: true,
             position: 'top-end',
@@ -705,7 +721,7 @@ imageDisplayMano4.addEventListener("dragstart", dragStart);
 imageDisplayMano5.addEventListener("dragstart", dragStart);
 imageDisplayMano6.addEventListener("dragstart", dragStart);
 imageDisplayMano7.addEventListener("dragstart", dragStart);
-imageDisplayMano8.addEventListener("dragstart", dragStart);
+
 
 // Agrega un manejador de eventos para la finalización del arrastre
 imageDisplaySuperiorIzquierda.addEventListener("dragend", dragEnd);
@@ -719,7 +735,7 @@ imageDisplayMano4.addEventListener("dragend", dragEnd);
 imageDisplayMano5.addEventListener("dragend", dragEnd);
 imageDisplayMano6.addEventListener("dragend", dragEnd);
 imageDisplayMano7.addEventListener("dragend", dragEnd);
-imageDisplayMano8.addEventListener("dragend", dragEnd);
+
 
 // Agrega un manejador de eventos para el objetivo de soltar
 imageDisplaySuperiorIzquierda.addEventListener("dragover", dragOver);
@@ -733,7 +749,7 @@ imageDisplayMano4.addEventListener("dragover", dragOver);
 imageDisplayMano5.addEventListener("dragover", dragOver);
 imageDisplayMano6.addEventListener("dragover", dragOver);
 imageDisplayMano7.addEventListener("dragover", dragOver);
-imageDisplayMano8.addEventListener("dragover", dragOver);
+
 
 // Agrega un manejador de eventos para el soltar
 imageDisplaySuperiorIzquierda.addEventListener("drop", drop);
@@ -747,7 +763,7 @@ imageDisplayMano4.addEventListener("drop", drop);
 imageDisplayMano5.addEventListener("drop", drop);
 imageDisplayMano6.addEventListener("drop", drop);
 imageDisplayMano7.addEventListener("drop", drop);
-imageDisplayMano8.addEventListener("drop", drop);
+
 
 const btnCancelarTurno = document.getElementById("btnCancelar");
 btnCancelarTurno.addEventListener("click", cancelarTurno);
@@ -947,7 +963,7 @@ function generarMazoConSemilla(semilla) {
     const rng = seedrandom(semilla); // Crea la función generadora de números pseudoaleatorios con la semilla
     mazoCartas = [];
 
-    for (let i = 2; i <= 10; i++) {
+    for (let i = 2; i <= 99; i++) {
         mazoCartas.push(i);
     }
 

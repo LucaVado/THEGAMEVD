@@ -315,14 +315,6 @@ body{
     border-radius: 10px;
     animation: rainbow 4000ms linear infinite;
 }
-.container .board .card-back .REDBACK8:hover {
-    transform: scale(1.1);
-    -webkit-box-shadow: 5px 5px 10px 0 #BC00CC;
-    box-shadow: 0 0 300px 120px #BC00CC;
-    border: 5px solid transparent;
-    border-radius: 10px;
-    animation: rainbow 4000ms linear infinite;
-}
 
 
 
@@ -627,6 +619,7 @@ body{
 
 
 
+
 .btn-4 {
 
     border: 5px solid transparent;
@@ -723,13 +716,13 @@ button:hover::after {
     width: 30px;
     height: 30px;
     border-radius: 100%;
-    border: 6px solid #00FFCB;
+    border: 6px solid #ff0000;
     position: absolute;
     z-index: -1;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    animation: ring 2000ms infinite;
+    animation: ring 3000ms infinite;
 
 }
 .button.ring-animation3::after {
@@ -815,8 +808,8 @@ button:hover::after {
     border-radius: 1000px;
     min-width: calc(100% + 12px);
     min-height: calc(100% + 12px);
-    border: 6px solid #00FFCB;
-    box-shadow: 0 0 60px rgba(0,255,203,.64);
+    border: 6px solid #ff0000;
+    box-shadow: 0 0 60px rgb(237, 0, 255);
     position: absolute;
     top: 50%;
     left: 50%;

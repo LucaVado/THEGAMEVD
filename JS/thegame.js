@@ -947,7 +947,7 @@ function generarMazoConSemilla(semilla) {
     const rng = seedrandom(semilla); // Crea la función generadora de números pseudoaleatorios con la semilla
     mazoCartas = [];
 
-    for (let i = 2; i <= 10; i++) {
+    for (let i = 2; i <= 99; i++) {
         mazoCartas.push(i);
     }
 

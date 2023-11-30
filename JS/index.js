@@ -241,11 +241,33 @@ document.addEventListener("DOMContentLoaded", function() {
     });
 
     const juegoPendiente = localStorage.getItem("juegoPendiente");
+    const cuadroJuegoPendiente = document.getElementById("cuadroJuegoPendiente");
+    const juegoNoPendiente = document.getElementById("noPendiente");
+    const juegoNoPendiente1 = document.getElementById("noPendiente1");
+    const nombreJuego = document.getElementById("nombreJuego");
+    const seedJuego = document.getElementById("seedJuego");
+    const porcentajeJuego = document.getElementById("porcentajeJuego");
+    const barraPorcentaje = document.getElementById("barraPorcentaje");
 
     if (juegoPendiente) {
-        const cuadroJuegoPendiente = document.getElementById("cuadroJuegoPendiente");
+
         if (cuadroJuegoPendiente) {
             cuadroJuegoPendiente.style.display = "block";
+            juegoNoPendiente.style.display = "none";
+            juegoNoPendiente1.textContent = "Partida Pendiente!";
+
+
+            // Obtener datos del juego pendiente desde localStorage
+            const nombre = localStorage.getItem("nombre");
+            const seed = localStorage.getItem("seed");
+            const mazoCartas = JSON.parse(localStorage.getItem("mazoCartas"));
+            const porcentaje = 100 - (mazoCartas.length / 100) * 100;
+
+            // Mostrar información del juego pendiente en el HTML
+            nombreJuego.textContent = nombre;
+            seedJuego.textContent = seed;
+            porcentajeJuego.textContent = porcentaje;
+            barraPorcentaje.style.width = porcentaje + "%";
         }
     }
 

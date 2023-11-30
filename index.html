@@ -19,7 +19,7 @@
 <div id="custom-cursor"></div>
 <div class="navbarSticky">
     <img src="IMG/favicon.png" class="logoNav" alt="favicon">
-    <div class="checkbox-wrapper-5">
+    <div class="checkbox-wrapper-5" seccionDestino1>
         <div class="check">
             <input id="check-5" type="checkbox">
             <label for="check-5"></label>
@@ -27,7 +27,7 @@
     </div>
     <input type="range" id="volumeControl" min="0" max="100" step="1" value="50" class="slider">
     <ul class="nav-list">
-        <li><button class="btnNav activo" id="botonIrASeccion1">Home</button></li>
+        <li><button class="btnNav" id="botonIrASeccion1">Home</button></li>
         <li><button class="btnNav" id="botonIrASeccion2">Jugar</button></li>
         <li><button class="btnNav" id="botonIrASeccion3">Rank</button></li>
         <li><button class="btnNav" id="botonIrASeccion4">Reglas</button></li>
@@ -64,7 +64,7 @@
     </div>
     <div class="content">
 
-        <header class="hero-section" id="seccionDestino1">
+        <header class="hero-section" id="seccionDestino2">
 
             <img data-speed=".6" class="hero" src="IMG/home/rgb1.gif" alt="Alt" id="halo" >
             <div class="container">
@@ -155,9 +155,17 @@
 
                                 </div>
                                 <div class="backSide">
-                                    <p class="title">No hay partida pentiente</p>
-                                    <p>Comienza una!</p>
-                                    <div id="cuadroJuegoPendiente" class="cuadro-juego">
+                                    <p class="title" id="noPendiente1">No hay partida pendiente</p>
+                                    <p id="noPendiente">Comienza una!</p>
+                                    <div id="cuadroJuegoPendiente" class="cuadro-juego Pendiente">
+                                        <div class="juego-info">
+                                            <p><strong>Nombre:</strong> <span id="nombreJuego"></span></p>
+                                            <p><strong>Seed:</strong> <span id="seedJuego"></span></p>
+                                            <p><strong>Porcentaje de la partida:</strong> <span id="porcentajeJuego"></span>%</p>
+                                            <div class="progress">
+                                                <div id="barraPorcentaje" class="bar"></div>
+                                            </div>
+                                        </div>
                                         <button id="verJuegoPendiente" class="boton-ver">Continuar Juego Pendiente</button>
                                     </div>
                                 </div>

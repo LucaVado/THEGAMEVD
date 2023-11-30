@@ -905,6 +905,7 @@ function guardarProgreso() {
     const boardSDJSON = JSON.stringify(filaSuperiorDerecha);
     const boardIIJSON = JSON.stringify(filaInferiorIzquierda);
     const boardIDJSON = JSON.stringify(filaInferiorDerecha);
+    const seedJSON = JSON.stringify(resultadoGeneracion.semilla);
     localStorage.setItem('arrayTemporal', arrayTemporalJSON);
     localStorage.setItem('mazoCartas', mazoCartasJSON);
     localStorage.setItem('manoCartas', manoCartasJSON);
@@ -912,6 +913,7 @@ function guardarProgreso() {
     localStorage.setItem('filaSuperiorDerecha', boardSDJSON);
     localStorage.setItem('filaInferiorIzquierda', boardIIJSON);
     localStorage.setItem('filaInferiorDerecha', boardIDJSON);
+    localStorage.setItem('seed', seedJSON);
 
 }
 

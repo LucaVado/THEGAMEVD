@@ -513,7 +513,7 @@ body{
     background-clip: content-box, border-box;
 }
 
-#container-stars {
+#container-starsSeed, #container-starsNuevo, #container-starsExtremo, #container-starsRank {
     position: absolute;
     z-index: -1;
     width: 100%;
@@ -532,7 +532,7 @@ strong {
     text-shadow: 0 0 4px white;
 }
 
-#glow {
+#glowExtremo, #glowNuevo, #glowRank, #glowSeed {
     position: absolute;
     display: flex;
     width: 12rem;
@@ -554,7 +554,7 @@ strong {
     background: rgba(142, 81, 234, 0.704);
 }
 
-.btn:hover #container-stars {
+.btn:hover #container-starsSeed, #container-starsNuevo, #container-starsExtremo, #container-starsRank {
     z-index: 1;
     background-color: #212121;
 }
@@ -574,14 +574,17 @@ strong {
     background: #FE53BB;
 }
 
-#stars {
+#starsRank, #starsNuevo, #starsExtremo, #starsSeed {
     position: relative;
     background: transparent;
     width: 200rem;
     height: 200rem;
 }
 
-#stars::after {
+#starsRank::after,
+#starsNuevo::after,
+#starsExtremo::after,
+#starsSeed::after {
     content: "";
     position: absolute;
     top: -10rem;
@@ -591,12 +594,18 @@ strong {
     animation: animStarRotate 90s linear infinite;
 }
 
-#stars::after {
+#starsRank::after,
+#starsNuevo::after,
+#starsExtremo::after,
+#starsSeed::after {
     background-image: radial-gradient(#ffffff 1px, transparent 1%);
     background-size: 50px 50px;
 }
 
-#stars::before {
+#starsRank::before,
+#starsNuevo::before,
+#starsExtremo::before,
+#starsSeed::before {
     content: "";
     position: absolute;
     top: 0;
@@ -606,7 +615,10 @@ strong {
     animation: animStar 60s linear infinite;
 }
 
-#stars::before {
+#starsRank::before,
+#starsNuevo::before,
+#starsExtremo::before,
+#starsSeed::before {
     background-image: radial-gradient(#ffffff 1px, transparent 1%);
     background-size: 50px 50px;
     opacity: 0.5;

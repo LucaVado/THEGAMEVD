@@ -19,7 +19,7 @@
 <div id="custom-cursor"></div>
 <div class="navbarSticky">
     <img src="IMG/favicon.png" class="logoNav" alt="favicon">
-    <div class="checkbox-wrapper-5" seccionDestino1>
+    <div class="checkbox-wrapper-5">
         <div class="check">
             <input id="check-5" type="checkbox">
             <label for="check-5"></label>
@@ -27,7 +27,7 @@
     </div>
     <input type="range" id="volumeControl" min="0" max="100" step="1" value="50" class="slider">
     <ul class="nav-list">
-        <li><button class="btnNav" id="botonIrASeccion1">Home</button></li>
+        <li><button class="btnNav activo" id="botonIrASeccion1">Home</button></li>
         <li><button class="btnNav" id="botonIrASeccion2">Jugar</button></li>
         <li><button class="btnNav" id="botonIrASeccion3">Rank</button></li>
         <li><button class="btnNav" id="botonIrASeccion4">Reglas</button></li>
@@ -64,7 +64,7 @@
     </div>
     <div class="content">
 
-        <header class="hero-section" id="seccionDestino2">
+        <header class="hero-section" id="seccionDestino1">
 
             <img data-speed=".6" class="hero" src="IMG/home/rgb1.gif" alt="Alt" id="halo" >
             <div class="container">
@@ -81,8 +81,8 @@
                     <div data-speed=".9" class="gallery__left">
 
                         <section class="gallery__item" >
-                            <div class="accordion-item">
-                                <img src="IMG/home/rgb1.gif" alt="Zero">
+                            <div class="accordion-item" id="seccionDestino2">
+                                <img src="IMG/home/rgb1.gif" alt="Nyx">
                                 <div>
                                     <h2>Modo Extremo!</h2>
                                     <button class="btn" type="button" id="jugarNuevaPartidaExtremo">
@@ -208,10 +208,14 @@
                                                 <div class="circle"></div>
                                             </div>
                                         </button>
+                                        <button class="btn" type="button" id="btnToggleTables">
+                                            <strong>Cambiar Tabla</strong>
+                                        </button>
                                     </div>
                                 </div>
 
                             </div>
+
 
                         </div>
 

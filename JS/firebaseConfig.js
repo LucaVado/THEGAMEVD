@@ -16,6 +16,7 @@ const database = firebase.database();
 
 // Obtén una referencia a la tabla 'rank' en tu base de datos
 const rankRef = firebase.database().ref('rank');
-
+const rankRefE = firebase.database().ref('rankE');
 export {rankRef };
+export {rankRefE};
 export {database};

@@ -334,3 +334,45 @@ function checkConditions() {;
 window.onload = checkConditions;
 
 
+document.addEventListener('DOMContentLoaded', function() {
+    var botonCopia = document.querySelector('.copy');
+    var seedElement = document.getElementById('seedJuego');
+
+    botonCopia.addEventListener('click', function() {
+        var seed = seedElement.innerText;
+
+        // Utilizar el nuevo API de Clipboard para copiar el texto al portapapeles
+        navigator.clipboard.writeText(seed)
+            .then(function() {
+            })
+            .catch(function(err) {
+                // Manejar errores si la copia falla
+                console.error('Error al copiar al portapapeles: ', err);
+            });
+    });
+});
+
+document.addEventListener('DOMContentLoaded', function() {
+    var deleteButton = document.getElementById('eliminarLocal');
+
+    deleteButton.addEventListener('click', function() {
+        var claveAMantener = 'firebase:host:thegamevd-default-rtdb.firebaseio.com';
+
+        // Obtener todas las claves del LocalStorage
+        var keys = Object.keys(localStorage);
+
+        // Iterar sobre las claves y eliminar aquellas que no son la que deseas mantener
+        keys.forEach(function(key) {
+            if (key !== claveAMantener) {
+                localStorage.removeItem(key);
+            }
+        });
+        Swal.fire({
+            title: 'Se elimino la partida pendiente',
+            didClose: function() {
+                // Recargar la página después de cerrar el mensaje
+                location.reload();
+            }
+        })
+    });
+});

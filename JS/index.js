@@ -118,8 +118,25 @@ botones.forEach((boton, index) => {
     });
 
 
-});
 
+});
+// Obtén el botón y la sección de destino por su ID
+const botonJugar = document.getElementById("botonIrASeccionZ");
+const seccionJugar = document.getElementById("seccionDestino2");
+
+// Agrega un evento al botón para desplazarse suavemente a la sección 2 al hacer clic
+botonJugar.addEventListener("click", () => {
+    // Verifica si la sección de destino existe
+    if (seccionJugar) {
+        const offsetz = seccionJugar.getBoundingClientRect().top + window.scrollY;
+        window.scrollTo({
+            top: offsetz,
+            behavior: "smooth"
+        });
+    } else {
+        console.error("La sección de destino no está definida.");
+    }
+});
 const items = document.querySelectorAll(".accordion-item");
 items.forEach((item) => {
     item.addEventListener("click", () => {

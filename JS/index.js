@@ -321,3 +321,16 @@ document.getElementById('close-modal').addEventListener('click', function() {
 });
 
 
+// Función para detectar si está en localhost y la condición de partidaPendiente
+function checkConditions() {;
+    const juegoPendiente = localStorage.getItem("juegoPendiente");
+    if (juegoPendiente) {
+        const partidaPendienteButton = document.getElementById('botonIrASeccion6');
+        partidaPendienteButton.classList.add('blink-shadow');
+    }
+}
+
+// Llamada a la función para verificar condiciones al cargar la página
+window.onload = checkConditions;
+
+

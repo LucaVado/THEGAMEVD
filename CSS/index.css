@@ -449,6 +449,7 @@ body{
 }
 
 .btnNav {
+    width: 90%;
     outline: none;
     display: inline-block;
     border: 1px solid #fff;
@@ -494,14 +495,30 @@ body{
 }
 
 .btnNav:hover::after, .btnNav:hover::before {
-    height: 20px;
-    width: 20px;
+    height: 50%;
+    width: 50%;
     opacity: 1;
 }
 
 .btnNav:active {
     box-shadow: 4px 4px 10px rgb(184, 184, 184);
     transform: scale(120%) translateY(5px);
+}
+
+@keyframes blink {
+    0% {
+        box-shadow: 0 0 30px red;
+    }
+    50% {
+        box-shadow: none;
+    }
+    100% {
+        box-shadow: 0 0 30px red;
+    }
+}
+
+.blink-shadow {
+    animation: blink 1s infinite;
 }
 
 /* BOTON SPACE*/

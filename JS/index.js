@@ -160,11 +160,14 @@ botonJugarE.addEventListener("click", () => {
             top: scrollToY,
             behavior: "smooth"
         });
+
     } else {
         console.error("La sección de destino no está definida.");
     }
 });
 const items = document.querySelectorAll(".accordion-item");
+const botonesIrASeccion = document.querySelectorAll(".extremobtn");
+
 items.forEach((item) => {
     item.addEventListener("click", () => {
         items.forEach(item => {
@@ -172,6 +175,30 @@ items.forEach((item) => {
         });
         item.classList.add("item-active");
     });
+});
+
+botonesIrASeccion.forEach((boton) => {
+    boton.addEventListener("click", (event) => {
+        event.stopPropagation(); // Evita que el evento se propague al acordeón
+
+        const acordeonEspecifico = document.querySelector(".accordion-item.itemz");
+
+        items.forEach(item => {
+            item.classList.remove("item-active");
+        });
+
+        acordeonEspecifico.classList.add("item-active");
+    });
+});
+
+botonIrASeccionE.addEventListener("click", () => {
+    const acordeonEspecifico = document.querySelector(".accordion-item.itemz");
+
+    items.forEach(item => {
+        item.classList.remove("item-active");
+    });
+
+    acordeonEspecifico.classList.add("item-active");
 });
 
 //ANTERIOR

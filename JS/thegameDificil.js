@@ -1,5 +1,5 @@
 import seedrandom from 'seedrandom';
-import { rankRef } from './firebaseConfig';
+import { rankRefE } from './firebaseConfig';
 let seedYaCreada;
 let nombreGuardado;
 let juegoTerminado = false;
@@ -1050,7 +1050,7 @@ function cargarGameBaseDeDatos() {
 
     if (nuevoUsuario) {
         // Consulta a la base de datos para verificar registros existentes
-        rankRef.orderByChild('nombre').equalTo(nuevoUsuario.nombre).once('value', (snapshot) => {
+        rankRefE.orderByChild('nombre').equalTo(nuevoUsuario.nombre).once('value', (snapshot) => {
             const records = snapshot.val();
 
             if (records !== null) {
@@ -1063,11 +1063,11 @@ function cargarGameBaseDeDatos() {
                         if (nuevoUsuario.score < records[key].score) {
                             // Nuevo score es menor, actualiza el registro.
                             const nuevasVecesJugadas = records[key].vecesjugada + 1;
-                            rankRef.child(key).update({ score: nuevoUsuario.score, vecesjugada: nuevasVecesJugadas });
+                            rankRefE.child(key).update({ score: nuevoUsuario.score, vecesjugada: nuevasVecesJugadas });
                             localStorage.clear();
                         } else {
                             // Nuevo score es igual o mayor, aumenta veces jugadas.
-                            rankRef.child(key).update({ vecesjugada: records[key].vecesjugada + 1 });
+                            rankRefE.child(key).update({ vecesjugada: records[key].vecesjugada + 1 });
                             localStorage.clear();
                         }
                         return;
@@ -1077,7 +1077,7 @@ function cargarGameBaseDeDatos() {
 
             // No se encontró un registro con la misma semilla o el nuevo score es igual o mayor.
             // Verifica si hay menos de 10 registros o si el score es menor que el score más alto
-            rankRef.once('value', (snapshot) => {
+            rankRefE.once('value', (snapshot) => {
                 const allScores = snapshot.val();
                 const sortedScores = Object.keys(allScores)
                     .map(key => ({ ...allScores[key], id: key })) // Incluye la clave en los objetos
@@ -1092,11 +1092,11 @@ function cargarGameBaseDeDatos() {
 
                 if (sortedScores.length < 50 || nuevoUsuario.score < recordWithHighestScore.score || (nuevoUsuario.score === recordWithHighestScore.score && nuevoUsuario.vecesjugada < recordWithHighestScore.vecesjugada)) {
                     // Hay menos de 50 registros o el nuevo score es menor que el score más alto, o el score es igual pero tiene menos veces jugadas, agrega un nuevo registro a la base de datos.
-                    rankRef.push(nuevoUsuario);
+                    rankRefE.push(nuevoUsuario);
 
                     // Si hay 10 registros, elimina el registro con el score más alto y la mayor cantidad de veces jugadas.
                     if (sortedScores.length === 50) {
-                        rankRef.child(recordWithHighestScore.id).remove();
+                        rankRefE.child(recordWithHighestScore.id).remove();
                     }
 
                     localStorage.clear();

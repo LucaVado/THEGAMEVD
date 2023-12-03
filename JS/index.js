@@ -208,6 +208,7 @@ document.addEventListener("DOMContentLoaded", function() {
     const jugarNuevaPartidaButton = document.getElementById("jugarNuevaPartida");
     const jugarNuevaPartidaExtremoButton = document.getElementById("jugarNuevaPartidaExtremo");
     const jugarConSeedButton = document.getElementById("jugarConSeed");
+    const jugarConSeedButtonExtremo = document.getElementById("jugarConSeedExtremo");
 
 
     verReglasButton.addEventListener("click", function() {
@@ -306,6 +307,35 @@ document.addEventListener("DOMContentLoaded", function() {
                 localStorage.setItem("nombre", nombre); // Guarda el nombre en localStorage
                 localStorage.setItem("seed", seed); // Guarda la seed en localStorage
                 window.location.href = "thegame.html"; // Redirige a "thegame.html"
+            }
+        });
+
+    });
+
+    jugarConSeedButtonExtremo.addEventListener("click", function() {
+        Swal.fire({
+            title: "Ingrese intento de Nombre y Seed",
+            html:
+                '<input id="swal-input1" class="swal2-input" placeholder="Nombre" maxlength="4">' +
+                '<input id="swal-input2" class="swal2-input" placeholder="Seed">',
+            preConfirm: () => {
+                const nombre = document.getElementById("swal-input1").value.trim();
+                const seed = document.getElementById("swal-input2").value.trim();
+                if (nombre === "" || seed === "") {
+                    Swal.showValidationMessage("Por favor, complete ambos campos.");
+                    return false;
+                } else if (nombre.length > 4) {
+                    Swal.showValidationMessage("Ingrese un nombre de máximo 4 caracteres.");
+                    return false;
+                }
+                return { nombre, seed };
+            }
+        }).then((result) => {
+            if (result.isConfirmed) {
+                const { nombre, seed } = result.value;
+                localStorage.setItem("nombre", nombre); // Guarda el nombre en localStorage
+                localStorage.setItem("seed", seed); // Guarda la seed en localStorage
+                window.location.href = "thegameDificil.html"; // Redirige a "thegame.html"
             }
         });
 

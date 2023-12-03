@@ -301,7 +301,7 @@ function displayCurrentImage() {
 }
 
 // Llama a la función para mostrar la imagen actual en la carga inicial.
-
+/*
 // Función para mostrar las matrices en la consola
 function mostrarMatricesEnConsola() {
     console.log("filaSuperiorIzquierda:", filaSuperiorIzquierda);
@@ -316,7 +316,7 @@ function mostrarMatricesEnConsola() {
 // Agrega un controlador de eventos al botón "Ver Matriz de Cartas"
 const btnVerMatriz = document.getElementById("verMatriz");
 btnVerMatriz.addEventListener("click", mostrarMatricesEnConsola);
-
+*/
 function pasarTurno() {
 
     let cantidadDeCeros = 0;

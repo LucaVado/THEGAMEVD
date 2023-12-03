@@ -477,3 +477,110 @@ document.addEventListener('DOMContentLoaded', function() {
         })
     });
 });
+
+
+const reglasExtremo = document.getElementById("reglasExtremo");
+reglasExtremo.addEventListener("click", () => {
+    Swal.fire({
+        title: 'Reglas de "The Game"',
+        html: `
+        <strong>Objetivo del Juego: <br> 
+        <h4 class="alertWhite" > 
+        Colocar las cartas numéricas en cuatro filas, dos ascendentes (1-99) y dos descendentes (100-2), cumpliendo con las reglas de cada fila.
+        </h4>
+        </strong>
+        
+        <br><br>
+        <strong>Preparación:</strong> 
+        <h4 class="alertWhite" >
+        Coloca las cuatro filas de cartas boca arriba en el centro de la mesa.
+Mezcla las 98 cartas numéricas.
+Para 3-5 jugadores: reparte 6 cartas a cada jugador (7 para 2 jugadores).
+Para 1 jugador: reparte 8 cartas.
+Forma una pila de robo con las cartas restantes, boca abajo.
+</h4>
+        <br><br>
+        <strong>Cómo Jugar:</strong> Los jugadores deciden quién empieza.
+Por turnos en el sentido de las agujas del reloj, cada jugador coloca al menos dos cartas de su mano a la derecha de cualquier fila.
+Puedes colocar más cartas si es posible, siguiendo las reglas de cada fila.
+Luego, roba el mismo número de cartas de la pila de robo.
+Continúa el juego hasta que la pila de robo se vacíe.
+        <br><br>
+        <strong>Reglas de Colocación:</strong> Fila Ascendente: Coloca cartas en orden creciente, permitiendo cualquier espacio entre ellas.
+Fila Descendente: Coloca cartas en orden decreciente.
+Aumento del Montón
+Cuando una carta es exactamente 10 mayor o menor que la carta superior de un montón, se puede jugar en orden inverso.
+Esta regla se puede aplicar varias veces durante un turno.
+Comunicación
+No se puede revelar el número exacto de cartas en la mano, pero otras comunicaciones están permitidas.
+        <strong>Fin del Juego:</strong> Continúa jugando sin robar cuando la pila se vacíe.
+Si un jugador no puede jugar el número mínimo de cartas en su turno, el juego termina.
+Se cuentan las cartas restantes en manos y en la pila. Menos de 10 cartas es un resultado excelente.
+Si se juegan todas las cartas, ¡has ganado!
+        <br><br>
+        <strong>Nivel Expertos:</strong> En partidas expertas, se deben colocar al menos 3 cartas por turno.
+Ajusta el número de cartas repartidas según el número de jugadores.
+      `,
+        confirmButtonText: 'Entendido'
+    });
+});
+
+
+
+// Función para mostrar las reglas en SweetAlert2
+function mostrarReglas() {
+    Swal.fire({
+        title: 'Reglas de "The Game"',
+        html: `
+        <strong>Objetivo del Juego:</strong> <h4 class="alertWhite" > Colocar cartas numéricas en filas ascendentes y descendentes. </h4>
+        <img src="../IMG/home/tablero.png" width="200" height="200">
+        <br><br>
+        <strong>Preparación:</strong>
+        <h4 class="alertWhite" >
+        Preparate para pensar muy bien cada movimiento:<br>
+        ComenzarJuego:<br>
+        <img src="../IMG/home/tablero.png" width="200" height="200">
+        </h4>
+        <br><br>
+        <strong>Cómo Jugar:</strong>
+         <h4 class="alertWhite" >
+        Los jugadores deciden quién empieza.
+        Por turnos en el sentido de las agujas del reloj, cada jugador coloca al menos dos cartas de su mano a la derecha de cualquier fila.
+        Puedes colocar más cartas si es posible, siguiendo las reglas de cada fila.
+        Luego, roba el mismo número de cartas de la pila de robo.
+        Continúa el juego hasta que la pila de robo se vacíe.
+        </h4>
+        <br><br>
+        <strong>Reglas de Colocación:</strong>
+         <h4 class="alertWhite" >
+        Fila Ascendente: Coloca cartas en orden creciente, permitiendo cualquier espacio entre ellas.
+        Fila Descendente: Coloca cartas en orden decreciente.
+        Aumento del Montón
+        Cuando una carta es exactamente 10 mayor o menor que la carta superior de un montón, se puede jugar en orden inverso.
+        Esta regla se puede aplicar varias veces durante un turno.
+        Comunicación
+        No se puede revelar el número exacto de cartas en la mano, pero otras comunicaciones están permitidas.
+        </h4>
+        <br><br>
+        <strong>Fin del Juego:</strong>
+         <h4 class="alertWhite" >
+        Continúa jugando sin robar cuando la pila se vacíe.
+        Si un jugador no puede jugar el número mínimo de cartas en su turno, el juego termina.
+        Se cuentan las cartas restantes en manos y en la pila. Menos de 10 cartas es un resultado excelente.
+        Si se juegan todas las cartas, ¡has ganado!
+        </h4>
+        <br><br>
+        <strong>Nivel Expertos:</strong>
+         <h4 class="alertWhite" >
+        En partidas expertas, se deben colocar al menos 3 cartas por turno.
+        Ajusta el número de cartas repartidas según el número de jugadores.
+        </h4>
+      `,
+        confirmButtonText: 'Entendido',
+    });
+}
+
+// Llamar a la función para mostrar las reglas al cargar la página (opcional)
+window.onload = function() {
+    mostrarReglas();
+};

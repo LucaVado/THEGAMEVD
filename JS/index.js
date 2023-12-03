@@ -92,15 +92,22 @@ const seccionesDestino = [
     document.getElementById("seccionDestino6")
 ];
 
-// Función para desplazarse suavemente a una sección
 function scrollToSection(seccion) {
-    const offset = seccion.getBoundingClientRect().top + window.scrollY;
-    window.scrollTo({
-        top: offset,
-        behavior: "smooth"
-    });
-}
+    if (seccion) {
+        const seccionRect = seccion.getBoundingClientRect();
+        const windowHeight = window.innerHeight;
 
+        // Calcula la posición centrada restando la mitad de la altura de la ventana menos la mitad de la altura de la sección
+        const scrollToY = seccionRect.top + window.scrollY - (windowHeight / 2 - seccionRect.height / 2);
+
+        window.scrollTo({
+            top: scrollToY,
+            behavior: "smooth"
+        });
+    } else {
+        console.error("La sección de destino no está definida.");
+    }
+}
 
 botones.forEach((boton, index) => {
     boton.addEventListener("click", () => {
@@ -116,21 +123,41 @@ botones.forEach((boton, index) => {
         */
 
     });
-
-
-
 });
+
 // Obtén el botón y la sección de destino por su ID
 const botonJugar = document.getElementById("botonIrASeccionZ");
+const botonJugarE = document.getElementById("botonIrASeccionE");
 const seccionJugar = document.getElementById("seccionDestino2");
+const seccionJugarE = document.getElementById("seccionDestino6");
 
 // Agrega un evento al botón para desplazarse suavemente a la sección 2 al hacer clic
 botonJugar.addEventListener("click", () => {
-    // Verifica si la sección de destino existe
     if (seccionJugar) {
-        const offsetz = seccionJugar.getBoundingClientRect().top + window.scrollY;
+        const seccionRect = seccionJugar.getBoundingClientRect();
+        const windowHeight = window.innerHeight;
+
+        // Calcula la posición centrada restando la mitad de la altura de la ventana menos la mitad de la altura de la sección
+        const scrollToY = seccionRect.top + window.scrollY - (windowHeight / 2 - seccionRect.height / 2);
+
         window.scrollTo({
-            top: offsetz,
+            top: scrollToY,
+            behavior: "smooth"
+        });
+    } else {
+        console.error("La sección de destino no está definida.");
+    }
+});
+botonJugarE.addEventListener("click", () => {
+    if (seccionJugarE) {
+        const seccionRect = seccionJugarE.getBoundingClientRect();
+        const windowHeight = window.innerHeight;
+
+        // Calcula la posición centrada restando la mitad de la altura de la ventana menos la mitad de la altura de la sección
+        const scrollToY = seccionRect.top + window.scrollY - (windowHeight / 2 - seccionRect.height / 2);
+
+        window.scrollTo({
+            top: scrollToY,
             behavior: "smooth"
         });
     } else {

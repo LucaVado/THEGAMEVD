@@ -541,15 +541,19 @@ body{
     grid-row-gap: 0;
 }
 
-.container .lateralDerechoDown .btnD1 {
-    grid-area: 1 / 1 / 2 / 2;
+.container .lateralDerechoDown {
+    grid-area: 2 / 3 / 3 / 4;
+    height: calc(100% - 5px);
+    width: calc(100% - 10px);
     display: grid;
-    justify-items: center;
-    align-items: center;
+    grid-template-columns: 100%;
+    grid-template-rows: repeat(2, 50%);
+    grid-column-gap: 0;
+    grid-row-gap: 0;
 }
 
-.container .lateralDerechoDown .btnD2 {
-    grid-area: 1 / 2 / 2 / 3;
+.container .lateralDerechoDown .btnD1 {
+    grid-area: 1 / 1 / 2 / 2;
     display: grid;
     justify-items: center;
     align-items: center;

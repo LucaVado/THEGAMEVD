@@ -194,6 +194,7 @@ let mazoCartas = [];
 let juegoComenzado = false;
 function comenzarGame() {
     if (juegoComenzado === false) {
+        btnComenzarGame.style.display = "none";
         btnPasarTurnoContainer.classList.remove("disabled");
         btnPasarTurno.disabled = false;
         btnCancelarTurno.disabled = false;

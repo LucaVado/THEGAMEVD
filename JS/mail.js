@@ -237,8 +237,10 @@ function toggleTables() {
     }
 }
 
+
 // Agrega un evento al botón para cambiar entre las tablas
 const btnToggleTables = document.getElementById('btnToggleTables');
 btnToggleTables.addEventListener('click', toggleTables);
 const btnToggleTables1 = document.getElementById('btnToggleTables1');
 btnToggleTables1.addEventListener('click', toggleTables);
+

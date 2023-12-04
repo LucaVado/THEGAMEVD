@@ -431,7 +431,7 @@ function checkConditions() {;
     }
 }
 
-// Llamada a la función para verificar condiciones al cargar la página
+
 window.onload = checkConditions;
 
 
@@ -533,22 +533,27 @@ function mostrarReglas() {
         title: 'Reglas de "The Game"',
         html: `
         <strong>Objetivo del Juego:</strong> <h4 class="alertWhite" > Colocar cartas numéricas en filas ascendentes y descendentes. </h4>
-        <img src="../IMG/home/tablero.png" width="200" height="200">
+        <img src="../IMG/home/tablero.png" width="40%" >
         <br><br>
         <strong>Preparación:</strong>
-        <h4 class="alertWhite" >
-        Preparate para pensar muy bien cada movimiento:<br>
-        ComenzarJuego:<br>
-        <img src="../IMG/home/tablero.png" width="200" height="200">
-        </h4>
-        <br><br>
+    <div class="alertWhite">
+    Preparate para pensar muy bien cada movimiento:<br>
+      <div style="display: flex; align-items: center;">
+        <div style="flex: 1;">
+          <h2>ComenzarJuego:</h2><br>
+         Una vez comenzado el juego la partida estara lista para ser guardada, asi que logra tu maxima puntiación!
+        </div>
+        <div style="flex: 1; text-align: right;">
+          <img src="../IMG/home/comenzarPicture.png" width="100%" >
+        </div>
+      </div>
+    </div>
+    <br><br>
         <strong>Cómo Jugar:</strong>
          <h4 class="alertWhite" >
-        Los jugadores deciden quién empieza.
-        Por turnos en el sentido de las agujas del reloj, cada jugador coloca al menos dos cartas de su mano a la derecha de cualquier fila.
-        Puedes colocar más cartas si es posible, siguiendo las reglas de cada fila.
-        Luego, roba el mismo número de cartas de la pila de robo.
-        Continúa el juego hasta que la pila de robo se vacíe.
+       Una vez comenzado el juego tu tablero sera mostrado y deberas tomar tus primeras 8 cartas:
+       <img src="../IMG/home/turnobtnRule.png" width="100%" > <br>
+       Podras arrastrar tus cartas hacia el tablero:
         </h4>
         <br><br>
         <strong>Reglas de Colocación:</strong>
@@ -584,3 +589,4 @@ function mostrarReglas() {
 window.onload = function() {
     mostrarReglas();
 };
+window.onload = checkConditions;

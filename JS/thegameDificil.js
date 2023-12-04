@@ -313,9 +313,7 @@ function mostrarMatricesEnConsola() {
     console.log("ARRAY TEMPORTAL", arrayTemporal);
 }
 
-// Agrega un controlador de eventos al botón "Ver Matriz de Cartas"
-const btnVerMatriz = document.getElementById("verMatriz");
-btnVerMatriz.addEventListener("click", mostrarMatricesEnConsola);
+
 
 function pasarTurno() {
 

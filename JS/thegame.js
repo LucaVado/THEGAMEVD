@@ -757,7 +757,7 @@ btnComenzarGame.addEventListener("click", comenzarGame);
 const btnSeed = document.getElementById("btnSeed");
 btnSeed.addEventListener("click", mostrarSeed);
 const btnReglas = document.getElementById("btnReglas");
-btnReglas.addEventListener("click", reglas);
+btnReglas.addEventListener("click", mostrarReglas);
 function cancelarTurno() {
 
     let cantidadDeCeroz = 0;
@@ -991,13 +991,125 @@ function mostrarSeed(){
         'success'
     )
 }
-function reglas(){
+function mostrarReglas(hacerScroll) {
+    const swalConfig = {
+        title: 'Reglas de "The Game"',
+        html: `
+        <strong>Objetivo del Juego:</strong> <h4 class="alertWhite" > Colocar cartas numéricas en filas ascendentes y descendentes. </h4>
+        <img src="../IMG/home/tablero.png" width="40%" >
+        <br><br>
+        <strong>Preparación:</strong>
+    <div class="alertWhite">
+    Preparate para pensar muy bien cada movimiento:<br>
+      <div style="display: flex; align-items: center;">
+        <div style="flex: 1;">
+          <h2>ComenzarJuego:</h2><br>
+         Una vez comenzado el juego la partida estara lista para ser guardada, asi que logra tu maxima puntiación!
+        </div>
+        <div style="flex: 1; text-align: right;">
+          <img src="../IMG/home/comenzarPicture.png" width="100%" >
+        </div>
+      </div>
+    </div>
+    <br><br>
+        <strong>Cómo Jugar:</strong>
+         <h4 class="alertWhite" >
+       Una vez comenzado el juego tu tablero sera mostrado y deberas tomar tus primeras 8 cartas:
+       <img src="../IMG/home/turnobtnRule.png" width="100%" > <br>
+       Podras arrastrar tus cartas hacia el tablero:
+       <img src="../IMG/home/arrastreRule.png" width="100%" >
+       <div style="display: flex; align-items: center;">
+        <div style="flex: 1;">
+         Una vez coloques tus cartas puedes pasar turno
+        </div>
+        <div style="flex: 1; text-align: right;">
+          <img src="../IMG/home/turnoRule.png" width="100%" >
+        </div>
+      </div>
+        <div style="display: flex; align-items: center;">
+        <div style="flex: 1; text-align: right;">
+          <img src="../IMG/home/turnoCartaRule.png" width="100%" >
+        </div>
+        <div style="flex: 1;">
+         Tambien puedes hacerlo con la carta del mazo!
+        </div>
+        
+      </div>
+      </h4>
+        <br><br>
+        <strong>Reglas de Colocación:</strong>
+    <div class="alertWhite">
+   Deberas colocar tus cartas menor en las filas bajas y mayores en la filas bajas de forma que logres llegar al otro lado la carta:<br>
+      <div style="display: flex; align-items: center;">
+        <div style="flex: 1;">
+          <h2>Fila Ascendente -></h2><br>
+          <br>
+          <br>
+          <br>
+         <h2>Fila Descendente -></h2><br>
+        </div>
+        <div style="flex: 1; text-align: right;">
+          <img src="../IMG/home/filasRule.png" width="100%" >
+        </div>
+      </div>
+      Para poder colocar tus cartas deberas teener en cuenta varios aspectos:
+      <br>
+    Colocacion de cartas:<br>
+    Para poder colocar cartas debes tener en cuenta que en la parte ascendente no puedes colocar cartas menores a la ultima carta puesta
+    Asi como en la parte descendente no puedes colocar cartas mayores a la carta puesta
+    <br>
+    Atajos de cartas:
+    <div style="display: flex; align-items: center;">
+        <div style="flex: 1;">
+          Como bien existe las reglas de colocacion tambien puedes saltarte esa regla y poder colocar una carta fuera de la regla:<br>
+    En caso de la parte ascendente si colocas una carta menor exactamente en 10 puedes colocarla:
+        </div>
+        <div style="flex: 1; text-align: right;">
+          <img src="../IMG/home/saltoRule.png" width="100%" >
+        </div>
+      </div>
+   
+    <br>
+    Empedimientos de turno:<br>
+    Para poder pasar turno deberas soltar de tu mano por lo menos 2 cartas, puedes tirar mas hasta quedarte en 0, pero no puedes pasar turno si tienes 8 o 7 cartas en tu mano
+    <br><br>
+    Cancelar turno:<br>
+    Es posible cancelar tu turno en caso de que no firmes tu turno, asi recuperas tu cartas puestas en el tablero!
+    <br>
+    </div>
+    
+        </h4>
+        <br><br>
+        <strong>Fin del Juego:</strong>
+         <h4 class="alertWhite" >
+          Para poder ganar este juego tienes que terminar tu mano y tu mazo!, asi lograras una puntuacion de 0!<br>
+          Sin embargo si pierdes porque ya no puedes tomar mas cartas ni colocar cartas en el tablero, perderas sumando la puntuacion
+          de tu mazo y tu mano y asi se te otorga la puntuacion de derrota!
+        </h4>
+        <br><br>
+        <strong>Nivel Expertos:</strong>
+         <h4 class="alertWhite" >
+        Para jugar en modo experto son las mismas reglas con 2 simpleas pero duros cambios:<br>
+        ->Debes tirar 3 cartas para poder tomar mas cartas de tu mazo<-<br>
+        ->Ya no tendras 8 cartas en tu mano, ahora tendras 7!<-<br>
+        Muchas suerte en este modo experto!
+        </h4>
+    `,
+        confirmButtonText: 'Entendido'
+    };
 
-    Swal.fire({
-        title: 'REGLAS THE GAME',
-        imageUrl: '../IMG/rules.png',
-        imageAlt: 'RULES'
-    })
+    if (hacerScroll) {
+        swalConfig.didOpen = () => {
+            setTimeout(() => {
+                const expertSection = document.querySelector('.alertWhite:last-child');
+                if (expertSection) {
+                    expertSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            }, 300);
+        };
+    }
+
+    Swal.fire(swalConfig);
 }
 const salirGame = document.getElementById("salir");
 salirGame.addEventListener("click", salirGameF);

@@ -1129,3 +1129,14 @@ button:hover::after {
     background-image: linear-gradient(160deg, #0093E9 0%, #80D0C7 100%);
     cursor: pointer;
 }
+.articleClass {
+    --hover: 0;
+}
+
+.articleClass:hover {
+    --hover: 1;
+}
+
+.alertWhite {
+    color: white !important;
+}

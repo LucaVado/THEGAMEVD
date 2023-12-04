@@ -204,20 +204,13 @@ botonIrASeccionE.addEventListener("click", () => {
 //ANTERIOR
 
 document.addEventListener("DOMContentLoaded", function() {
-    const verReglasButton = document.getElementById("verReglas");
+
     const jugarNuevaPartidaButton = document.getElementById("jugarNuevaPartida");
     const jugarNuevaPartidaExtremoButton = document.getElementById("jugarNuevaPartidaExtremo");
     const jugarConSeedButton = document.getElementById("jugarConSeed");
     const jugarConSeedButtonExtremo = document.getElementById("jugarConSeedExtremo");
 
 
-    verReglasButton.addEventListener("click", function() {
-        Swal.fire({
-            title: 'REGLAS THE GAME',
-            imageUrl: '../IMG/rules.png',
-            imageAlt: 'RULES'
-        })
-    });
 
     jugarNuevaPartidaExtremoButton.addEventListener("click", function() {
         Swal.fire({
@@ -432,7 +425,6 @@ function checkConditions() {;
 }
 
 
-window.onload = checkConditions;
 
 
 document.addEventListener('DOMContentLoaded', function() {
@@ -479,57 +471,13 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 
-const reglasExtremo = document.getElementById("reglasExtremo");
-reglasExtremo.addEventListener("click", () => {
-    Swal.fire({
-        title: 'Reglas de "The Game"',
-        html: `
-        <strong>Objetivo del Juego: <br> 
-        <h4 class="alertWhite" > 
-        Colocar las cartas numéricas en cuatro filas, dos ascendentes (1-99) y dos descendentes (100-2), cumpliendo con las reglas de cada fila.
-        </h4>
-        </strong>
+
+
         
-        <br><br>
-        <strong>Preparación:</strong> 
-        <h4 class="alertWhite" >
-        Coloca las cuatro filas de cartas boca arriba en el centro de la mesa.
-Mezcla las 98 cartas numéricas.
-Para 3-5 jugadores: reparte 6 cartas a cada jugador (7 para 2 jugadores).
-Para 1 jugador: reparte 8 cartas.
-Forma una pila de robo con las cartas restantes, boca abajo.
-</h4>
-        <br><br>
-        <strong>Cómo Jugar:</strong> Los jugadores deciden quién empieza.
-Por turnos en el sentido de las agujas del reloj, cada jugador coloca al menos dos cartas de su mano a la derecha de cualquier fila.
-Puedes colocar más cartas si es posible, siguiendo las reglas de cada fila.
-Luego, roba el mismo número de cartas de la pila de robo.
-Continúa el juego hasta que la pila de robo se vacíe.
-        <br><br>
-        <strong>Reglas de Colocación:</strong> Fila Ascendente: Coloca cartas en orden creciente, permitiendo cualquier espacio entre ellas.
-Fila Descendente: Coloca cartas en orden decreciente.
-Aumento del Montón
-Cuando una carta es exactamente 10 mayor o menor que la carta superior de un montón, se puede jugar en orden inverso.
-Esta regla se puede aplicar varias veces durante un turno.
-Comunicación
-No se puede revelar el número exacto de cartas en la mano, pero otras comunicaciones están permitidas.
-        <strong>Fin del Juego:</strong> Continúa jugando sin robar cuando la pila se vacíe.
-Si un jugador no puede jugar el número mínimo de cartas en su turno, el juego termina.
-Se cuentan las cartas restantes en manos y en la pila. Menos de 10 cartas es un resultado excelente.
-Si se juegan todas las cartas, ¡has ganado!
-        <br><br>
-        <strong>Nivel Expertos:</strong> En partidas expertas, se deben colocar al menos 3 cartas por turno.
-Ajusta el número de cartas repartidas según el número de jugadores.
-      `,
-        confirmButtonText: 'Entendido'
-    });
-});
-
-
 
 // Función para mostrar las reglas en SweetAlert2
-function mostrarReglas() {
-    Swal.fire({
+function mostrarReglas(hacerScroll) {
+    const swalConfig = {
         title: 'Reglas de "The Game"',
         html: `
         <strong>Objetivo del Juego:</strong> <h4 class="alertWhite" > Colocar cartas numéricas en filas ascendentes y descendentes. </h4>
@@ -554,39 +502,113 @@ function mostrarReglas() {
        Una vez comenzado el juego tu tablero sera mostrado y deberas tomar tus primeras 8 cartas:
        <img src="../IMG/home/turnobtnRule.png" width="100%" > <br>
        Podras arrastrar tus cartas hacia el tablero:
-        </h4>
+       <img src="../IMG/home/arrastreRule.png" width="100%" >
+       <div style="display: flex; align-items: center;">
+        <div style="flex: 1;">
+         Una vez coloques tus cartas puedes pasar turno
+        </div>
+        <div style="flex: 1; text-align: right;">
+          <img src="../IMG/home/turnoRule.png" width="100%" >
+        </div>
+      </div>
+        <div style="display: flex; align-items: center;">
+        <div style="flex: 1; text-align: right;">
+          <img src="../IMG/home/turnoCartaRule.png" width="100%" >
+        </div>
+        <div style="flex: 1;">
+         Tambien puedes hacerlo con la carta del mazo!
+        </div>
+        
+      </div>
+      </h4>
         <br><br>
         <strong>Reglas de Colocación:</strong>
-         <h4 class="alertWhite" >
-        Fila Ascendente: Coloca cartas en orden creciente, permitiendo cualquier espacio entre ellas.
-        Fila Descendente: Coloca cartas en orden decreciente.
-        Aumento del Montón
-        Cuando una carta es exactamente 10 mayor o menor que la carta superior de un montón, se puede jugar en orden inverso.
-        Esta regla se puede aplicar varias veces durante un turno.
-        Comunicación
-        No se puede revelar el número exacto de cartas en la mano, pero otras comunicaciones están permitidas.
+    <div class="alertWhite">
+   Deberas colocar tus cartas menor en las filas bajas y mayores en la filas bajas de forma que logres llegar al otro lado la carta:<br>
+      <div style="display: flex; align-items: center;">
+        <div style="flex: 1;">
+          <h2>Fila Ascendente -></h2><br>
+          <br>
+          <br>
+          <br>
+         <h2>Fila Descendente -></h2><br>
+        </div>
+        <div style="flex: 1; text-align: right;">
+          <img src="../IMG/home/filasRule.png" width="100%" >
+        </div>
+      </div>
+      Para poder colocar tus cartas deberas teener en cuenta varios aspectos:
+      <br>
+    Colocacion de cartas:<br>
+    Para poder colocar cartas debes tener en cuenta que en la parte ascendente no puedes colocar cartas menores a la ultima carta puesta
+    Asi como en la parte descendente no puedes colocar cartas mayores a la carta puesta
+    <br>
+    Atajos de cartas:
+    <div style="display: flex; align-items: center;">
+        <div style="flex: 1;">
+          Como bien existe las reglas de colocacion tambien puedes saltarte esa regla y poder colocar una carta fuera de la regla:<br>
+    En caso de la parte ascendente si colocas una carta menor exactamente en 10 puedes colocarla:
+        </div>
+        <div style="flex: 1; text-align: right;">
+          <img src="../IMG/home/saltoRule.png" width="100%" >
+        </div>
+      </div>
+   
+    <br>
+    Empedimientos de turno:<br>
+    Para poder pasar turno deberas soltar de tu mano por lo menos 2 cartas, puedes tirar mas hasta quedarte en 0, pero no puedes pasar turno si tienes 8 o 7 cartas en tu mano
+    <br><br>
+    Cancelar turno:<br>
+    Es posible cancelar tu turno en caso de que no firmes tu turno, asi recuperas tu cartas puestas en el tablero!
+    <br>
+    </div>
+    
         </h4>
         <br><br>
         <strong>Fin del Juego:</strong>
          <h4 class="alertWhite" >
-        Continúa jugando sin robar cuando la pila se vacíe.
-        Si un jugador no puede jugar el número mínimo de cartas en su turno, el juego termina.
-        Se cuentan las cartas restantes en manos y en la pila. Menos de 10 cartas es un resultado excelente.
-        Si se juegan todas las cartas, ¡has ganado!
+          Para poder ganar este juego tienes que terminar tu mano y tu mazo!, asi lograras una puntuacion de 0!<br>
+          Sin embargo si pierdes porque ya no puedes tomar mas cartas ni colocar cartas en el tablero, perderas sumando la puntuacion
+          de tu mazo y tu mano y asi se te otorga la puntuacion de derrota!
         </h4>
         <br><br>
         <strong>Nivel Expertos:</strong>
          <h4 class="alertWhite" >
-        En partidas expertas, se deben colocar al menos 3 cartas por turno.
-        Ajusta el número de cartas repartidas según el número de jugadores.
+        Para jugar en modo experto son las mismas reglas con 2 simpleas pero duros cambios:<br>
+        ->Debes tirar 3 cartas para poder tomar mas cartas de tu mazo<-<br>
+        ->Ya no tendras 8 cartas en tu mano, ahora tendras 7!<-<br>
+        Muchas suerte en este modo experto!
         </h4>
-      `,
-        confirmButtonText: 'Entendido',
-    });
+    `,
+        confirmButtonText: 'Entendido'
+    };
+
+    if (hacerScroll) {
+        swalConfig.didOpen = () => {
+            setTimeout(() => {
+                const expertSection = document.querySelector('.alertWhite:last-child');
+                if (expertSection) {
+                    expertSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            }, 300);
+        };
+    }
+
+    Swal.fire(swalConfig);
 }
 
-// Llamar a la función para mostrar las reglas al cargar la página (opcional)
+// Escuchar el evento click del botón reglasExtremo
+const reglasExtremo = document.getElementById("reglasExtremo");
+reglasExtremo.addEventListener("click", () => {
+    mostrarReglas(true); // Hacer scroll cuando se abre desde reglasExtremo
+});
+
+// Escuchar el evento click del botón verReglasButton
+const verReglasButton = document.getElementById("verReglas");
+verReglasButton.addEventListener("click", () => {
+    mostrarReglas(false); // No hacer scroll cuando se abre desde verReglasButton
+});
+
 window.onload = function() {
-    mostrarReglas();
+    checkConditions();
 };
-window.onload = checkConditions;
